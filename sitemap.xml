@@ -2,17 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://xymeow.github.io/categories/</loc>
+    <loc>http://xymeow.github.io/post/test/</loc>
+    <lastmod>2017-10-17T21:16:22+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/test/</loc>
+    <lastmod>2017-10-17T19:48:54+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://xymeow.github.io/</loc>
+    <loc>http://xymeow.github.io/</loc>
+    <lastmod>2017-10-17T21:16:22+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://xymeow.github.io/tags/</loc>
+    <loc>http://xymeow.github.io/post/</loc>
+    <lastmod>2017-10-17T21:16:22+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
