@@ -1,35 +1,51 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml-stylesheet type="text/xsl" href="http://xymeow.github.io/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
     <loc>http://xymeow.github.io/post/test/</loc>
-    <lastmod>2017-10-17T21:16:22+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://xymeow.github.io/test/</loc>
-    <lastmod>2017-10-17T19:48:54+08:00</lastmod>
+    <lastmod>2017-10-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
   
   <url>
     <loc>http://xymeow.github.io/categories/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://xymeow.github.io/</loc>
-    <lastmod>2017-10-17T21:16:22+08:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xymeow.github.io/post/</loc>
-    <lastmod>2017-10-17T21:16:22+08:00</lastmod>
+    <lastmod>2017-10-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xymeow.github.io/tags/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/tags/test/</loc>
+    <lastmod>2017-10-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/categories/test/</loc>
+    <lastmod>2017-10-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/</loc>
+    <lastmod>2017-10-19T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   

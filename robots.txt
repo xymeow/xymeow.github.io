@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://xymeow.github.io/sitemap.xml
