@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>简单粗暴的百度图片爬虫 - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。 先看看效果：
+" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="简单粗暴的百度图片爬虫" />
+<meta property="og:description" content="最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。
+
+先看看效果：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/" />
+
+
+
+<meta property="article:published_time" content="2016-03-25T13:08:34&#43;00:00"/>
+
+<meta property="article:modified_time" content="2016-03-25T13:08:34&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="简单粗暴的百度图片爬虫">
+<meta itemprop="description" content="最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。
+
+先看看效果：">
+
+
+<meta itemprop="datePublished" content="2016-03-25T13:08:34&#43;00:00" />
+<meta itemprop="dateModified" content="2016-03-25T13:08:34&#43;00:00" />
+<meta itemprop="wordCount" content="639">
+
+
+
+<meta itemprop="keywords" content="python," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="简单粗暴的百度图片爬虫"/>
+<meta name="twitter:description" content="最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。
+
+先看看效果："/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">简单粗暴的百度图片爬虫</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-03-25 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。
+
+先看看效果：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/47540683.jpg" alt="" /></p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/66775316.jpg" alt="" /></p>
+
+<p>嗯。。我看还阔以</p>
+
+<p>百度图片不太好直接一个正则表达式就完事，可能会抓到大量无关图片，或者是只能抓到预览图。要抓原图还是要分析一下网页代码：</p>
+
+<p>打开开发者工具，随意的搜索一个关键词看看（我搜了一个‘喵’）：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/28744688.jpg" alt="" /></p>
+
+<p>然后看一看就阔以发现这几行应该是搜索返回的一些数据，度娘把数据装在json里面反回了</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/25211573.jpg" alt="" /></p>
+
+<p>我要抓的数据是<code>imgData</code></p>
+
+<p>然后可以看到这里就是原图的地址啦：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/83737974.jpg" alt="" /></p>
+
+<p>再来分析一下url的规律：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/70382621.jpg" alt="" /></p>
+
+<p>直接搜索返回的url很长一段，然而观察一下可以发现有很多不是必须有的</p>
+
+<p>于是可以精简成这样：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/18131743.jpg" alt="" /></p>
+
+<p>嗯，这样规律就很明显了，word里面填关键词，pn从第几个结果开始返回。</p>
+
+<p>分析完之后开始写代码。。说几个关键的点吧。
+这两句用来确定url，观察了一下json里面有60个元素，这里dp代表要下载的页数（其实用页书好像不太恰当）。。</p>
+
+<pre><code class="language-python">tmpurl = 'http://image.baidu.com/search/flip?tn=baiduimage&amp;ie=utf-8&amp;word='+keyword+'&amp;pn='
+url = tmpurl+str(dp*60)
+</code></pre>
+
+<p>然后是</p>
+
+<pre><code class="language-python">ipdata = urllib.urlopen(url).read()
+pattern = re.compile(r'setData\(\'imgData\', (\{[\s\S]*?\})\);')
+ipdata = pattern.search(ipdata)
+	ipdata = ipdata.group(1)
+	imgData = json.loads(ipdata)
+</code></pre>
+
+<p>用一个正则表达式把json扒下来存到ipdata中，然后用json.loads()，从字符串中读取json到imgData中。。</p>
+
+<p>之后就是从json里面获取objURL，然后从对应的url中下载图片啦～嗯具体的我不想写了</p>
+
+<p>详细代码可见 <a href="https://github.com/xymeow/baidu-picture-spider">https://github.com/xymeow/baidu-picture-spider</a></p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-03-25</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/python/">python</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/%E7%AB%8B%E6%96%B9%E6%95%B0%E7%A0%81%E9%97%AE%E9%A2%98/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">立方数码问题</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%AF%94%E8%BE%83/">
+            <span class="next-text nav-default">社区发现算法实现与比较</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E6%99%93%E5%A5%95-%E4%BD%95-a97701117/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    2017
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+
+
+</body>
+</html>

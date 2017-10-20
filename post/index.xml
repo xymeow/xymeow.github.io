@@ -23,5 +23,165 @@
 &lt;/p&gt;</description>
     </item>
     
+    <item>
+      <title>立方数码问题</title>
+      <link>http://xymeow.github.io/post/%E7%AB%8B%E6%96%B9%E6%95%B0%E7%A0%81%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Sat, 03 Sep 2016 19:19:37 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/%E7%AB%8B%E6%96%B9%E6%95%B0%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
+      <description>&lt;p&gt;又一个学期过去了，我已经成为一只大四狗。。没有课的生活真是爽，想了想我还有这么一个blog，打算把上学期学到的东西、做的实验整理一下，造福后人～&lt;/p&gt;
+
+&lt;p&gt;先写写上学期做的AI实验吧，上过AI课的应该都知道一个经典问题－8数码问题，立方数码问题就相当于8数码问题的三维版本，具体的要求如下（嗯我直接截图好了）：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://oy479ek6q.bkt.gdipper.com/17-10-20/91472101.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;要求输出最短的移动操作序列&lt;/p&gt;
+
+&lt;p&gt;代码可见 &lt;a href=&#34;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&#34;&gt;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>简单粗暴的百度图片爬虫</title>
+      <link>http://xymeow.github.io/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/</link>
+      <pubDate>Fri, 25 Mar 2016 13:08:34 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/</guid>
+      <description>&lt;p&gt;最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。
+
+先看看效果：&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>社区发现算法实现与比较</title>
+      <link>http://xymeow.github.io/post/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%AF%94%E8%BE%83/</link>
+      <pubDate>Mon, 25 Jan 2016 19:43:26 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%AF%94%E8%BE%83/</guid>
+      <description>&lt;p&gt;web课第二个项目，这个比较水，代码目测就100行多点，不过我自己分析的部分比较多。。继续丢实验报告上来。。。&lt;/p&gt;
+
+&lt;h1 id=&#34;实验内容&#34;&gt;实验内容&lt;/h1&gt;
+
+&lt;p&gt;实现 spectral clustering等几个社区发现算法,并比较实验结果;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>flex&#43;bison&#43;llvm简易学习心得</title>
+      <link>http://xymeow.github.io/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</link>
+      <pubDate>Sun, 24 Jan 2016 21:25:47 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</guid>
+      <description>&lt;p&gt;没错这其实是实验报告。。。不过看起来确实比较像blog文章。。&lt;/p&gt;
+
+&lt;h1 id=&#34;1-总体过程&#34;&gt;1. 总体过程&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;构造一个编译器大概是如下的流程：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://oy479ek6q.bkt.gdipper.com/17-10-20/88651713.jpg&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>利用Wireshark观察网络报文</title>
+      <link>http://xymeow.github.io/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/</link>
+      <pubDate>Mon, 28 Dec 2015 16:48:38 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/</guid>
+      <description>&lt;p&gt;上计算机网络课的时候的实验报告，图很多很多。。。&lt;/p&gt;
+
+&lt;h1 id=&#34;1-实验内容&#34;&gt;1.实验内容&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;捕获观察并分析以太帧结构。&lt;/li&gt;
+&lt;li&gt;观察并分析ARP协议的报文&lt;/li&gt;
+&lt;li&gt;捕捉UDP报文并验证其校验和&lt;/li&gt;
+&lt;li&gt;捕捉TCP报文的连接释放&amp;ndash;四次握手（注意 TCP Segment Len、Windows size value、Checksum等）&lt;/li&gt;
+&lt;li&gt;捕捉除TCP、UDP之外的4种IP层以上的网络协议（例如HTTP、ICMP、SSDP、QICQ等），并尝试分析
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;2-实验过程及分析&#34;&gt;2.实验过程及分析&lt;/h1&gt;
+
+&lt;h2 id=&#34;2-1-捕获观察并分析以太帧结构&#34;&gt;2.1 捕获观察并分析以太帧结构&lt;/h2&gt;
+
+&lt;p&gt;从图中可以看出该帧的层次结构，以及帧长、源地址、目的地址、使用协议等简略信息。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>聚类效果评价指标</title>
+      <link>http://xymeow.github.io/post/note-2015-12-17/</link>
+      <pubDate>Thu, 17 Dec 2015 08:04:56 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/note-2015-12-17/</guid>
+      <description>这周web课布置了个调研作业，记录一下。。。 1. Davies Bouldin Index 常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为： $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$ 其中\(\</description>
+    </item>
+    
+    <item>
+      <title>CSAPP LAB4：perflab-优化两个奇怪的函数</title>
+      <link>http://xymeow.github.io/post/csapp-lab4/</link>
+      <pubDate>Wed, 01 Jul 2015 22:28:43 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/csapp-lab4/</guid>
+      <description>&lt;p&gt;这里是前段时间写的csapp的另一个实验perflab的解题过程喵~&lt;/p&gt;
+
+&lt;p&gt;本实验要求优化handout里kernel.c中的两个函数，rotate函数的作用是将图像逆时针旋转90°，smooth函数的作用是对于图像中的每一个像素点，取它和周围的像素点的平均值，让图片变得模糊。下面让我来逐一优化他们^_^
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>CSAPP LAB2：BOMB LAB 拆个炸弹玩玩</title>
+      <link>http://xymeow.github.io/post/csapp-lab2/</link>
+      <pubDate>Wed, 03 Jun 2015 22:22:10 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/csapp-lab2/</guid>
+      <description>&lt;p&gt;顾名思义，这个实验要求我们拆”炸弹”，炸弹是一个可执行程序，按照实验材料所给的提示，我们要利用反汇编工具来找出拆除炸弹的方法，最终拆掉所有的炸弹。这个实验还是十分有意思的，运用游戏化的方法让我们掌握反汇编的技能，提高阅读汇编码的能力，不得不佩服设计者。&lt;/p&gt;
+
+&lt;p&gt;下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://oy479ek6q.bkt.gdipper.com/17-10-20/61582293.jpg&#34; alt=&#34;lab2-1&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了..
+为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>ustc操作系统lab3</title>
+      <link>http://xymeow.github.io/post/oslab3/</link>
+      <pubDate>Tue, 28 Apr 2015 19:19:51 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/oslab3/</guid>
+      <description>&lt;p&gt;恩恩，本周的实验看起来不难，下面是实验要求：&lt;/p&gt;
+
+&lt;p&gt;实验内容：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;制作启动硬盘并启动一个操作系统映像&lt;/li&gt;
+&lt;li&gt;下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的）&lt;/li&gt;
+&lt;li&gt;制作grub启动软盘，进而制作启动硬盘&lt;/li&gt;
+&lt;li&gt;操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之
+
+&lt;ol&gt;
+&lt;li&gt;例如dlxlinux，或其他&lt;/li&gt;
+&lt;li&gt;这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe&lt;/li&gt;
+&lt;li&gt;也可以自己编译一个Linux内核、制作一个根文件系统，并启动之&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;是不是看起来好简单啊。。不过做着做着发现还是挺神烦的&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
   </channel>
 </rss>

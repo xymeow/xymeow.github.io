@@ -6,9 +6,73 @@
     <description>Recent content in Tags on xymeow&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
+    <lastBuildDate>Sat, 03 Sep 2016 19:19:37 +0000</lastBuildDate>
     
 	<atom:link href="http://xymeow.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ai</title>
+      <link>http://xymeow.github.io/tags/ai/</link>
+      <pubDate>Sat, 03 Sep 2016 19:19:37 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Csapp</title>
+      <link>http://xymeow.github.io/tags/csapp/</link>
+      <pubDate>Wed, 01 Jul 2015 22:28:43 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/csapp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Mining</title>
+      <link>http://xymeow.github.io/tags/data-mining/</link>
+      <pubDate>Mon, 25 Jan 2016 19:43:26 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/data-mining/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Lab</title>
+      <link>http://xymeow.github.io/tags/lab/</link>
+      <pubDate>Tue, 28 Apr 2015 19:19:51 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/lab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Matlab</title>
+      <link>http://xymeow.github.io/tags/matlab/</link>
+      <pubDate>Mon, 25 Jan 2016 19:43:26 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/matlab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Os</title>
+      <link>http://xymeow.github.io/tags/os/</link>
+      <pubDate>Tue, 28 Apr 2015 19:19:51 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/os/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>http://xymeow.github.io/tags/python/</link>
+      <pubDate>Fri, 25 Mar 2016 13:08:34 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/python/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Test</title>
@@ -16,6 +80,42 @@
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/tags/test/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>优化</title>
+      <link>http://xymeow.github.io/tags/%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Wed, 01 Jul 2015 22:28:43 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/%E4%BC%98%E5%8C%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>汇编</title>
+      <link>http://xymeow.github.io/tags/%E6%B1%87%E7%BC%96/</link>
+      <pubDate>Wed, 03 Jun 2015 22:22:10 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/%E6%B1%87%E7%BC%96/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>编译原理</title>
+      <link>http://xymeow.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</link>
+      <pubDate>Sun, 24 Jan 2016 21:25:47 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>网络</title>
+      <link>http://xymeow.github.io/tags/%E7%BD%91%E7%BB%9C/</link>
+      <pubDate>Mon, 28 Dec 2015 16:48:38 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/%E7%BD%91%E7%BB%9C/</guid>
       <description></description>
     </item>
     

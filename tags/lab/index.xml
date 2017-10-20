@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lab on xymeow&#39;s blog</title>
+    <link>http://xymeow.github.io/tags/lab/</link>
+    <description>Recent content in Lab on xymeow&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 28 Apr 2015 19:19:51 +0000</lastBuildDate>
+    
+	<atom:link href="http://xymeow.github.io/tags/lab/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>ustc操作系统lab3</title>
+      <link>http://xymeow.github.io/post/oslab3/</link>
+      <pubDate>Tue, 28 Apr 2015 19:19:51 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/oslab3/</guid>
+      <description>&lt;p&gt;恩恩，本周的实验看起来不难，下面是实验要求：&lt;/p&gt;
+
+&lt;p&gt;实验内容：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;制作启动硬盘并启动一个操作系统映像&lt;/li&gt;
+&lt;li&gt;下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的）&lt;/li&gt;
+&lt;li&gt;制作grub启动软盘，进而制作启动硬盘&lt;/li&gt;
+&lt;li&gt;操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之
+
+&lt;ol&gt;
+&lt;li&gt;例如dlxlinux，或其他&lt;/li&gt;
+&lt;li&gt;这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe&lt;/li&gt;
+&lt;li&gt;也可以自己编译一个Linux内核、制作一个根文件系统，并启动之&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;是不是看起来好简单啊。。不过做着做着发现还是挺神烦的&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>flex&#43;bison&#43;llvm简易学习心得 - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="没错这其实是实验报告。。。不过看起来确实比较像blog文章。。
+1. 总体过程  文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)
+ 语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。
+ 组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。
+  构造一个编译器大概是如下的流程：
+" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="flex&#43;bison&#43;llvm简易学习心得" />
+<meta property="og:description" content="没错这其实是实验报告。。。不过看起来确实比较像blog文章。。
+
+1. 总体过程
+
+
+文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)
+
+语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。
+
+组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。
+
+
+构造一个编译器大概是如下的流程：
+
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" />
+
+
+
+<meta property="article:published_time" content="2016-01-24T21:25:47&#43;00:00"/>
+
+<meta property="article:modified_time" content="2016-01-24T21:25:47&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="flex&#43;bison&#43;llvm简易学习心得">
+<meta itemprop="description" content="没错这其实是实验报告。。。不过看起来确实比较像blog文章。。
+
+1. 总体过程
+
+
+文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)
+
+语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。
+
+组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。
+
+
+构造一个编译器大概是如下的流程：
+
+
+">
+
+
+<meta itemprop="datePublished" content="2016-01-24T21:25:47&#43;00:00" />
+<meta itemprop="dateModified" content="2016-01-24T21:25:47&#43;00:00" />
+<meta itemprop="wordCount" content="2406">
+
+
+
+<meta itemprop="keywords" content="编译原理," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="flex&#43;bison&#43;llvm简易学习心得"/>
+<meta name="twitter:description" content="没错这其实是实验报告。。。不过看起来确实比较像blog文章。。
+
+1. 总体过程
+
+
+文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)
+
+语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。
+
+组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。
+
+
+构造一个编译器大概是如下的流程：
+
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">flex&#43;bison&#43;llvm简易学习心得</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2016-01-24 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#1-总体过程">1. 总体过程</a></li>
+<li><a href="#2-flex">2. flex</a></li>
+<li><a href="#3-bison">3. bison</a></li>
+<li><a href="#4-使用flex和bison">4. 使用flex和bison</a></li>
+<li><a href="#5-llvm">5. llvm</a></li>
+<li><a href="#6-llvm-ir">6. llvm IR</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>没错这其实是实验报告。。。不过看起来确实比较像blog文章。。</p>
+
+<h1 id="1-总体过程">1. 总体过程</h1>
+
+<ul>
+<li><p>文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)</p></li>
+
+<li><p>语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。</p></li>
+
+<li><p>组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。</p></li>
+</ul>
+
+<p>构造一个编译器大概是如下的流程：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/88651713.jpg" alt="" />
+</p>
+
+<h1 id="2-flex">2. flex</h1>
+
+<p>Flex文件由三个部分组成。或者说三个段。三个段之间用两个%%分隔。
+结构如下：</p>
+
+<p>定义段(definitions)</p>
+
+<p>%%</p>
+
+<p>规则段(rules)</p>
+
+<p>%%</p>
+
+<p>用户代码段(user code)</p>
+
+<ol>
+<li>定义段： 包含简单名字的定义，可以简化扫描器。
+定义方法为：<code>name definition</code>, 比如<code>digit [0-9]</code></li>
+<li>规则段： 规则包括模式（正则表达式）和动作（c语言语句），当分析出符合一个模式规则的单词时，执行相应的动作。</li>
+<li>用户代码段： 所有用户代码都被原样拷贝到文件lex.yy.c中。在这里可以定义一些辅助函数或代码，供扫描器yylex()调用，或者调用扫描器。这一部分是可有可无的。如果没有的话，Flex文件中第二个%%是可以省略的。</li>
+</ol>
+
+<h1 id="3-bison">3. bison</h1>
+
+<p>Bison适合上下文无关文法（Context-free grammar），并采用LALR(1)算法的文法。</p>
+
+<p>当bison读入一个终结符（token），它会将该终结符及其语意值一起压入堆栈。这个堆栈叫做分析器堆栈（parser stack）。把一个token压入堆栈通常叫做移进（shifting）。</p>
+
+<p>bison使用基于类似于BNF的语法，使用定义的好终结符和非终结符来组成我们有效的每一个语句和表达式。每个语法后面都跟有一系列动作，该动作将在这个语法被识别的时候执行。这个过程将会递归地按从叶子符号到根节点符号的次序执行，在这个过程，每一个非终结符最终会被合并为一棵大的语法树。<code>$$</code>符号代表着当前树的根节点。
+此外 <code>$1</code>代表了本条规则叶子中的第一个符号。每一条规则中通常赋值一个节点到<code>$$</code>，最后这些规则会合并成一个大的抽象语法树。</p>
+
+<h1 id="4-使用flex和bison">4. 使用flex和bison</h1>
+
+<p>这里我自定义了一个命令行计算器的文法,BNF如下：</p>
+
+<pre><code class="language-sh">calclist -&gt; 
+ | calclist exp ; \n 
+
+exp -&gt; factor 
+ | exp + factor 
+ | exp - factor 
+
+factor -&gt; term 
+ | factor * term 
+ | factor / term 
+
+term -&gt; NUMBER 
+ | |exp| 
+ | (exp)
+</code></pre>
+
+<p>具体代码可见calc.l 和calc.y中，下面是执行结果：</p>
+
+<p>我在此加入了简单的错误处理，当行末尾漏掉分号时，加入错误处理忽略掉这一行，从下一个分号开始重新进行分析，不会直接退出。这在写编译器的时候应该是一个非常有用的功能。</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/79159039.jpg" alt="" /></p>
+
+<h1 id="5-llvm">5. llvm</h1>
+
+<p>LLVM最初是Low Level Virtual Machine的缩写，定位是一个虚拟机，但是是比较底层的虚拟机。它的出现正是为了解决编译器代码重用的问题，LLVM一上来就站在比较高的角度，制定了LLVM IR这一中间代码表示语言。LLVM IR充分考虑了各种应用场景，例如在IDE中调用LLVM进行实时的代码语法检查，对静态语言、动态语言的编译、优化等。</p>
+
+<p>llvm与传统编译器一样基于三段式架构，结构大概如下图：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/21949984.jpg" alt="" /></p>
+
+<p>前端负责解析源代码，检查语法错误，并将其翻译为抽象的语法树，优化器对这一中间代码进行优化，试图使代码更高效。后端则负责将优化器优化后的中间代码转换为目标机器的代码，这一过程后端会最大化的利用目标机器的特殊指令，以提高代码的性能。</p>
+
+<p>llvm其实从本质上来说它是一个编译器的架构，它实现了一个库，利用这个库可以很容易的实现不同的编译相关的程序。</p>
+
+<p>下面有个比较好的例子可以说明：
+假如说我要写一个XYZ语言的优化器，我自己实现了PassXYZ算法，用以处理XYZ语言与其它语言差别最大的地方。而LLVM优化器提供的PassA和PassB算法则提供了XYZ语言与其它语言共性的优化算法。那么我可以选择XYZ优化器在链接的时候把LLVM提供的算法链接进来。</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/68111768.jpg" alt="" /></p>
+
+<h1 id="6-llvm-ir">6. llvm IR</h1>
+
+<p>可以先自己生成中间代码文件看一看llvm ir：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/74398354.jpg" alt="" /></p>
+
+<p>test.c 代码如下：</p>
+
+<pre><code class="language-c">int main(){
+        int a = 1;
+        int b = 2;
+        a += b;
+        return 0;
+}
+</code></pre>
+
+<p>可以看到生成的中间代码文件test.ll内容如下：</p>
+
+<pre><code class="language-c">; ModuleID = 'test.c'
+target datalayout = &quot;e-m:o-i64:64-f80:128-n8:16:32:64-S128&quot;
+target triple = &quot;x86_64-apple-macosx10.11.0&quot;
+
+; Function Attrs: nounwind ssp uwtable
+define i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %a = alloca i32, align 4
+  %b = alloca i32, align 4
+  store i32 0, i32* %1
+  store i32 1, i32* %a, align 4
+  store i32 2, i32* %b, align 4
+  %2 = load i32* %b, align 4
+  %3 = load i32* %a, align 4
+  %4 = add nsw i32 %3, %2
+  store i32 %4, i32* %a, align 4
+  ret i32 0
+}
+
+attributes #0 = { nounwind ssp uwtable &quot;less-precise-fpmad&quot;=&quot;false&quot; &quot;no-frame-pointer-elim&quot;=&quot;true&quot; &quot;no-frame-pointer-elim-non-leaf&quot; &quot;no-infs-fp-math&quot;=&quot;false&quot; &quot;no-nans-fp-math&quot;=&quot;false&quot; &quot;stack-protector-buffer-size&quot;=&quot;8&quot; &quot;target-cpu&quot;=&quot;core2&quot; &quot;target-features&quot;=&quot;+ssse3,+cx16,+sse,+sse2,+sse3&quot; &quot;unsafe-fp-math&quot;=&quot;false&quot; &quot;use-soft-float&quot;=&quot;false&quot; }
+
+!llvm.module.flags = !{!0}
+!llvm.ident = !{!1}
+
+!0 = !{i32 1, !&quot;PIC Level&quot;, i32 2}
+!1 = !{!&quot;Apple LLVM version 7.0.0 (clang-700.1.76)&quot;}
+</code></pre>
+
+<p>其中@表示全局变量，％表示局部变量，可以看到llvm中，main函数看做一个全局变量，我定义的变量a、b为局部变量。</p>
+
+<p>alloca表示变量声明，比较类似c语言的malloc。</p>
+
+<p>i32表示该变量占32位。</p>
+
+<p>align表示对齐，这里align 4表示如果数据没有4个字节，它也占用4个字节的空间。</p>
+
+<p>load为装载，store为写入，运算命令有add、sub、mum、div、rems等</p>
+
+<p>ret表示返回。</p>
+
+<p>下面来看一下条件跳转在llvm中怎么翻译：</p>
+
+<pre><code class="language-c">int main(){
+        int a = 1;
+        int b = 2;
+        if(a&gt;0)
+          a += b;
+        return 0;
+}
+</code></pre>
+
+<pre><code class="language-c">define i32 @main() #0 {
+  %1 = alloca i32, align 4
+  %a = alloca i32, align 4
+  %b = alloca i32, align 4
+  store i32 0, i32* %1
+  store i32 1, i32* %a, align 4
+  store i32 2, i32* %b, align 4
+  %2 = load i32* %a, align 4
+  %3 = icmp sgt i32 %2, 0
+  br i1 %3, label %4, label %8
+
+; &lt;label&gt;:4                                       ; preds = %0
+  %5 = load i32* %b, align 4
+  %6 = load i32* %a, align 4
+  %7 = add nsw i32 %6, %5
+  store i32 %7, i32* %a, align 4
+  br label %8
+
+; &lt;label&gt;:8                                       ; preds = %4, %0
+  ret i32 0
+}
+</code></pre>
+
+<p>可以看到icmp指令，用来比较大小，后面跟着条件。</p>
+
+<p>br指令是跳转，可以根据后面布尔表达式的值决定跳转，这里应该是自动把else的情况补全了。</p>
+
+<p>总的来说llvm ir与我们课本接触的汇编语言还是比较类似的，虽然指令集有很多不同，但阅读起来没有太大障碍。</p>
+
+<p>详细的llvm ir可以在llvm的官方文档（<a href="http://llvm.org/docs/LangRef.html">http://llvm.org/docs/LangRef.html</a>）中找到。</p>
+
+<p>这个实验主要是去调研现在比较流行、先进的编译技术，现在编译技术基本上很成熟了，想自己定义一种语言也有很多先进、高效的开发工具使用，现代编译技术和课本上的理论知识相差的比较大，之后可以继续阅读相关知识，了解最新进展。</p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2016-01-24</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/">编译原理</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%AF%94%E8%BE%83/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">社区发现算法实现与比较</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/">
+            <span class="next-text nav-default">利用Wireshark观察网络报文</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E6%99%93%E5%A5%95-%E4%BD%95-a97701117/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    2017
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Python on xymeow&#39;s blog</title>
+    <link>http://xymeow.github.io/tags/python/</link>
+    <description>Recent content in Python on xymeow&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 25 Mar 2016 13:08:34 +0000</lastBuildDate>
+    
+	<atom:link href="http://xymeow.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>简单粗暴的百度图片爬虫</title>
+      <link>http://xymeow.github.io/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/</link>
+      <pubDate>Fri, 25 Mar 2016 13:08:34 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/</guid>
+      <description>&lt;p&gt;最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。
+
+先看看效果：&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

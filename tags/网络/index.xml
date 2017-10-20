@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>网络 on xymeow&#39;s blog</title>
+    <link>http://xymeow.github.io/tags/%E7%BD%91%E7%BB%9C/</link>
+    <description>Recent content in 网络 on xymeow&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 28 Dec 2015 16:48:38 +0000</lastBuildDate>
+    
+	<atom:link href="http://xymeow.github.io/tags/%E7%BD%91%E7%BB%9C/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>利用Wireshark观察网络报文</title>
+      <link>http://xymeow.github.io/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/</link>
+      <pubDate>Mon, 28 Dec 2015 16:48:38 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/</guid>
+      <description>&lt;p&gt;上计算机网络课的时候的实验报告，图很多很多。。。&lt;/p&gt;
+
+&lt;h1 id=&#34;1-实验内容&#34;&gt;1.实验内容&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;捕获观察并分析以太帧结构。&lt;/li&gt;
+&lt;li&gt;观察并分析ARP协议的报文&lt;/li&gt;
+&lt;li&gt;捕捉UDP报文并验证其校验和&lt;/li&gt;
+&lt;li&gt;捕捉TCP报文的连接释放&amp;ndash;四次握手（注意 TCP Segment Len、Windows size value、Checksum等）&lt;/li&gt;
+&lt;li&gt;捕捉除TCP、UDP之外的4种IP层以上的网络协议（例如HTTP、ICMP、SSDP、QICQ等），并尝试分析
+&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;2-实验过程及分析&#34;&gt;2.实验过程及分析&lt;/h1&gt;
+
+&lt;h2 id=&#34;2-1-捕获观察并分析以太帧结构&#34;&gt;2.1 捕获观察并分析以太帧结构&lt;/h2&gt;
+
+&lt;p&gt;从图中可以看出该帧的层次结构，以及帧长、源地址、目的地址、使用协议等简略信息。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

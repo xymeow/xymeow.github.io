@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CSAPP LAB2：BOMB LAB 拆个炸弹玩玩 - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="顾名思义，这个实验要求我们拆”炸弹”，炸弹是一个可执行程序，按照实验材料所给的提示，我们要利用反汇编工具来找出拆除炸弹的方法，最终拆掉所有的炸弹。这个实验还是十分有意思的，运用游戏化的方法让我们掌握反汇编的技能，提高阅读汇编码的能力，不得不佩服设计者。
+下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：
+可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了.. 为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。 " />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/csapp-lab2/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="CSAPP LAB2：BOMB LAB 拆个炸弹玩玩" />
+<meta property="og:description" content="顾名思义，这个实验要求我们拆”炸弹”，炸弹是一个可执行程序，按照实验材料所给的提示，我们要利用反汇编工具来找出拆除炸弹的方法，最终拆掉所有的炸弹。这个实验还是十分有意思的，运用游戏化的方法让我们掌握反汇编的技能，提高阅读汇编码的能力，不得不佩服设计者。
+
+下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：
+
+
+
+可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了..
+为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/csapp-lab2/" />
+
+
+
+<meta property="article:published_time" content="2015-06-03T22:22:10&#43;00:00"/>
+
+<meta property="article:modified_time" content="2015-06-03T22:22:10&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="CSAPP LAB2：BOMB LAB 拆个炸弹玩玩">
+<meta itemprop="description" content="顾名思义，这个实验要求我们拆”炸弹”，炸弹是一个可执行程序，按照实验材料所给的提示，我们要利用反汇编工具来找出拆除炸弹的方法，最终拆掉所有的炸弹。这个实验还是十分有意思的，运用游戏化的方法让我们掌握反汇编的技能，提高阅读汇编码的能力，不得不佩服设计者。
+
+下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：
+
+
+
+可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了..
+为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。
+">
+
+
+<meta itemprop="datePublished" content="2015-06-03T22:22:10&#43;00:00" />
+<meta itemprop="dateModified" content="2015-06-03T22:22:10&#43;00:00" />
+<meta itemprop="wordCount" content="4985">
+
+
+
+<meta itemprop="keywords" content="CSAPP,汇编," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="CSAPP LAB2：BOMB LAB 拆个炸弹玩玩"/>
+<meta name="twitter:description" content="顾名思义，这个实验要求我们拆”炸弹”，炸弹是一个可执行程序，按照实验材料所给的提示，我们要利用反汇编工具来找出拆除炸弹的方法，最终拆掉所有的炸弹。这个实验还是十分有意思的，运用游戏化的方法让我们掌握反汇编的技能，提高阅读汇编码的能力，不得不佩服设计者。
+
+下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：
+
+
+
+可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了..
+为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">CSAPP LAB2：BOMB LAB 拆个炸弹玩玩</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2015-06-03 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#phase1">Phase1</a></li>
+<li><a href="#phase2">Phase2</a></li>
+<li><a href="#phase3">Phase3</a></li>
+<li><a href="#phase4">Phase4</a></li>
+<li><a href="#phase5">Phase5</a></li>
+<li><a href="#phase6">Phase6</a></li>
+<li><a href="#secret-phase">Secret Phase</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>顾名思义，这个实验要求我们拆”炸弹”，炸弹是一个可执行程序，按照实验材料所给的提示，我们要利用反汇编工具来找出拆除炸弹的方法，最终拆掉所有的炸弹。这个实验还是十分有意思的，运用游戏化的方法让我们掌握反汇编的技能，提高阅读汇编码的能力，不得不佩服设计者。</p>
+
+<p>下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/61582293.jpg" alt="lab2-1" /></p>
+
+<p>可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了..
+为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。
+</p>
+
+<h1 id="phase1">Phase1</h1>
+
+<p>下面我们来看看第一关的代码：</p>
+
+<pre><code class="language-assembly">08048b80 &lt;phase_1&gt;:
+ 8048b80:   55                      push   %ebp
+ 8048b81:   89 e5                   mov    %esp,%ebp
+ 8048b83:   83 ec 08                sub    $0x8,%esp
+ 8048b86:   c7 44 24 04 78 99 04    movl   $0x8049978,0x4(%esp)
+ 8048b8d:   08 
+ 8048b8e:   8b 45 08                mov    0x8(%ebp),%eax
+ 8048b91:   89 04 24                mov    %eax,(%esp)
+ 8048b94:   e8 1a 05 00 00          call   80490b3 &lt;strings_not_equal&gt;
+ 8048b99:   85 c0                   test   %eax,%eax
+ 8048b9b:   74 05                   je     8048ba2 &lt;phase_1+0x22&gt;
+ 8048b9d:   e8 d8 0a 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048ba2:   c9                      leave  
+ 8048ba3:   c3                      ret    
+</code></pre>
+
+<p>也就十几行，看起来就比较简单，观察一下，再由这里调用的函数名称分析可以得出，这关需要输入一个字符串与程序自带的某个字符串进行比较，如果两个字符串相等则过关，不相等就调用爆炸函数。然而我们要输入什么字符串呢？再观察一下，
+<code>movl   $0x8049978,0x4(%esp)</code>
+这个地址看起来就很可疑，尝试使用gdb来打印一下这个地址里的内容：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/41589746.jpg" alt="lab2-2" /></p>
+
+<p>于是找到了过关的密码，When I get angry, Mr. Bigglesworth gets upset. (感觉好像有哪里不太对😏)成功过关~
+<!--more--></p>
+
+<h1 id="phase2">Phase2</h1>
+
+<p>下面是代码，比phase1要长了不少呢：</p>
+
+<pre><code class="language-assembly">08048ba4 &lt;phase_2&gt;:
+ 8048ba4:   55                      push   %ebp
+ 8048ba5:   89 e5                   mov    %esp,%ebp
+ 8048ba7:   83 ec 28                sub    $0x28,%esp
+ 8048baa:   8d 45 e4                lea    -0x1c(%ebp),%eax
+ 8048bad:   89 44 24 04             mov    %eax,0x4(%esp)
+ 8048bb1:   8b 45 08                mov    0x8(%ebp),%eax;
+ 8048bb4:   89 04 24                mov    %eax,(%esp)
+ 8048bb7:   e8 64 04 00 00          call   8049020 &lt;read_six_numbers&gt;
+ 8048bbc:   8b 45 e4                mov    -0x1c(%ebp),%eax;m[1c+r[epb]]-&gt;eax
+ 8048bbf:   83 f8 01                cmp    $0x1,%eax;test if eax=1
+ 8048bc2:   74 05                   je     8048bc9 &lt;phase_2+0x25&gt;;
+ 8048bc4:   e8 b1 0a 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048bc9:   c7 45 fc 01 00 00 00    movl   $0x1,-0x4(%ebp)
+ 8048bd0:   eb 22                   jmp    8048bf4 &lt;phase_2+0x50&gt;
+ 8048bd2:   8b 45 fc                mov    -0x4(%ebp),%eax
+ 8048bd5:   8b 4c 85 e4             mov    -0x1c(%ebp,%eax,4),%ecx
+ 8048bd9:   8b 45 fc                mov    -0x4(%ebp),%eax
+ 8048bdc:   48                      dec    %eax
+ 8048bdd:   8b 54 85 e4             mov    -0x1c(%ebp,%eax,4),%edx
+ 8048be1:   8b 45 fc                mov    -0x4(%ebp),%eax
+ 8048be4:   40                      inc    %eax
+ 8048be5:   0f af c2                imul   %edx,%eax
+ 8048be8:   39 c1                   cmp    %eax,%ecx
+ 8048bea:   74 05                   je     8048bf1 &lt;phase_2+0x4d&gt;
+ 8048bec:   e8 89 0a 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048bf1:   ff 45 fc                incl   -0x4(%ebp)
+ 8048bf4:   83 7d fc 05             cmpl   $0x5,-0x4(%ebp)
+ 8048bf8:   7e d8                   jle    8048bd2 &lt;phase_2+0x2e&gt;
+ 8048bfa:   c9                      leave  
+ 8048bfb:   c3                      ret    
+</code></pre>
+
+<p>可以看出这关是调用了read_six_numbers函数读入六个数，放在内存的某块地方，然后比较一下是不是那六个数。再看看下面的代码，先读出输入的第一个数，比较一下它是否为1，不为1就爆炸。之后是个循环，认真分析一下代码(或者在纸上模拟执行一下)就能发现它就是个算阶乘的函数，所以过关密码为<code>1 2 6 24 120 720</code> (网上这一关有的是算等比数列的，我差点就去找公比了_(:зゝ∠)_)</p>
+
+<h1 id="phase3">Phase3</h1>
+
+<p>比phase2 更长了，下面上代码：</p>
+
+<pre><code class="language-assembly">08048bfc &lt;phase_3&gt;:
+ 8048bfc:   55                      push   %ebp
+ 8048bfd:   89 e5                   mov    %esp,%ebp
+ 8048bff:   83 ec 28                sub    $0x28,%esp
+ 8048c02:   c7 45 f8 00 00 00 00    movl   $0x0,-0x8(%ebp)
+ 8048c09:   c7 45 fc 00 00 00 00    movl   $0x0,-0x4(%ebp)
+ 8048c10:   8d 45 f0                lea    -0x10(%ebp),%eax;2nd input
+ 8048c13:   89 44 24 0c             mov    %eax,0xc(%esp)
+ 8048c17:   8d 45 f4                lea    -0xc(%ebp),%eax;1st input
+ 8048c1a:   89 44 24 08             mov    %eax,0x8(%esp)
+ 8048c1e:   c7 44 24 04 a7 99 04    movl   $0x80499a7,0x4(%esp);%d %d 
+ 8048c25:   08 
+ 8048c26:   8b 45 08                mov    0x8(%ebp),%eax
+ 8048c29:   89 04 24                mov    %eax,(%esp)
+ 8048c2c:   e8 37 fc ff ff          call   8048868 &lt;sscanf@plt&gt;
+ 8048c31:   89 45 fc                mov    %eax,-0x4(%ebp)
+ 8048c34:   83 7d fc 01             cmpl   $0x1,-0x4(%ebp)
+ 8048c38:   7f 05                   jg     8048c3f &lt;phase_3+0x43&gt;;input1 should &gt; 1
+ 8048c3a:   e8 3b 0a 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048c3f:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048c42:   89 45 ec                mov    %eax,-0x14(%ebp)
+ 8048c45:   83 7d ec 07             cmpl   $0x7,-0x14(%ebp)
+ 8048c49:   77 40                   ja     8048c8b &lt;phase_3+0x8f&gt;;input1 should &lt;=7
+ 8048c4b:   8b 55 ec                mov    -0x14(%ebp),%edx
+ 8048c4e:   8b 04 95 b0 99 04 08    mov    0x80499b0(,%edx,4),%eax
+ 8048c55:   ff e0                   jmp    *%eax;jump to 0x80499b0(,%edx,4),%eax
+ 8048c57:   83 45 f8 4e             addl   $0x4e,-0x8(%ebp);90
+ 8048c5b:   83 6d f8 7e             subl   $0x7e,-0x8(%ebp);12
+ 8048c5f:   81 45 f8 c7 03 00 00    addl   $0x3c7,-0x8(%ebp);138
+ 8048c66:   81 6d f8 14 01 00 00    subl   $0x114,-0x8(%ebp);-829
+ 8048c6d:   81 45 f8 99 01 00 00    addl   $0x199,-0x8(%ebp);-553
+ 8048c74:   81 6d f8 32 03 00 00    subl   $0x332,-0x8(%ebp);-962
+ 8048c7b:   81 45 f8 32 03 00 00    addl   $0x332,-0x8(%ebp);-144
+ 8048c82:   81 6d f8 c2 03 00 00    subl   $0x3c2,-0x8(%ebp);-962
+ 8048c89:   eb 05                   jmp    8048c90 &lt;phase_3+0x94&gt;
+ 8048c8b:   e8 ea 09 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048c90:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048c93:   83 f8 05                cmp    $0x5,%eax
+ 8048c96:   7f 08                   jg     8048ca0 &lt;phase_3+0xa4&gt;
+ 8048c98:   8b 45 f0                mov    -0x10(%ebp),%eax
+ 8048c9b:   39 45 f8                cmp    %eax,-0x8(%ebp)
+ 8048c9e:   74 05                   je     8048ca5 &lt;phase_3+0xa9&gt;
+ 8048ca0:   e8 d5 09 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048ca5:   c9                      leave  
+ 8048ca6:   c3                      ret  
+</code></pre>
+
+<p>具体分析我在代码旁也写了注释，这关看起来是个case句，先读入两个数，限制第一个数只能是2, 3, 4, 5, 6, 7中的一个，然后根据第一个数来确定第二个数，答案有好几组，不唯一，我这里得到的答案是2 138</p>
+
+<h1 id="phase4">Phase4</h1>
+
+<p>这关居然是递归函数！简直吓一跳</p>
+
+<pre><code class="language-assembly">08048ca7 &lt;func4&gt;:
+ 8048ca7:   55                      push   %ebp
+ 8048ca8:   89 e5                   mov    %esp,%ebp
+ 8048caa:   83 ec 08                sub    $0x8,%esp
+ 8048cad:   83 7d 08 00             cmpl   $0x0,0x8(%ebp)
+ 8048cb1:   7f 09                   jg     8048cbc &lt;func4+0x15&gt;
+ 8048cb3:   c7 45 fc 01 00 00 00    movl   $0x1,-0x4(%ebp)
+ 8048cba:   eb 1a                   jmp    8048cd6 &lt;func4+0x2f&gt;;leave
+ 8048cbc:   8b 45 08                mov    0x8(%ebp),%eax
+ 8048cbf:   48                      dec    %eax
+ 8048cc0:   89 04 24                mov    %eax,(%esp)
+ 8048cc3:   e8 df ff ff ff          call   8048ca7 &lt;func4&gt;
+ 8048cc8:   89 c2                   mov    %eax,%edx
+ 8048cca:   89 d0                   mov    %edx,%eax
+ 8048ccc:   c1 e0 03                shl    $0x3,%eax
+ 8048ccf:   89 c1                   mov    %eax,%ecx
+ 8048cd1:   29 d1                   sub    %edx,%ecx
+ 8048cd3:   89 4d fc                mov    %ecx,-0x4(%ebp)
+ 8048cd6:   8b 45 fc                mov    -0x4(%ebp),%eax
+ 8048cd9:   c9                      leave  
+ 8048cda:   c3                      ret    
+
+08048cdb &lt;phase_4&gt;:
+ 8048cdb:   55                      push   %ebp
+ 8048cdc:   89 e5                   mov    %esp,%ebp
+ 8048cde:   83 ec 28                sub    $0x28,%esp
+ 8048ce1:   8d 45 f4                lea    -0xc(%ebp),%eax
+ 8048ce4:   89 44 24 08             mov    %eax,0x8(%esp)
+ 8048ce8:   c7 44 24 04 d0 99 04    movl   $0x80499d0,0x4(%esp)
+ 8048cef:   08 
+ 8048cf0:   8b 45 08                mov    0x8(%ebp),%eax
+ 8048cf3:   89 04 24                mov    %eax,(%esp)
+ 8048cf6:   e8 6d fb ff ff          call   8048868 &lt;sscanf@plt&gt;
+ 8048cfb:   89 45 fc                mov    %eax,-0x4(%ebp)
+ 8048cfe:   83 7d fc 01             cmpl   $0x1,-0x4(%ebp);(eax)should =1
+ 8048d02:   75 07                   jne    8048d0b &lt;phase_4+0x30&gt; 
+ 8048d04:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048d07:   85 c0                   test   %eax,%eax
+ 8048d09:   7f 05                   jg     8048d10 &lt;phase_4+0x35&gt;;(eax)should be positive
+ 8048d0b:   e8 6a 09 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048d10:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048d13:   89 04 24                mov    %eax,(%esp)
+ 8048d16:   e8 8c ff ff ff          call   8048ca7 &lt;func4&gt;
+ 8048d1b:   89 45 f8                mov    %eax,-0x8(%ebp)
+ 8048d1e:   81 7d f8 91 cb 01 00    cmpl   $0x1cb91,-0x8(%ebp);(eax)=117649
+ 8048d25:   74 05                   je     8048d2c &lt;phase_4+0x51&gt;
+ 8048d27:   e8 4e 09 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048d2c:   c9                      leave  
+ 8048d2d:   c3                      ret   
+</code></pre>
+
+<p>这关的本体不长，大概就是要求你输入一个正数，然后将这个数作为参数传递给fun4，然后判断fun4的返回值是否是117649.于是我们来看看fun4，模拟一下它的执行就能发现这就是个算7的n次方的函数，n为在phase4中传进去的参数。用计算器算一下就知道\(7^6=117649\)，所以本关答案是6</p>
+
+<h1 id="phase5">Phase5</h1>
+
+<p>这关看起来很短，给人一种这关一定好简单的错觉</p>
+
+<pre><code class="language-assembly">08048d2e &lt;phase_5&gt;:
+ 8048d2e:   55                      push   %ebp
+ 8048d2f:   89 e5                   mov    %esp,%ebp
+ 8048d31:   83 ec 18                sub    $0x18,%esp
+ 8048d34:   8b 45 08                mov    0x8(%ebp),%eax
+ 8048d37:   89 04 24                mov    %eax,(%esp)
+ 8048d3a:   e8 4a 03 00 00          call   8049089 &lt;string_length&gt;
+ 8048d3f:   89 45 fc                mov    %eax,-0x4(%ebp)
+ 8048d42:   83 7d fc 06             cmpl   $0x6,-0x4(%ebp)
+ 8048d46:   74 05                   je     8048d4d &lt;phase_5+0x1f&gt;;string length should =6
+ 8048d48:   e8 2d 09 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048d4d:   c7 45 f8 00 00 00 00    movl   $0x0,-0x8(%ebp)
+ 8048d54:   eb 20                   jmp    8048d76 &lt;phase_5+0x48&gt;
+ 8048d56:   8b 55 f8                mov    -0x8(%ebp),%edx
+ 8048d59:   8b 45 f8                mov    -0x8(%ebp),%eax
+ 8048d5c:   03 45 08                add    0x8(%ebp),%eax
+ 8048d5f:   0f b6 00                movzbl (%eax),%eax
+ 8048d62:   0f be c0                movsbl %al,%eax
+ 8048d65:   83 e0 0f                and    $0xf,%eax
+ 8048d68:   0f b6 80 c0 a5 04 08    movzbl 0x804a5c0(%eax),%eax
+ 8048d6f:   88 44 15 f1             mov    %al,-0xf(%ebp,%edx,1)
+ 8048d73:   ff 45 f8                incl   -0x8(%ebp)
+ 8048d76:   83 7d f8 05             cmpl   $0x5,-0x8(%ebp)
+ 8048d7a:   7e da                   jle    8048d56 &lt;phase_5+0x28&gt;
+ 8048d7c:   c6 45 f7 00             movb   $0x0,-0x9(%ebp)
+ 8048d80:   c7 44 24 04 d3 99 04    movl   $0x80499d3,0x4(%esp)
+ 8048d87:   08 
+ 8048d88:   8d 45 f1                lea    -0xf(%ebp),%eax
+ 8048d8b:   89 04 24                mov    %eax,(%esp)
+ 8048d8e:   e8 20 03 00 00          call   80490b3 &lt;strings_not_equal&gt;
+ 8048d93:   85 c0                   test   %eax,%eax
+ 8048d95:   74 05                   je     8048d9c &lt;phase_5+0x6e&gt;
+ 8048d97:   e8 de 08 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048d9c:   c9                      leave  
+ 8048d9d:   c3                      ret    
+</code></pre>
+
+<p>认为它好简单真的是一种错觉！这关卡了我将近2小时！这关先判断输入字符串的长度是否为6，不是就爆炸，之后坑爹的来了！大概说一下，这里先对输入的那个字符串做了个处理，把字符串中的字符一个个取出来，<code>and    $0xf,%eax</code> 这句是取了每个字符的ASCII码的后一位(比如ASCII码为0x63，得到的结果为3)，之后将这个数作为以某个地址为基址的偏移量，从中取出那个字符，组成一个新的字符串，再判断是否为特定的字符串。特定字符串放在<code>0x80499d3</code>中，用gdb查看其中的内容为”ravens”。再看 <code>0x804a5c0</code>中的内容，为”isrveawhobpnutfg\207\001”(后面那个\207\001我也不知道是什么鬼反正对这里没影响),所以我们的偏移量分别为2, 5, 3, 4, b, 1，故一组答案为becdka(答案不唯一)</p>
+
+<h1 id="phase6">Phase6</h1>
+
+<p>这关代码长得要死，实验说明也说the last phase will challenge even the best student. 那像我这种咸鱼肯定是要被challenge的嘛，那让我来看一看它。</p>
+
+<pre><code class="language-assembly">08048d9e &lt;phase_6&gt;:
+ 8048d9e:   55                      push   %ebp
+ 8048d9f:   89 e5                   mov    %esp,%ebp
+ 8048da1:   83 ec 48                sub    $0x48,%esp
+ 8048da4:   c7 45 f0 0c a6 04 08    movl   $0x804a60c,-0x10(%ebp)
+ 8048dab:   8d 45 d8                lea    -0x28(%ebp),%eax
+ 8048dae:   89 44 24 04             mov    %eax,0x4(%esp)
+ 8048db2:   8b 45 08                mov    0x8(%ebp),%eax
+ 8048db5:   89 04 24                mov    %eax,(%esp)
+ 8048db8:   e8 63 02 00 00          call   8049020 &lt;read_six_numbers&gt;
+ 8048dbd:   c7 45 f8 00 00 00 00    movl   $0x0,-0x8(%ebp)
+ 8048dc4:   eb 48                   jmp    8048e0e &lt;phase_6+0x70&gt;
+ 8048dc6:   8b 45 f8                mov    -0x8(%ebp),%eax
+ 8048dc9:   8b 44 85 d8             mov    -0x28(%ebp,%eax,4),%eax
+ 8048dcd:   85 c0                   test   %eax,%eax
+ 8048dcf:   7e 0c                   jle    8048ddd &lt;phase_6+0x3f&gt;;input should &gt;0
+ 8048dd1:   8b 45 f8                mov    -0x8(%ebp),%eax
+ 8048dd4:   8b 44 85 d8             mov    -0x28(%ebp,%eax,4),%eax
+ 8048dd8:   83 f8 06                cmp    $0x6,%eax
+ 8048ddb:   7e 05                   jle    8048de2 &lt;phase_6+0x44&gt;;input should &lt;=6
+ 8048ddd:   e8 98 08 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048de2:   8b 45 f8                mov    -0x8(%ebp),%eax
+ 8048de5:   40                      inc    %eax
+ 8048de6:   89 45 fc                mov    %eax,-0x4(%ebp)
+ 8048de9:   eb 1a                   jmp    8048e05 &lt;phase_6+0x67&gt;
+ 8048deb:   8b 45 f8                mov    -0x8(%ebp),%eax
+ 8048dee:   8b 54 85 d8             mov    -0x28(%ebp,%eax,4),%edx
+ 8048df2:   8b 45 fc                mov    -0x4(%ebp),%eax
+ 8048df5:   8b 44 85 d8             mov    -0x28(%ebp,%eax,4),%eax
+ 8048df9:   39 c2                   cmp    %eax,%edx
+ 8048dfb:   75 05                   jne    8048e02 &lt;phase_6+0x64&gt;;input should not equal
+ 8048dfd:   e8 78 08 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048e02:   ff 45 fc                incl   -0x4(%ebp)
+ 8048e05:   83 7d fc 05             cmpl   $0x5,-0x4(%ebp)
+ 8048e09:   7e e0                   jle    8048deb &lt;phase_6+0x4d&gt;
+ 8048e0b:   ff 45 f8                incl   -0x8(%ebp)
+ 8048e0e:   83 7d f8 05             cmpl   $0x5,-0x8(%ebp)
+ 8048e12:   7e b2                   jle    8048dc6 &lt;phase_6+0x28&gt;
+ 8048e14:   c7 45 f8 00 00 00 00    movl   $0x0,-0x8(%ebp)
+ 8048e1b:   eb 34                   jmp    8048e51 &lt;phase_6+0xb3&gt;
+ 8048e1d:   8b 45 f0                mov    -0x10(%ebp),%eax;&lt;phase_6+0x7f&gt;
+ 8048e20:   89 45 f4                mov    %eax,-0xc(%ebp)
+ 8048e23:   c7 45 fc 01 00 00 00    movl   $0x1,-0x4(%ebp)
+ 8048e2a:   eb 0c                   jmp    8048e38 &lt;phase_6+0x9a&gt;
+ 8048e2c:   8b 45 f4                mov    -0xc(%ebp),%eax;&lt;phase_6+0x8e&gt;
+ 8048e2f:   8b 40 08                mov    0x8(%eax),%eax
+ 8048e32:   89 45 f4                mov    %eax,-0xc(%ebp)
+ 8048e35:   ff 45 fc                incl   -0x4(%ebp)
+ 8048e38:   8b 45 f8                mov    -0x8(%ebp),%eax;&lt;phase_6+0x9a&gt;
+ 8048e3b:   8b 44 85 d8             mov    -0x28(%ebp,%eax,4),%eax
+ 8048e3f:   3b 45 fc                cmp    -0x4(%ebp),%eax
+ 8048e42:   7f e8                   jg     8048e2c &lt;phase_6+0x8e&gt;
+ 8048e44:   8b 55 f8                mov    -0x8(%ebp),%edx
+ 8048e47:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048e4a:   89 44 95 c0             mov    %eax,-0x40(%ebp,%edx,4)
+ 8048e4e:   ff 45 f8                incl   -0x8(%ebp)
+ 8048e51:   83 7d f8 05             cmpl   $0x5,-0x8(%ebp)           ;&lt;phase_6+0xb3&gt;
+ 8048e55:   7e c6                   jle    8048e1d &lt;phase_6+0x7f&gt;
+ 8048e57:   8b 45 c0                mov    -0x40(%ebp),%eax
+ 8048e5a:   89 45 f0                mov    %eax,-0x10(%ebp)
+ 8048e5d:   8b 45 f0                mov    -0x10(%ebp),%eax
+ 8048e60:   89 45 f4                mov    %eax,-0xc(%ebp)
+ 8048e63:   c7 45 f8 01 00 00 00    movl   $0x1,-0x8(%ebp)
+ 8048e6a:   eb 19                   jmp    8048e85 &lt;phase_6+0xe7&gt;
+ 8048e6c:   8b 45 f8                mov    -0x8(%ebp),%eax
+ 8048e6f:   8b 54 85 c0             mov    -0x40(%ebp,%eax,4),%edx
+ 8048e73:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048e76:   89 50 08                mov    %edx,0x8(%eax)
+ 8048e79:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048e7c:   8b 40 08                mov    0x8(%eax),%eax
+ 8048e7f:   89 45 f4                mov    %eax,-0xc(%ebp)
+ 8048e82:   ff 45 f8                incl   -0x8(%ebp)
+ 8048e85:   83 7d f8 05             cmpl   $0x5,-0x8(%ebp)
+ 8048e89:   7e e1                   jle    8048e6c &lt;phase_6+0xce&gt;
+ 8048e8b:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048e8e:   c7 40 08 00 00 00 00    movl   $0x0,0x8(%eax)
+ 8048e95:   8b 45 f0                mov    -0x10(%ebp),%eax
+ 8048e98:   89 45 f4                mov    %eax,-0xc(%ebp)
+ 8048e9b:   c7 45 f8 00 00 00 00    movl   $0x0,-0x8(%ebp)
+ 8048ea2:   eb 22                   jmp    8048ec6 &lt;phase_6+0x128&gt;
+ 8048ea4:   8b 45 f4                mov    -0xc(%ebp),%eax;&lt;phase_6+0x106&gt;
+ 8048ea7:   8b 10                   mov    (%eax),%edx
+ 8048ea9:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048eac:   8b 40 08                mov    0x8(%eax),%eax
+ 8048eaf:   8b 00                   mov    (%eax),%eax
+ 8048eb1:   39 c2                   cmp    %eax,%edx
+ 8048eb3:   7d 05                   jge    8048eba &lt;phase_6+0x11c&gt;
+ 8048eb5:   e8 c0 07 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048eba:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048ebd:   8b 40 08                mov    0x8(%eax),%eax
+ 8048ec0:   89 45 f4                mov    %eax,-0xc(%ebp)
+ 8048ec3:   ff 45 f8                incl   -0x8(%ebp)
+ 8048ec6:   83 7d f8 04             cmpl   $0x4,-0x8(%ebp)
+ 8048eca:   7e d8                   jle    8048ea4 &lt;phase_6+0x106&gt;
+ 8048ecc:   c9                      leave  
+ 8048ecd:   c3                      ret    
+</code></pre>
+
+<p>看到这关首先是读入六个数，然后做出一个判断，是否为1~6间的整数，之后再判断他们是否两两相等，若有相等的数就爆炸。说穿了就是让你输个1~6的排列进去，至于是按什么顺序排列嘛，我们继续往下看。结果我发现它mov来mov去好像也看不懂它干了啥╰(￣▽￣)╭只看出最后它要求某些地址的东西要按照从大到小来排序，顺序错了就爆炸。哎呀我实在没什么头绪了，然后发现<code>movl   $0x804a60c,-0x10(%ebp)</code> 这里的地址看起来很可疑，其中必有蹊跷，于是用gdb查看了一下，发现它带了个&lt;node&gt;的标签_(:зゝ∠)_嗯这不就是个链表么？</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/98420656.jpg" alt="lab2-3" /></p>
+
+<p>于是我再用x/3w打印出连续3个字里的内容，果然是个链表，这里存了一个数，一个1~6之间的数，下一节点的地址。于是将这六个节点的内容都打印出来，再将数按照从大到小排序，得到的过关答案为1 5 3 4 6 2
+至此，除隐藏关外的所有炸弹都拆完啦(╯‵□′)╯……*~●</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/45682376.jpg" alt="lab2-4" /></p>
+
+<h1 id="secret-phase">Secret Phase</h1>
+
+<p>由于我比较好奇，而且现在考完试啦~\(≧▽≦)/~最后还是决定挑战一下隐藏关卡，下面是本关代码：</p>
+
+<pre><code class="language-assembly">08048ece &lt;fun7&gt;:
+ 8048ece:   55                      push   %ebp
+ 8048ecf:   89 e5                   mov    %esp,%ebp
+ 8048ed1:   83 ec 0c                sub    $0xc,%esp
+ 8048ed4:   83 7d 08 00             cmpl   $0x0,0x8(%ebp)
+ 8048ed8:   75 09                   jne    8048ee3 &lt;fun7+0x15&gt;
+ 8048eda:   c7 45 fc ff ff ff ff    movl   $0xffffffff,-0x4(%ebp)
+ 8048ee1:   eb 54                   jmp    8048f37 &lt;fun7+0x69&gt;;if 8(epb)=0,return -1
+ 8048ee3:   8b 45 08                mov    0x8(%ebp),%eax;&lt;fun7+0x15&gt;
+ 8048ee6:   8b 00                   mov    (%eax),%eax
+ 8048ee8:   3b 45 0c                cmp    0xc(%ebp),%eax
+ 8048eeb:   7e 1c                   jle    8048f09 &lt;fun7+0x3b&gt;;input&gt;=36,jump
+ 8048eed:   8b 45 08                mov    0x8(%ebp),%eax
+ 8048ef0:   8b 50 04                mov    0x4(%eax),%edx
+ 8048ef3:   8b 45 0c                mov    0xc(%ebp),%eax
+ 8048ef6:   89 44 24 04             mov    %eax,0x4(%esp)
+ 8048efa:   89 14 24                mov    %edx,(%esp)
+ 8048efd:   e8 cc ff ff ff          call   8048ece &lt;fun7&gt;
+ 8048f02:   01 c0                   add    %eax,%eax
+ 8048f04:   89 45 fc                mov    %eax,-0x4(%ebp);return 2*eax
+ 8048f07:   eb 2e                   jmp    8048f37 &lt;fun7+0x69&gt;
+ 8048f09:   8b 45 08                mov    0x8(%ebp),%eax;&lt;fun7+0x3b&gt;
+ 8048f0c:   8b 00                   mov    (%eax),%eax
+ 8048f0e:   3b 45 0c                cmp    0xc(%ebp),%eax
+ 8048f11:   75 09                   jne    8048f1c &lt;fun7+0x4e&gt;
+ 8048f13:   c7 45 fc 00 00 00 00    movl   $0x0,-0x4(%ebp);if equal,return 0
+ 8048f1a:   eb 1b                   jmp    8048f37 &lt;fun7+0x69&gt;
+ 8048f1c:   8b 45 08                mov    0x8(%ebp),%eax;&lt;fun7+0x4e&gt;
+ 8048f1f:   8b 50 08                mov    0x8(%eax),%edx
+ 8048f22:   8b 45 0c                mov    0xc(%ebp),%eax
+ 8048f25:   89 44 24 04             mov    %eax,0x4(%esp)
+ 8048f29:   89 14 24                mov    %edx,(%esp)
+ 8048f2c:   e8 9d ff ff ff          call   8048ece &lt;fun7&gt;
+ 8048f31:   01 c0                   add    %eax,%eax
+ 8048f33:   40                      inc    %eax
+ 8048f34:   89 45 fc                mov    %eax,-0x4(%ebp);default:return 2*eax+1
+ 8048f37:   8b 45 fc                mov    -0x4(%ebp),%eax;&lt;fun7+0x69&gt;
+ 8048f3a:   c9                      leave  
+ 8048f3b:   c3                      ret    
+
+08048f3c &lt;secret_phase&gt;:
+ 8048f3c:   55                      push   %ebp
+ 8048f3d:   89 e5                   mov    %esp,%ebp
+ 8048f3f:   83 ec 18                sub    $0x18,%esp
+ 8048f42:   e8 a7 03 00 00          call   80492ee &lt;read_line&gt;
+ 8048f47:   89 45 f4                mov    %eax,-0xc(%ebp)
+ 8048f4a:   8b 45 f4                mov    -0xc(%ebp),%eax
+ 8048f4d:   89 04 24                mov    %eax,(%esp)
+ 8048f50:   e8 03 f9 ff ff          call   8048858 &lt;atoi@plt&gt;
+ 8048f55:   89 45 f8                mov    %eax,-0x8(%ebp)
+ 8048f58:   83 7d f8 00             cmpl   $0x0,-0x8(%ebp)
+ 8048f5c:   7e 09                   jle    8048f67 &lt;secret_phase+0x2b&gt;
+ 8048f5e:   81 7d f8 e9 03 00 00    cmpl   $0x3e9,-0x8(%ebp)
+ 8048f65:   7e 05                   jle    8048f6c &lt;secret_phase+0x30&gt;
+ 8048f67:   e8 0e 07 00 00          call   804967a &lt;explode_bomb&gt;;&lt;secret_phase+0x2b&gt;
+ 8048f6c:   8b 45 f8                mov    -0x8(%ebp),%eax;&lt;secret_phase+0x30&gt;
+ 8048f6f:   89 44 24 04             mov    %eax,0x4(%esp)
+ 8048f73:   c7 04 24 c0 a6 04 08    movl   $0x804a6c0,(%esp)
+ 8048f7a:   e8 4f ff ff ff          call   8048ece &lt;fun7&gt;
+ 8048f7f:   89 45 fc                mov    %eax,-0x4(%ebp)
+ 8048f82:   83 7d fc 02             cmpl   $0x2,-0x4(%ebp)
+ 8048f86:   74 05                   je     8048f8d &lt;secret_phase+0x51&gt;;output=2
+ 8048f88:   e8 ed 06 00 00          call   804967a &lt;explode_bomb&gt;
+ 8048f8d:   c7 04 24 dc 99 04 08    movl   $0x80499dc,(%esp)
+ 8048f94:   e8 2f f8 ff ff          call   80487c8 &lt;puts@plt&gt;
+ 8048f99:   e8 06 07 00 00          call   80496a4 &lt;phase_defused&gt;
+ 8048f9e:   c9                      leave  
+ 8048f9f:   c3                      ret   
+</code></pre>
+
+<p>这又是一个递归函数，而且比phase4的递归长好多！看来这绝对不是盏省油的灯，我先从主体函数看起吧。好像本体也没什么东西，就是让你输个数进去然后把你输的数作为参数传进fun7里面看它是否返回2，不是就爆炸。那么我们来分析fun7，别看它是递归的函数，分析一下它就三种情况，用c语言写出来就是这样：</p>
+
+<pre><code class="language-c">int fun7(const int *a, int b)
+{
+	if (a == NULL)
+		return -1;
+	int ret = 0;
+	if (*a - b &gt; 0)
+	{
+		ret = fun7(*(a + 4), b);
+		ret *= 2
+	}
+	else if (*a - b == 0)
+		return 0;
+	else
+	{
+		ret = fun7(*(a + 8), b);
+		ret = ret * 2 + 1;
+	}
+	return ret;
+}
+</code></pre>
+
+<p>其实就是一个二叉树啊！要想要它返回2，就是要先有*a=b,之后*a &lt; b,最后*a &gt; b。由数据结构的知识，很快能确定出我们要查找的元素的位置，查出来应该输入22.（这里忘记截图了）</p>
+
+<p>其实还有一个比较重要的问题，我们如何进入隐藏关啊？上面拆完6个炸弹就没有然后了啊，这时我们发现phase_defused这个神奇的函数，每拆完一个炸弹都会调用一次，下面是它的代码：</p>
+
+<pre><code class="language-assembly">080496a4 &lt;phase_defused&gt;:
+ 80496a4:   55                      push   %ebp
+ 80496a5:   89 e5                   mov    %esp,%ebp
+ 80496a7:   83 ec 78                sub    $0x78,%esp
+ 80496aa:   a1 2c a8 04 08          mov    0x804a82c,%eax
+ 80496af:   83 f8 06                cmp    $0x6,%eax
+ 80496b2:   75 6e                   jne    8049722 &lt;phase_defused+0x7e&gt;
+ 80496b4:   b8 30 a9 04 08          mov    $0x804a930,%eax
+ 80496b9:   89 c2                   mov    %eax,%edx
+ 80496bb:   8d 45 ac                lea    -0x54(%ebp),%eax
+ 80496be:   89 44 24 0c             mov    %eax,0xc(%esp)
+ 80496c2:   8d 45 a8                lea    -0x58(%ebp),%eax
+ 80496c5:   89 44 24 08             mov    %eax,0x8(%esp)
+ 80496c9:   c7 44 24 04 78 9e 04    movl   $0x8049e78,0x4(%esp)
+ 80496d0:   08 
+ 80496d1:   89 14 24                mov    %edx,(%esp)
+ 80496d4:   e8 8f f1 ff ff          call   8048868 &lt;sscanf@plt&gt;
+ 80496d9:   89 45 fc                mov    %eax,-0x4(%ebp)
+ 80496dc:   83 7d fc 02             cmpl   $0x2,-0x4(%ebp)
+ 80496e0:   75 34                   jne    8049716 &lt;phase_defused+0x72&gt;
+ 80496e2:   c7 44 24 04 7e 9e 04    movl   $0x8049e7e,0x4(%esp)
+ 80496e9:   08 
+ 80496ea:   8d 45 ac                lea    -0x54(%ebp),%eax
+ 80496ed:   89 04 24                mov    %eax,(%esp)
+ 80496f0:   e8 be f9 ff ff          call   80490b3 &lt;strings_not_equal&gt;
+ 80496f5:   85 c0                   test   %eax,%eax
+ 80496f7:   75 1d                   jne    8049716 &lt;phase_defused+0x72&gt;
+ 80496f9:   c7 04 24 8c 9e 04 08    movl   $0x8049e8c,(%esp)
+ 8049700:   e8 c3 f0 ff ff          call   80487c8 &lt;puts@plt&gt;
+ 8049705:   c7 04 24 b4 9e 04 08    movl   $0x8049eb4,(%esp)
+ 804970c:   e8 b7 f0 ff ff          call   80487c8 &lt;puts@plt&gt;
+ 8049711:   e8 26 f8 ff ff          call   8048f3c &lt;secret_phase&gt;
+ 8049716:   c7 04 24 ec 9e 04 08    movl   $0x8049eec,(%esp)
+ 804971d:   e8 a6 f0 ff ff          call   80487c8 &lt;puts@plt&gt;
+ 8049722:   c9                      leave  
+ 8049723:   c3                      ret    
+ 8049724:   90                      nop
+ 8049725:   90                      nop
+ 8049726:   90                      nop
+ 8049727:   90                      nop
+ 8049728:   90                      nop
+ 8049729:   90                      nop
+ 804972a:   90                      nop
+ 804972b:   90                      nop
+ 804972c:   90                      nop
+ 804972d:   90                      nop
+ 804972e:   90                      nop
+ 804972f:   90                      nop
+</code></pre>
+
+<p>分析可知，这个函数会先判断你是否拆完6个炸弹，之后判断你是否在某个地方输入了某个字符串。字符串很好找，就在<code>0x8049e7e</code> 里面，用gdb可以得到该字符串为“austinpower”。问题就是在哪里输入，再看前面mov了一些地址，把那些地址里的东西都看一看发现，一个是6，一个是“%d %s”,后面那个是sscanf的参数，那么前面那个6是什么？可以发现6所在的这个地址是带有label的，用gdb看看它的前后是什么，就能发现这个就是第四关输入的东西。也就是说，在第四关过关密码输入的6后面再加个austinpower就能进入隐藏关了。</p>
+
+<p>下面是过关截图：</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/95459857.jpg" alt="lab2-5" /></p>
+
+<p>啦啦啦至此炸弹都拆完了~请叫我拆弹小公举&lt;(*￣▽￣*)/</p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2015-06-03</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/csapp/">CSAPP</a>
+          
+          <a href="/tags/%E6%B1%87%E7%BC%96/">汇编</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+          <a class="prev" href="/post/csapp-lab4/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">CSAPP LAB4：perflab-优化两个奇怪的函数</span>
+            <span class="prev-text nav-mobile">上一篇</span>
+          </a>
+        
+          <a class="next" href="/post/oslab3/">
+            <span class="next-text nav-default">ustc操作系统lab3</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E6%99%93%E5%A5%95-%E4%BD%95-a97701117/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    2017
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+
+
+</body>
+</html>
