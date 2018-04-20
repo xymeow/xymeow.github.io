@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Robotic Grasping Based on Deep Learning - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="好久没更新&amp;hellip;文笔已经退化成小学生水平&amp;hellip;
+目前打算master毕业后当个远离ml/dl的码农, 毕竟发现自己对数据以及数学并没有那么喜欢, 让我今后日常和数据打交道我觉得我八成会抑郁症, 而且现在和ai相关的工作嘛&amp;hellip;.emmmmmm, 一言难尽了. 还是写代码能让我开心点&amp;hellip;
+把之前写的一些东西扔上来存个档, 虽然现在跑路了, 万一哪天又开始搞ml这块了说不定还能看看吧
+以下正文
+
+" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/robotic-grasping-based-on-deep-learning/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="Robotic Grasping Based on Deep Learning" />
+<meta property="og:description" content="好久没更新&hellip;文笔已经退化成小学生水平&hellip;
+
+目前打算master毕业后当个远离ml/dl的码农, 毕竟发现自己对数据以及数学并没有那么喜欢, 让我今后日常和数据打交道我觉得我八成会抑郁症, 而且现在和ai相关的工作嘛&hellip;.emmmmmm, 一言难尽了. 还是写代码能让我开心点&hellip;
+
+把之前写的一些东西扔上来存个档, 虽然现在跑路了, 万一哪天又开始搞ml这块了说不定还能看看吧
+
+以下正文
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/robotic-grasping-based-on-deep-learning/" />
+
+
+
+<meta property="article:published_time" content="2018-04-19T22:40:01-07:00"/>
+
+<meta property="article:modified_time" content="2018-04-19T22:40:01-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Robotic Grasping Based on Deep Learning">
+<meta itemprop="description" content="好久没更新&hellip;文笔已经退化成小学生水平&hellip;
+
+目前打算master毕业后当个远离ml/dl的码农, 毕竟发现自己对数据以及数学并没有那么喜欢, 让我今后日常和数据打交道我觉得我八成会抑郁症, 而且现在和ai相关的工作嘛&hellip;.emmmmmm, 一言难尽了. 还是写代码能让我开心点&hellip;
+
+把之前写的一些东西扔上来存个档, 虽然现在跑路了, 万一哪天又开始搞ml这块了说不定还能看看吧
+
+以下正文
+
+">
+
+
+<meta itemprop="datePublished" content="2018-04-19T22:40:01-07:00" />
+<meta itemprop="dateModified" content="2018-04-19T22:40:01-07:00" />
+<meta itemprop="wordCount" content="2935">
+
+
+
+<meta itemprop="keywords" content="ml," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Robotic Grasping Based on Deep Learning"/>
+<meta name="twitter:description" content="好久没更新&hellip;文笔已经退化成小学生水平&hellip;
+
+目前打算master毕业后当个远离ml/dl的码农, 毕竟发现自己对数据以及数学并没有那么喜欢, 让我今后日常和数据打交道我觉得我八成会抑郁症, 而且现在和ai相关的工作嘛&hellip;.emmmmmm, 一言难尽了. 还是写代码能让我开心点&hellip;
+
+把之前写的一些东西扔上来存个档, 虽然现在跑路了, 万一哪天又开始搞ml这块了说不定还能看看吧
+
+以下正文
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Robotic Grasping Based on Deep Learning</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-04-19 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-cornell-deep-learning-for-detecting-robotic-grasps">1. Cornell - Deep learning for detecting robotic grasps</a></li>
+<li><a href="#2-cmu-supersizing-self-supervision-learning-to-grasp-from-50k-tries-and-700-robot-hours">2. CMU - Supersizing self-supervision: Learning to grasp from 50k tries and 700 robot hours</a></li>
+<li><a href="#3-google-learning-hand-eye-coordination-for-robotic-grasping-with-deep-learning-and-large-scale-data-collection">3. Google - Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>好久没更新&hellip;文笔已经退化成小学生水平&hellip;</p>
+
+<p>目前打算master毕业后当个远离ml/dl的码农, 毕竟发现自己对数据以及数学并没有那么喜欢, 让我今后日常和数据打交道我觉得我八成会抑郁症, 而且现在和ai相关的工作嘛&hellip;.emmmmmm, 一言难尽了. 还是写代码能让我开心点&hellip;</p>
+
+<p>把之前写的一些东西扔上来存个档, 虽然现在跑路了, 万一哪天又开始搞ml这块了说不定还能看看吧</p>
+
+<p>以下正文</p>
+
+<p></p>
+
+<hr />
+
+<p>机器人抓取 (robotic grasping) 这个问题牵涉到认知、规划、控制等领域，实现方法也有基于传感、视觉、3D 建模等很多种。传统的基于视觉的机器人抓取系统一般有三个过程:</p>
+
+<ul>
+<li>建立图片与现实空间坐标系之间的关系</li>
+<li>使用计 算机视觉和图像处理的方法对目标进行定位</li>
+<li>控制机器人对目标进行抓取</li>
+</ul>
+
+<p>和传统的机器视觉问题不同，机器人抓取问题需要通过图片反馈的信息，快速地对机器人作出相应的调整，形成视觉伺服 (servoing) 系统。</p>
+
+<h2 id="1-cornell-deep-learning-for-detecting-robotic-grasps">1. Cornell - Deep learning for detecting robotic grasps</h2>
+
+<p>近年来，由于深度学习方法在计算机视觉领域的巨大成功，Cornell大学提出了一种基于深度学习的机器人抓取系统 <a href="http://arxiv.org/abs/1301.3592">paper</a> 。抓取任务可以看作是一种目标检测问题，但不同于一般目标检测的是，这里的目的是找出一个使得抓取目标物体成功率最大的最优抓取 (optimal grasp)。在之前的抓取系统中，对目标定位需要手工设定目标的特征，十分繁琐，鲁棒性也不高。这个系统利用深度学习的方 法自动提取目标的特征，并输出一个抓取矩形 (grasping rectangle) 表示抓取的位置，省去了手工设置特征这一繁琐步骤。</p>
+
+<p>文中的抓取系统如图1所示，该系统从固定在机器人身上的 Kinect 摄像头获取 RGB-D 深度图像信息，并使用一个较小的神经网络搜索出一些可能成功的 抓取矩形。对于每一个候选抓取，从 RGB 图和深度图中提取出原始特征 (raw feature)，再将提取出来的特征输入到更大型的神经网络输出每个抓取矩形的得分，最后使用得分最高的抓取矩形作为实际抓取的位置。</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/54543542.jpg" alt="image 1" />
+<em>图1 Cornell抓取系统</em></p>
+
+<p>文中使用的神经网络模型如图2所示，这两个神经网络使用人工标注的 1000 个抓取数据进行训练，分别用于生成候选抓取矩形和选取最优抓取矩形。</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/45485948.jpg" alt="image 2" />
+<em>图2 Cornell神经网络模型</em></p>
+
+<p>此文提出的使用深度学习方法得出抓取矩形的机器人抓取系统在当时取得了巨大的成功，使用 PR2 机器人在特定的抓取物品集上达到了 89% 的抓取成功率。</p>
+
+<h2 id="2-cmu-supersizing-self-supervision-learning-to-grasp-from-50k-tries-and-700-robot-hours">2. CMU - Supersizing self-supervision: Learning to grasp from 50k tries and 700 robot hours</h2>
+
+<p>Cornell 的文章中的抓取测试仅在 30 种不同的物体上进行了 100 次抓取实验，虽然达到了 89% 的抓取成功率，但通用性并不强，而且随机性较大。由于 大数据在其他领域的成功，CMU 在 2015 年的工作中 <a href="http://arxiv.org/abs/1509.06825">paper</a> 收集了 50,000 个抓取数据，将大数据带入了机器人领域中。</p>
+
+<p>Cornell 文中所使用的数据集是由人工标注的，人工标注有几个缺点:</p>
+
+<ul>
+<li>标注耗时长，时间、人工开销大，无法很快地获得大量数据</li>
+<li>人工标注基于人对图片的语义理解，对于同一个物体可能会有不同的抓取方式</li>
+<li>人类与机械臂的抓取方式不全相同，所以标注的数据可能存在着与实际比较大的偏差</li>
+</ul>
+
+<p>对于人工标注数据存在的问题，CMU 文中提出了如图3所示的数据收集系统: 输入从摄像头获取的图片，使用 MOG(Mixture of Gaussians) 背景提取算法标定每个物体的大致位置，之后让机器人随机接近一个物体，使用随机的抓取参数进行 抓取，将所有抓取的数据都收集起来，仅标注抓取的成功或失败，利用了700个小时收集到 50,000 个机器人的试错 (trail and error) 数据。</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/44210947.jpg" alt="image 3" />
+<em>图3 CMU数据收集系统</em></p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/96765574.jpg" alt="image 4" />
+<em>图4 CMU收集的数据集图例</em></p>
+
+<p>由于神经网络在分类问题上表现的更为出色，CMU 在文中将抓取问题转换为了两阶段的分类问题，首先将机械臂移动到用 MOG 算法定位的物体位置，在 这个位置获取实时图片作为分类器的输入。第一个阶段先训练一个简单的二分类器用于判断该位置是否可以抓取到物体，若判断为能抓取到，进入第二阶段的 分类。第二阶段中使用如图5的 CNN 模型做分类器，前 5 层使用 AlexNet 的结构，并使用在 ImageNet 数据集上预训练好的参数，后两层在收集到的机器人数据集上进行 fine-turning，这里将抓取问题转换成了一个 18 分类问题:将 gripper 旋转的角度 (0◦ − 180◦) 等分为 18 份，将这 18 个旋转角度作为 CNN 分类器的输出。</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/5058923.jpg" alt="image 5" />
+<em>图5 CMU神经网络模型</em></p>
+
+<p>CMU 的模型在对 15 件训练数据集未出现的物体进行 3000 次抓取的测试数据集上达到了 79.3% 的预测准确率，高于当时基于学习的抓取方法 (kNN 69.4%, SVM 73.3%)。在 Baxter 机器人的实际抓取测试中，对于 10 种训练集中未出现过的物体的 150 次抓取成功率达到了 66%，证明了该模型有一定的泛化能力，以及将大数据应用于机器人领域的可能性。</p>
+
+<h2 id="3-google-learning-hand-eye-coordination-for-robotic-grasping-with-deep-learning-and-large-scale-data-collection">3. Google - Learning hand-eye coordination for robotic grasping with deep learning and large-scale data collection</h2>
+
+<p>由于看到了数据驱动型的机器人抓取系统的成功，Google 参照 CMU 的做法使用了 14 个机械臂同时进行抓取数据的采集，历时 3 个月采集到了 800,000 个数据<a href="http://arxiv.org/abs/1603.02199">paper</a> (图6)。CMU 的工作仅将神经网络使用于抓取系统的抓取动作，仍然使用传统的定位方法接近目标物体，是一个开环 (open-loop) 系统。google 这里实 现了使用深度学习的视觉伺服系统，可以从获取到的视觉信息对机器人进行连续的调整，不需要额外的方法对物体进行定位，是一个闭环 (closed-loop) 系统。</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/75495363.jpg" alt="image 6" />
+<em>图6 Google收集的图像数据示例</em></p>
+
+<p>Google 所使用的神经网络模型如图7所示，将不带 gripper 的图片和实时获取的带 gripper 的图片拼接作为一个输入，将机械臂的控制向量作为另一个输入， 使用神经网络输出此次抓取的成功率。Google 的方法在训练集种未出现的 20 种物体的 120 次抓取测试中的抓取成功率达到了 82.5%。</p>
+
+<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/56224034.jpg" alt="image 7" />
+<em>图7 Google的神经网络模型</em></p>
+
+<p>基于这样的神经网络模型，文中提出用于伺服系统的算法f(I_t), 伪代码如下:
+(markdown 渲染latex算法真不咋样&hellip;)</p>
+
+<pre><code>给定当前图片I_t和神经网络g(I, v)
+使用g和CEM选出最优动作向量v_star
+计算p = g(I_t, null) / g(I_t, v_star)  //null 表示空动作向量, 即不做操作
+if p &gt; 0.9 then
+	执行抓取动作, 闭合gripper
+else
+	if p &lt;= 0.5 then
+		修改v_star强制使gripper提升高度并执行v_star
+	else
+		执行v_star
+	end
+end
+</code></pre>
+
+<p>Google的神经网络模型输出的结果是由输入的图片与动作向量所推导出的抓取成功概率，输入的图片很好确定，而输入的动作向量较难选取，一个简单的方法是在一定的范围内遍历可能的动作向量，将每个 可能的动作向量输入到神经网络中得到其抓取成功的概率，最后选取出概率最高的动作向量执行。但这种方法的时间、空间开销太大，Google 的论文中提出 了使用 CEM(Cross Entropy Method) 来选取执行的动作向量。</p>
+
+<p>CEM 是一种简单的不基于梯度的优化算法，在每次迭代中对一批 N 个值进行采样，将高斯分布拟合到这些样本中的 M 个最优的上面，然后从该高斯分布 中采样出新的 N 个样本，Google在这里使用 N = 64 和 M = 6，并执行 CEM 的三次迭代以确定最佳的动作向量 v_star, 伪代码如下:</p>
+
+<pre><code>@Input: 当前图片I_t, 当前gripper位置pos
+@Output: 最优动作向量v_star
+
+均值mean = (0, 0, 0)
+协方差cov = diag(1, 1, 1)
+v_star = null
+
+for iter in range(3) do
+	sample_list = null
+	p_list = null
+	i = 0
+	while i &lt; N do
+		根据mean和cov随机产生高斯多元分布的样本v_i
+		if v_i + pos 在限定范围内 then //这个限制条件得根据具体情况定义
+			将v_i加入sample_list
+			通过神经网络g(I_t, v_i)计算出抓取成功概率p_i
+			将p_i加入p_list
+			i = i + 1
+		end
+	end
+	找出p_list中最大的M个值的下标列表index_list
+	mean = mean(sample_list[index_list])
+	cov = cov(sample_list[index_list])
+end
+找出p_list中最大值的下标index
+v_star = sample_list[index]
+</code></pre>
+
+<p>当选出了 v_star 后，就可以按照之前的伺服算法 f(I_t) 来建立伺服系统了.</p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-04-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/ml/">ml</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/test/">
+            <span class="next-text nav-default">blog迁移中</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E6%99%93%E5%A5%95-%E4%BD%95-a97701117/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+
+
+</body>
+</html>

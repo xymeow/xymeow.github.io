@@ -6,10 +6,27 @@
     <description>Recent content on xymeow&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Oct 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 19 Apr 2018 22:40:01 -0700</lastBuildDate>
     
 	<atom:link href="http://xymeow.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Robotic Grasping Based on Deep Learning</title>
+      <link>http://xymeow.github.io/post/robotic-grasping-based-on-deep-learning/</link>
+      <pubDate>Thu, 19 Apr 2018 22:40:01 -0700</pubDate>
+      
+      <guid>http://xymeow.github.io/post/robotic-grasping-based-on-deep-learning/</guid>
+      <description>&lt;p&gt;好久没更新&amp;hellip;文笔已经退化成小学生水平&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;目前打算master毕业后当个远离ml/dl的码农, 毕竟发现自己对数据以及数学并没有那么喜欢, 让我今后日常和数据打交道我觉得我八成会抑郁症, 而且现在和ai相关的工作嘛&amp;hellip;.emmmmmm, 一言难尽了. 还是写代码能让我开心点&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;把之前写的一些东西扔上来存个档, 虽然现在跑路了, 万一哪天又开始搞ml这块了说不定还能看看吧&lt;/p&gt;
+
+&lt;p&gt;以下正文&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>blog迁移中</title>
