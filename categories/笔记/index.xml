@@ -6,10 +6,23 @@
     <description>Recent content in 笔记 on xymeow&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 19 Apr 2018 22:40:01 -0700</lastBuildDate>
+    <lastBuildDate>Mon, 14 May 2018 11:57:08 -0700</lastBuildDate>
     
 	<atom:link href="http://xymeow.github.io/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Coursera Programming Language Part A Note</title>
+      <link>http://xymeow.github.io/post/programming-language-note1/</link>
+      <pubDate>Mon, 14 May 2018 11:57:08 -0700</pubDate>
+      
+      <guid>http://xymeow.github.io/post/programming-language-note1/</guid>
+      <description>&lt;p&gt;最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&amp;hellip;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://www.coursera.org/learn/programming-languages&#34;&gt;Programming Language&lt;/a&gt;这一系列课是UW的&lt;a href=&#34;https://courses.cs.washington.edu/courses/cse341/&#34;&gt;CSE341&lt;/a&gt;公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Robotic Grasping Based on Deep Learning</title>

@@ -52,7 +52,7 @@
 
 
 
-<meta property="og:updated_time" content="2015-12-28T16:48:38&#43;00:00"/>
+<meta property="og:updated_time" content="2015-04-28T19:19:51&#43;00:00"/>
 
 
 
@@ -134,9 +134,9 @@
     
       <article class="post">
   <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/">利用Wireshark观察网络报文</a></h1>
+    <h1 class="post-title"><a class="post-link" href="/post/oslab3/">ustc操作系统lab3</a></h1>
     <div class="post-meta">
-      <span class="post-time"> 2015-12-28 </span>
+      <span class="post-time"> 2015-04-28 </span>
       <div class="post-category">
           <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
         </div>
@@ -146,74 +146,29 @@
   
   <div class="post-content">
     <div class="post-summary">
-      <p>上计算机网络课的时候的实验报告，图很多很多。。。</p>
+      <p>恩恩，本周的实验看起来不难，下面是实验要求：</p>
 
-<h1 id="1-实验内容">1.实验内容</h1>
+<p>实验内容：</p>
 
 <ol>
-<li>捕获观察并分析以太帧结构。</li>
-<li>观察并分析ARP协议的报文</li>
-<li>捕捉UDP报文并验证其校验和</li>
-<li>捕捉TCP报文的连接释放&ndash;四次握手（注意 TCP Segment Len、Windows size value、Checksum等）</li>
-<li>捕捉除TCP、UDP之外的4种IP层以上的网络协议（例如HTTP、ICMP、SSDP、QICQ等），并尝试分析
-</li>
+<li>制作启动硬盘并启动一个操作系统映像</li>
+<li>下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的）</li>
+<li>制作grub启动软盘，进而制作启动硬盘</li>
+<li>操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之
+
+<ol>
+<li>例如dlxlinux，或其他</li>
+<li>这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe</li>
+<li>也可以自己编译一个Linux内核、制作一个根文件系统，并启动之</li>
+</ol></li>
 </ol>
 
-<h1 id="2-实验过程及分析">2.实验过程及分析</h1>
+<p>是不是看起来好简单啊。。不过做着做着发现还是挺神烦的</p>
 
-<h2 id="2-1-捕获观察并分析以太帧结构">2.1 捕获观察并分析以太帧结构</h2>
-
-<p>从图中可以看出该帧的层次结构，以及帧长、源地址、目的地址、使用协议等简略信息。</p>
+<p></p>
     </div>
     <div class="read-more">
-      <a href="/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/note-2015-12-17/">聚类效果评价指标</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-12-17 </span>
-      <div class="post-category">
-          <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-        </div>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      这周web课布置了个调研作业，记录一下。。。 1. Davies Bouldin Index 常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为： $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$ 其中\(\
-    </div>
-    <div class="read-more">
-      <a href="/post/note-2015-12-17/" class="read-more-link">阅读更多</a>
-    </div>
-  </div>
-</article>
-    
-      <article class="post">
-  <header class="post-header">
-    <h1 class="post-title"><a class="post-link" href="/post/csapp-lab4/">CSAPP LAB4：perflab-优化两个奇怪的函数</a></h1>
-    <div class="post-meta">
-      <span class="post-time"> 2015-07-01 </span>
-      <div class="post-category">
-          <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
-        </div>
-      
-    </div>
-  </header>
-  
-  <div class="post-content">
-    <div class="post-summary">
-      <p>这里是前段时间写的csapp的另一个实验perflab的解题过程喵~</p>
-
-<p>本实验要求优化handout里kernel.c中的两个函数，rotate函数的作用是将图像逆时针旋转90°，smooth函数的作用是对于图像中的每一个像素点，取它和周围的像素点的平均值，让图片变得模糊。下面让我来逐一优化他们^_^
-</p>
-    </div>
-    <div class="read-more">
-      <a href="/post/csapp-lab4/" class="read-more-link">阅读更多</a>
+      <a href="/post/oslab3/" class="read-more-link">阅读更多</a>
     </div>
   </div>
 </article>
@@ -226,10 +181,6 @@
         <span class="prev-text">上一页</span>
       </a>
     
-      <a class="next" href="/page/4/">
-        <span class="next-text">下一页</span>
-        <i class="iconfont icon-right"></i>
-      </a>
   </nav>
 
         </div>

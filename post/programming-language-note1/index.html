@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Coursera Programming Language Part A Note - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&amp;hellip;
+Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
+
+" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/programming-language-note1/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="Coursera Programming Language Part A Note" />
+<meta property="og:description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
+
+Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/programming-language-note1/" />
+
+
+
+<meta property="article:published_time" content="2018-05-14T11:57:08-07:00"/>
+
+<meta property="article:modified_time" content="2018-05-14T11:57:08-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Coursera Programming Language Part A Note">
+<meta itemprop="description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
+
+Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
+
+">
+
+
+<meta itemprop="datePublished" content="2018-05-14T11:57:08-07:00" />
+<meta itemprop="dateModified" content="2018-05-14T11:57:08-07:00" />
+<meta itemprop="wordCount" content="1547">
+
+
+
+<meta itemprop="keywords" content="基础,坑," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Coursera Programming Language Part A Note"/>
+<meta name="twitter:description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
+
+Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Coursera Programming Language Part A Note</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-05-14 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#about-ml">About ML</a>
+<ul>
+<li><a href="#variable-binding">variable binding</a></li>
+<li><a href="#function-binding">function binding</a></li>
+<li><a href="#nested-functions">Nested functions</a></li>
+<li><a href="#benefit-of-immutable-data">benefit of immutable data</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;</p>
+
+<p><a href="https://www.coursera.org/learn/programming-languages">Programming Language</a>这一系列课是UW的<a href="https://courses.cs.washington.edu/courses/cse341/">CSE341</a>公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.</p>
+
+<p></p>
+
+<h2 id="about-ml">About ML</h2>
+
+<p>一个ML程序包含了一系列的bindings, 每一个binding需要通过类型检查,之后进行evaluate. binding的类型基于static environment, binding evaluation基于dynamic environment.</p>
+
+<p>对于一个binding来说, 我们一般考虑三个方面:
+- syntax (how you write something)
+- type-checking rules
+- evaluation rules</p>
+
+<p>其实对这三个方面的关注对于学习一个新的语言特性的时候都是通用的.</p>
+
+<h3 id="variable-binding">variable binding</h3>
+
+<p>ML里面有多种binding, 拿variable binding做例子.</p>
+
+<p><strong>syntax:</strong></p>
+
+<p><code>val x = e</code></p>
+
+<ul>
+<li>val: 关键字</li>
+<li>x: 任意变量</li>
+<li>e: 任意表达式.</li>
+</ul>
+
+<p><strong>type-check:</strong>
+ 先从当前的static environment中对e进行type-check, 得到e的类型t -&gt; x的类型也为t, 之后将<code>x: type t</code>加入static environment中.</p>
+
+<p><strong>evaluation:</strong>
+ 和type-check 差不多, 只是这时是对dynamic environment进行操作</p>
+
+<p>至于各种expression的具体定义&hellip;用到的时候去翻文档吧</p>
+
+<p>ml里的binding都是不可变的(immutable), 例如给定一个variable binding<code>val x = 1+2</code>, 在ml里面并不能用赋值的方式改变x, 只能创建一个新的dynamic environment来覆盖(shadow)这里的值.</p>
+
+<h3 id="function-binding">function binding</h3>
+
+<p>同样考虑那三个方面</p>
+
+<p><strong>syntax</strong>:</p>
+
+<p><code>fun x0 (x1: t1, ..., xn: tn) = e</code></p>
+
+<ul>
+<li>fun: 关键字</li>
+<li>x0: 函数名</li>
+<li>参数x1, &hellip;, xn, 类型分别为t1, &hellip;, tn</li>
+<li>e: 函数主题,为任意表达式</li>
+</ul>
+
+<p><strong>type-check:</strong></p>
+
+<p>对e进行type-check, 此时的static environment中 x1 : t1, &hellip;, xn : tn, 若e的类型为t, 我们将x0 : t1 * &hellip; * tn -&gt; t加入top-level static environment中. 注意这里的x1~xn参数仅存在函数里的static environment, 不加入top-level static environment. e的类型由类型推导系统推出,之后章节再介绍</p>
+
+<p><strong>evaluation:</strong></p>
+
+<p>ml中的函数本质上也是一个值, 我们将x0加入dynamic environment中,直到我们调用它的时候才真正进行evaluate</p>
+
+<p><strong>function call</strong></p>
+
+<p>前面提到只有调用函数的时候才会进行evaluate, ml中的function call也是一种表达式,syntax为 <code>e0 (e1, ..., en)</code>, e0的类型为<code>t1*...*tn -&gt; t</code>, 这时候的dynamic environment中e0-&gt;v0, e1-&gt;v1 &hellip;en-&gt;vn. v0是一个函数, 我们这个时候在这个dynamic environment中对v0的主体进行evaluation.</p>
+
+<p>注意这里的dynamic environment是函数定义时的环境, 而不是调用时的环境.</p>
+
+<p>举个例子:</p>
+
+<pre><code>y = 2
+fun add2(x) = x + y
+y = 1
+add2(1)
+</code></pre>
+
+<p>这里执行的结果为3</p>
+
+<h3 id="nested-functions">Nested functions</h3>
+
+<p>我们可以在函数中用let&hellip;in&hellip;end表达式来实现nested function</p>
+
+<p>在以下情况使用nested function定义一个helper function比较好:
+- 这个helper function仅在一个函数中使用
+- 如果它在别处使用, 容易被误用
+- 它之后比较可能被改变或者删除</p>
+
+<p>在程序设计中, 可复用的代码省时省力, 但也意味着在之后更不方便修改</p>
+
+<h3 id="benefit-of-immutable-data">benefit of immutable data</h3>
+
+<p>简单来说就是: because it is impossible to mutate, we can create alias without thinking.</p>
+
+<hr />
+
+<p>先坑着&hellip;有心情再来填</p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-05-14</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
+          
+          <a href="/tags/%E5%9D%91/">坑</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/robotic-grasping-based-on-deep-learning/">
+            <span class="next-text nav-default">Robotic Grasping Based on Deep Learning</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E6%99%93%E5%A5%95-%E4%BD%95-a97701117/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+
+
+</body>
+</html>
