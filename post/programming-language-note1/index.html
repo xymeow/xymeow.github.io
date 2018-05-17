@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Coursera Programming Language Part A Note - xymeow&#39;s blog</title>
+  <title>Coursera Programming Language Part A Note(1) - xymeow&#39;s blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -47,7 +47,7 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
 <link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
-<meta property="og:title" content="Coursera Programming Language Part A Note" />
+<meta property="og:title" content="Coursera Programming Language Part A Note(1)" />
 <meta property="og:description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
 
 Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
@@ -72,7 +72,7 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
 
 
 
-<meta itemprop="name" content="Coursera Programming Language Part A Note">
+<meta itemprop="name" content="Coursera Programming Language Part A Note(1)">
 <meta itemprop="description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
 
 Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
@@ -82,12 +82,12 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
 
 <meta itemprop="datePublished" content="2018-05-14T11:57:08-07:00" />
 <meta itemprop="dateModified" content="2018-05-14T11:57:08-07:00" />
-<meta itemprop="wordCount" content="1547">
+<meta itemprop="wordCount" content="2381">
 
 
 
-<meta itemprop="keywords" content="基础,坑," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Coursera Programming Language Part A Note"/>
+<meta itemprop="keywords" content="基础," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Coursera Programming Language Part A Note(1)"/>
 <meta name="twitter:description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
 
 Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
@@ -155,7 +155,7 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Coursera Programming Language Part A Note</h1>
+      <h1 class="post-title">Coursera Programming Language Part A Note(1)</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-05-14 </span>
@@ -180,7 +180,8 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
 <li><a href="#variable-binding">variable binding</a></li>
 <li><a href="#function-binding">function binding</a></li>
 <li><a href="#nested-functions">Nested functions</a></li>
-<li><a href="#benefit-of-immutable-data">benefit of immutable data</a></li>
+<li><a href="#immutable-data-vs-mutable-data">immutable data vs mutable data</a></li>
+<li><a href="#the-pieces-of-a-programming-language">The pieces of a Programming Language</a></li>
 </ul></li>
 </ul></li>
 </ul>
@@ -262,7 +263,7 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
 
 <p>举个例子:</p>
 
-<pre><code>y = 2
+<pre><code class="language-ocaml">y = 2
 fun add2(x) = x + y
 y = 1
 add2(1)
@@ -281,13 +282,93 @@ add2(1)
 
 <p>在程序设计中, 可复用的代码省时省力, 但也意味着在之后更不方便修改</p>
 
-<h3 id="benefit-of-immutable-data">benefit of immutable data</h3>
+<h3 id="immutable-data-vs-mutable-data">immutable data vs mutable data</h3>
 
-<p>简单来说就是: because it is impossible to mutate, we can create alias without thinking.</p>
+<p>immutable的好处简单来说就是: because it is impossible to mutate, we can create alias without thinking.</p>
+
+<p>前面说到,ml里面并没有改变一个binding的内容的方法,一个binding在一个环境中永远都是一个值, 那些看起来像是赋值的操作实际上是创建了一个新环境去覆盖旧环境. 所以没办法赋值有什么好处呢?</p>
+
+<p>我们来看一个ml中的例子:</p>
+
+<pre><code class="language-ocaml">fun sort_pair1 (pr: int * int) = 
+    if #1 pr &lt; #2 pr
+    then pr
+    else (#2 pr, #1 pr)
+
+fun sort_pair2 (pr: int * int) = 
+    if #1 pr &lt; #2 pr
+    then (#1 pr, #2 pr)
+    else (#2 pr, #1 pr)
+</code></pre>
+
+<p>由于ml中数据的不可变性,以上两个函数是可以等价的,并不用关心返回的结果是一个新的变量还是旧变量的引用. 这样的话用第一种就比较好了,因为它省去了创建一个新tuple的空间. 但如果是在数据可变的情况下,这两种实现不能等价! 若对sort_pair1返回的结果再进行赋值操作,有可能会改变输入的pr的值</p>
+
+<p>再举个例子:</p>
+
+<pre><code class="language-ocaml">fun append (xs: int list, ys: int list) = 
+    if null xs
+    then ys
+    else hd (xs) :: append(tl(xs), ys)
+
+val x = [2, 4]
+val y = [5, 3, 0]
+val z = append(x, y)
+</code></pre>
+
+<p>由于数据不可变,对以上代码的底层实现,下图两种实现方式是等价的,所以ml底层代码可以用第一种实现方式省空间.
+<img src="http://oy479ek6q.bkt.gdipper.com/18-5-17/42874983.jpg" alt="" /></p>
+
+<p>接下来我们来看一下mutable data带来的一些问题, 考虑以下的java代码:</p>
+
+<pre><code class="language-java">class ProtectedResource {
+    private Resource theResource = ...;
+    private String[] allowedUsers = ...;
+    public String[] getAllowedUsers() {
+        return allowedUsers;
+    }
+    public String currentUser() { ... }
+    public void useTheResource() {
+        for(int i=0; i &lt; allowedUsers.length; i++) {
+            if(currentUser().equals(allowedUsers[i])) {
+                ... // access allowed: use it
+                return;
+            }
+        }
+    throw new IllegalAccessException();
+    }
+}
+</code></pre>
+
+<p>这样的代码是存在安全隐患的, 由于<code>getAllowedUsers()</code>返回的是allowedUsers的引用,我们是可以用这种方式给当前的user添加权限:</p>
+
+<pre><code class="language-java">getAllowedUsers()[0] = currentUser()
+</code></pre>
+
+<p>为了避免这样的操作,getAllowedUsers返回的应该是a copy of allowedUsers:</p>
+
+<pre><code class="language-java">public String[] getAllowedUsers() {
+    String[] copy = new String[allowedUsers.length];
+    for(int i=0; i &lt; allowedUsers.length; i++)
+        copy[i] = allowedUsers[i];
+    return copy;
+}
+</code></pre>
+
+<h3 id="the-pieces-of-a-programming-language">The pieces of a Programming Language</h3>
+
+<p>In a general way, 当学习一种新的编程语言时,我们可以重点关注以下几个方面:</p>
+
+<ul>
+<li>语法 Syntax: 语言具体怎么写</li>
+<li>语意 Semantics: 语言特性具体是怎样的,表达式怎么进行evaluate的</li>
+<li>风格 Idioms: 每种语言都有各自的coding style</li>
+<li>库 Libraries: 在工作中我们不需要重复造轮子,了解一些该语言下常用的库有助于提高生产力</li>
+<li>工具 Tools: 开发,调试这种语言的一些工具(编译器, REPL, debugger等)</li>
+</ul>
 
 <hr />
 
-<p>先坑着&hellip;有心情再来填</p>
+<p>第一周的笔记整理完了,我感觉这门课笔记还是拆成几篇blog来记比较好&hellip;</p>
     </div>
 
     
@@ -315,8 +396,6 @@ add2(1)
       <div class="post-tags">
           
           <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
-          
-          <a href="/tags/%E5%9D%91/">坑</a>
           
         </div>
 
