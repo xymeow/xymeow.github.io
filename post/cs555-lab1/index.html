@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>CSCI 555 (MIT 6.828) Lab 1 记录 - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
+这系列我觉得我是不会弃坑的(真香警告)&amp;hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文
+
+" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/cs555-lab1/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="CSCI 555 (MIT 6.828) Lab 1 记录" />
+<meta property="og:description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
+
+这系列我觉得我是不会弃坑的(真香警告)&hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/cs555-lab1/" />
+
+
+
+<meta property="article:published_time" content="2018-09-03T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-09-03T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="CSCI 555 (MIT 6.828) Lab 1 记录">
+<meta itemprop="description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
+
+这系列我觉得我是不会弃坑的(真香警告)&hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文
+
+">
+
+
+<meta itemprop="datePublished" content="2018-09-03T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-03T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="748">
+
+
+
+<meta itemprop="keywords" content="os,csci555,6.828,usc," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="CSCI 555 (MIT 6.828) Lab 1 记录"/>
+<meta name="twitter:description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
+
+这系列我觉得我是不会弃坑的(真香警告)&hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">CSCI 555 (MIT 6.828) Lab 1 记录</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-03 </span>
+        <div class="post-category">
+            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#part-0-setup-envoronment">part 0: setup envoronment</a></li>
+<li><a href="#part-1-pc-bootstrap">part 1: PC Bootstrap</a></li>
+<li><a href="#part-2-the-boot-loader">part 2: The Boot Loader</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂</p>
+
+<p>这系列我觉得我是不会弃坑的(真香警告)&hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文</p>
+
+<p></p>
+
+<h1 id="part-0-setup-envoronment">part 0: setup envoronment</h1>
+
+<p>把课程代码clone下来之后编译, 我用的MacOS, 版本10.13 high Sierra, 总结就是Homebrew大法好, brew装了<code>i386-elf-gcc</code>, <code>i386-elf-gdb</code>, <code>i386-elf-binutils</code>三件套,再改改makefile就完事了,做完lab1现在没发现啥问题&hellip;</p>
+
+<h1 id="part-1-pc-bootstrap">part 1: PC Bootstrap</h1>
+
+<p>PC的物理地址空间大致长这样:</p>
+
+<pre><code>+------------------+  &lt;- 0xFFFFFFFF (4GB)
+|      32-bit      |
+|  memory mapped   |
+|     devices      |
+|                  |
+/\/\/\/\/\/\/\/\/\/\
+
+/\/\/\/\/\/\/\/\/\/\
+|                  |
+|      Unused      |
+|                  |
++------------------+  &lt;- depends on amount of RAM
+|                  |
+|                  |
+| Extended Memory  |
+|                  |
+|                  |
++------------------+  &lt;- 0x00100000 (1MB)
+|     BIOS ROM     |
++------------------+  &lt;- 0x000F0000 (960KB)
+|  16-bit devices, |
+|  expansion ROMs  |
++------------------+  &lt;- 0x000C0000 (768KB)
+|   VGA Display    |
++------------------+  &lt;- 0x000A0000 (640KB)
+|                  |
+|    Low Memory    |
+|                  |
++------------------+  &lt;- 0x00000000
+</code></pre>
+
+<p>有个问题:为什么16位的PC能寻址1MB(2^20)的地址空间呢?</p>
+
+<p>早期16位PC是基于intel 8088处理器, 而8088/8086这些16位的处理器是靠分段(segmentation)来寻址20位地址空间的.计算公式是<code>physical address = (16 * segment address + offset)</code></p>
+
+<p>8088的BIOS设计放在<code>0x000f0000-0x000fffff</code>处, 当处理器启动的时候,进入实模式,起始地址为<code>0xffff0 (CS:IP = 0xf000:0xfff0)</code></p>
+
+<p>BIOS运行时会建立中断描述符表(interrupt descriptor table)以及初始化一系列硬件设备,之后搜寻可启动的设备(CD-ROM之类的),找到之后BIOS从设备中读取引导程序(boot loader)然后将控制权转交给它.</p>
+
+<hr />
+
+<h1 id="part-2-the-boot-loader">part 2: The Boot Loader</h1>
+
+<p>明天再更&hellip;..</p>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-03</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/os/">os</a>
+          
+          <a href="/tags/csci555/">csci555</a>
+          
+          <a href="/tags/6.828/">6.828</a>
+          
+          <a href="/tags/usc/">usc</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/programming-language-note1/">
+            <span class="next-text nav-default">Coursera Programming Language Part A Note(1)</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/%E6%99%93%E5%A5%95-%E4%BD%95-a97701117/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+
+
+</body>
+</html>

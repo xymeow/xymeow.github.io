@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xymeow.github.io/post/cs555-lab1/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/post/programming-language-note1/</loc>
     <lastmod>2018-05-14T11:57:08-07:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -80,6 +87,13 @@
   </url>
   
   <url>
+    <loc>http://xymeow.github.io/tags/6.828/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/tags/ai/</loc>
     <lastmod>2016-09-03T19:19:37+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -95,6 +109,13 @@
   <url>
     <loc>http://xymeow.github.io/tags/csapp/</loc>
     <lastmod>2015-07-01T22:28:43+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/tags/csci555/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -129,14 +150,14 @@
   
   <url>
     <loc>http://xymeow.github.io/tags/os/</loc>
-    <lastmod>2015-04-28T19:19:51+00:00</lastmod>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xymeow.github.io/post/</loc>
-    <lastmod>2018-05-14T11:57:08-07:00</lastmod>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -150,14 +171,21 @@
   
   <url>
     <loc>http://xymeow.github.io/tags/</loc>
-    <lastmod>2016-09-03T19:19:37+00:00</lastmod>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/tags/usc/</loc>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xymeow.github.io/</loc>
-    <lastmod>2018-05-14T11:57:08-07:00</lastmod>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -171,7 +199,7 @@
   
   <url>
     <loc>http://xymeow.github.io/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/</loc>
-    <lastmod>2016-09-03T19:19:37+00:00</lastmod>
+    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
