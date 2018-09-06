@@ -18,7 +18,7 @@
 
 <meta name="author" content="xymeow" />
   <meta name="description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
-这系列我觉得我是不会弃坑的(真香警告)&amp;hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文
+这系列我觉得我是不会弃坑的(真香警告)&amp;hellip; 这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文
 
 " />
 
@@ -50,7 +50,8 @@
 <meta property="og:title" content="CSCI 555 (MIT 6.828) Lab 1 记录" />
 <meta property="og:description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
 
-这系列我觉得我是不会弃坑的(真香警告)&hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文
+这系列我觉得我是不会弃坑的(真香警告)&hellip;
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文
 
 " />
 <meta property="og:type" content="article" />
@@ -75,14 +76,15 @@
 <meta itemprop="name" content="CSCI 555 (MIT 6.828) Lab 1 记录">
 <meta itemprop="description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
 
-这系列我觉得我是不会弃坑的(真香警告)&hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文
+这系列我觉得我是不会弃坑的(真香警告)&hellip;
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文
 
 ">
 
 
 <meta itemprop="datePublished" content="2018-09-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="748">
+<meta itemprop="wordCount" content="1188">
 
 
 
@@ -90,7 +92,8 @@
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="CSCI 555 (MIT 6.828) Lab 1 记录"/>
 <meta name="twitter:description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
 
-这系列我觉得我是不会弃坑的(真香警告)&hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文
+这系列我觉得我是不会弃坑的(真香警告)&hellip;
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文
 
 "/>
 
@@ -176,6 +179,7 @@
 <li><a href="#part-0-setup-envoronment">part 0: setup envoronment</a></li>
 <li><a href="#part-1-pc-bootstrap">part 1: PC Bootstrap</a></li>
 <li><a href="#part-2-the-boot-loader">part 2: The Boot Loader</a></li>
+<li><a href="#part-3-the-kernel">part 3: The Kernel</a></li>
 </ul>
 </nav>
   </div>
@@ -185,7 +189,8 @@
     <div class="post-content">
       <p>这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂</p>
 
-<p>这系列我觉得我是不会弃坑的(真香警告)&hellip;这里就记录一下码代码的大致心得吧,抄答案还是另寻别处吧,以下正文</p>
+<p>这系列我觉得我是不会弃坑的(真香警告)&hellip;
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文</p>
 
 <p></p>
 
@@ -240,7 +245,33 @@
 
 <h1 id="part-2-the-boot-loader">part 2: The Boot Loader</h1>
 
-<p>明天再更&hellip;..</p>
+<p>PC硬盘被划分为许多512byte大小的扇区,一个可以启动的磁盘的第一个扇区就是引导程序,BIOS会将其读入<code>0x7c00~0x7dff</code>的地址中,之后执行<code>jmp</code>指令跳转到0x7c00处,将控制转交给引导程序.至于为什么是0x7c00,这是历史原因了,详情参见wiki</p>
+
+<p>boot loader 主要做这么些事:
+- 将处理器从实模式切换到32位保护模式
+- 将整个kernel读入memory中
+- 控制转交给kernel</p>
+
+<p>这里是通过设置CR0寄存器来切换到保护模式的</p>
+
+<p>kernel是ELF格式的,我们主要关注这几个部分:
+- .text: 程序的可执行指令
+- .rodata: read-only data
+- .data: 程序初始化的数据 (像int x = 0之类的)</p>
+
+<p>可以使用objdump来查看详细信息</p>
+
+<p>其中.text部分的<code>link address</code>和<code>load address</code>需要注意:
+- link address: 指令运行时的地址,一般是虚拟地址
+- load address: 指令load进内存的地址</p>
+
+<p>可以发现实模式下这两地址是一样的,因为并没有开启虚存,指令执行的时候就没有地址映射关系</p>
+
+<hr />
+
+<h1 id="part-3-the-kernel">part 3: The Kernel</h1>
+
+<p>明天再写吧&hellip;(好麻烦啊&hellip;想弃坑了)</p>
     </div>
 
     
