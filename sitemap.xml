@@ -94,6 +94,12 @@
   </url>
   
   <url>
+    <loc>http://xymeow.github.io/about/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/tags/ai/</loc>
     <lastmod>2016-09-03T19:19:37+00:00</lastmod>
     <changefreq>weekly</changefreq>
