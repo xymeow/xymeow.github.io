@@ -6,10 +6,19 @@
     <description>Recent content in Csci555 on xymeow&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 16 Sep 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xymeow.github.io/tags/csci555/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>The Singularity System - my note</title>
+      <link>http://xymeow.github.io/post/singularity/</link>
+      <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/singularity/</guid>
+      <description>Safe Programming Language what is PL safety  semantic precision for every statement undefinedness -&amp;gt; security compremised the language ensures a statement is only excuted whtn it makes sense, or signals some error(ex throwing an exception)  memory safety  programs can only access mem locarions that they are allowed to access may be compremised by:  pointer arithmetic unconstrained casting lack of in-built array bounds checks lack of in-guilt checks for null pointers programmer-controlled de-allocation (free malloc in C), it may cause use-after-free/double-free bugs -&amp;gt; we can use GC to solve these problems  programs never read uninitialised memory a memory safery language never result in segment faults  type safety  type soundness(strong typing) -&amp;gt; never result in type errors  Singularity System Singularity is a small experimental OS built by Microsoft Research designed with modern software engineering practices and tools.</description>
+    </item>
     
     <item>
       <title>CSCI 555 (MIT 6.828) Lab 1 记录</title>

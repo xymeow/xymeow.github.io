@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xymeow.github.io/post/singularity/</loc>
+    <lastmod>2018-09-16T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/post/cs555-lab1/</loc>
     <lastmod>2018-09-03T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -121,7 +128,7 @@
   
   <url>
     <loc>http://xymeow.github.io/tags/csci555/</loc>
-    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -156,14 +163,14 @@
   
   <url>
     <loc>http://xymeow.github.io/tags/os/</loc>
-    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xymeow.github.io/post/</loc>
-    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -184,14 +191,14 @@
   
   <url>
     <loc>http://xymeow.github.io/tags/usc/</loc>
-    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>http://xymeow.github.io/</loc>
-    <lastmod>2018-09-03T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -226,7 +233,7 @@
   
   <url>
     <loc>http://xymeow.github.io/categories/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2018-05-14T11:57:08-07:00</lastmod>
+    <lastmod>2018-09-16T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
