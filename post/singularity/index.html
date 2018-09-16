@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>The Singularity System - my note - xymeow&#39;s blog</title>
+  <title>The Singularity System - my notes - xymeow&#39;s blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -17,7 +17,7 @@
 
 
 <meta name="author" content="xymeow" />
-  <meta name="description" content="Safe Programming Language what is PL safety  semantic precision for every statement undefinedness -&amp;gt; security compremised the language ensures a statement is only excuted whtn it makes sense, or signals some error(ex throwing an exception)  memory safety  programs can only access mem locarions that they are allowed to access may be compremised by:  pointer arithmetic unconstrained casting lack of in-built array bounds checks lack of in-guilt checks for null pointers programmer-controlled de-allocation (free malloc in C), it may cause use-after-free/double-free bugs -&amp;gt; we can use GC to solve these problems  programs never read uninitialised memory a memory safery language never result in segment faults  type safety  type soundness(strong typing) -&amp;gt; never result in type errors  Singularity System Singularity is a small experimental OS built by Microsoft Research designed with modern software engineering practices and tools." />
+  <meta name="description" content="Some notes taking from reading the paper &amp;lsquo;The Singularity System&amp;rsquo;. " />
 
   <meta name="keywords" content="Hugo, theme, even" />
 
@@ -44,8 +44,9 @@
 <link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
-<meta property="og:title" content="The Singularity System - my note" />
-<meta property="og:description" content="Safe Programming Language what is PL safety  semantic precision for every statement undefinedness -&gt; security compremised the language ensures a statement is only excuted whtn it makes sense, or signals some error(ex throwing an exception)  memory safety  programs can only access mem locarions that they are allowed to access may be compremised by:  pointer arithmetic unconstrained casting lack of in-built array bounds checks lack of in-guilt checks for null pointers programmer-controlled de-allocation (free malloc in C), it may cause use-after-free/double-free bugs -&gt; we can use GC to solve these problems  programs never read uninitialised memory a memory safery language never result in segment faults  type safety  type soundness(strong typing) -&gt; never result in type errors  Singularity System Singularity is a small experimental OS built by Microsoft Research designed with modern software engineering practices and tools." />
+<meta property="og:title" content="The Singularity System - my notes" />
+<meta property="og:description" content="Some notes taking from reading the paper &lsquo;The Singularity System&rsquo;.
+" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://xymeow.github.io/post/singularity/" />
 
@@ -65,19 +66,21 @@
 
 
 
-<meta itemprop="name" content="The Singularity System - my note">
-<meta itemprop="description" content="Safe Programming Language what is PL safety  semantic precision for every statement undefinedness -&gt; security compremised the language ensures a statement is only excuted whtn it makes sense, or signals some error(ex throwing an exception)  memory safety  programs can only access mem locarions that they are allowed to access may be compremised by:  pointer arithmetic unconstrained casting lack of in-built array bounds checks lack of in-guilt checks for null pointers programmer-controlled de-allocation (free malloc in C), it may cause use-after-free/double-free bugs -&gt; we can use GC to solve these problems  programs never read uninitialised memory a memory safery language never result in segment faults  type safety  type soundness(strong typing) -&gt; never result in type errors  Singularity System Singularity is a small experimental OS built by Microsoft Research designed with modern software engineering practices and tools.">
+<meta itemprop="name" content="The Singularity System - my notes">
+<meta itemprop="description" content="Some notes taking from reading the paper &lsquo;The Singularity System&rsquo;.
+">
 
 
 <meta itemprop="datePublished" content="2018-09-16T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-16T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="486">
+<meta itemprop="wordCount" content="496">
 
 
 
 <meta itemprop="keywords" content="os,csci555,usc," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="The Singularity System - my note"/>
-<meta name="twitter:description" content="Safe Programming Language what is PL safety  semantic precision for every statement undefinedness -&gt; security compremised the language ensures a statement is only excuted whtn it makes sense, or signals some error(ex throwing an exception)  memory safety  programs can only access mem locarions that they are allowed to access may be compremised by:  pointer arithmetic unconstrained casting lack of in-built array bounds checks lack of in-guilt checks for null pointers programmer-controlled de-allocation (free malloc in C), it may cause use-after-free/double-free bugs -&gt; we can use GC to solve these problems  programs never read uninitialised memory a memory safery language never result in segment faults  type safety  type soundness(strong typing) -&gt; never result in type errors  Singularity System Singularity is a small experimental OS built by Microsoft Research designed with modern software engineering practices and tools."/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="The Singularity System - my notes"/>
+<meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;The Singularity System&rsquo;.
+"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -144,7 +147,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">The Singularity System - my note</h1>
+      <h1 class="post-title">The Singularity System - my notes</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-09-16 </span>
@@ -192,7 +195,8 @@
 
     
     <div class="post-content">
-      
+      <p>Some notes taking from reading the paper &lsquo;The Singularity System&rsquo;.
+</p>
 
 <h1 id="safe-programming-language">Safe Programming Language</h1>
 
@@ -345,7 +349,6 @@
 <li>replacing in-process plug-ins with components in separate process can improve resilience</li>
 <li>safe languages, sofeware isolation, increase specification can improve a system</li>
 </ul>
-
     </div>
 
     
