@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Xen and the art of virtualization - my notes - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="Some notes taking from reading the paper &amp;lsquo;Xen and the art of virtualization&amp;rsquo;.
+Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion. " />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/xen-note/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="Xen and the art of virtualization - my notes" />
+<meta property="og:description" content="Some notes taking from reading the paper &lsquo;Xen and the art of virtualization&rsquo;.
+
+Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/xen-note/" />
+
+
+
+<meta property="article:published_time" content="2018-09-19T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-09-19T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Xen and the art of virtualization - my notes">
+<meta itemprop="description" content="Some notes taking from reading the paper &lsquo;Xen and the art of virtualization&rsquo;.
+
+Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.
+">
+
+
+<meta itemprop="datePublished" content="2018-09-19T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-09-19T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="689">
+
+
+
+<meta itemprop="keywords" content="os,csci555,usc," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Xen and the art of virtualization - my notes"/>
+<meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;Xen and the art of virtualization&rsquo;.
+
+Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Xen and the art of virtualization - my notes</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-09-19 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#virtual-machine">Virtual machine</a>
+<ul>
+<li><a href="#design-principles">design principles</a></li>
+<li><a href="#vm-vs-process">VM vs process</a></li>
+<li><a href="#vm-vs-container">VM vs container</a></li>
+<li><a href="#vm-vs-exokernel">VM vs. exokernel</a></li>
+</ul></li>
+<li><a href="#full-virtualization-vs-paravirtualization">Full virtualization vs paravirtualization</a>
+<ul>
+<li><a href="#full-virtualization-vmware">full virtualization - (VMware)</a>
+<ul>
+<li><a href="#why-difficult-for-x86">why difficult for x86</a></li>
+</ul></li>
+<li><a href="#paravirtulization">paravirtulization</a>
+<ul>
+<li><a href="#design-priciples-of-paravirtualization">design priciples of paravirtualization</a></li>
+<li><a href="#xen-vs-denali">Xen vs Denali</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#virtualization-in-xen">Virtualization in Xen</a>
+<ul>
+<li><a href="#mem-virtualize">mem virtualize:</a></li>
+<li><a href="#cpu-virtualize">cpu virtualize</a></li>
+<li><a href="#domain-0">domain 0</a></li>
+<li><a href="#device-virtualize">device virtualize:</a></li>
+<li><a href="#control">control</a></li>
+<li><a href="#multiple-notion-of-time">multiple notion of time</a></li>
+<li><a href="#network">network</a></li>
+<li><a href="#disk">disk</a></li>
+<li><a href="#evaluation-method">evaluation method</a></li>
+<li><a href="#performance-overheads">performance overheads</a></li>
+</ul></li>
+<li><a href="#paravirtualization-today">Paravirtualization today</a></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>Some notes taking from reading the paper &lsquo;Xen and the art of virtualization&rsquo;.</p>
+
+<p>Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.
+</p>
+
+<h1 id="virtual-machine">Virtual machine</h1>
+
+<p>goal: isolation, hosting services</p>
+
+<h2 id="design-principles">design principles</h2>
+
+<ul>
+<li>must be isolated from one another</li>
+<li>should support a variety of different OS</li>
+<li>the performance overhead should be small</li>
+</ul>
+
+<h2 id="vm-vs-process">VM vs process</h2>
+
+<ul>
+<li>process can not achieve performance isolation</li>
+<li>why not process? - processes do not give you performance isolation</li>
+</ul>
+
+<h2 id="vm-vs-container">VM vs container</h2>
+
+<ul>
+<li>both of them have performance isolation</li>
+<li>VM can run different OS</li>
+</ul>
+
+<h2 id="vm-vs-exokernel">VM vs. exokernel</h2>
+
+<ul>
+<li>VMs give illusion of having the entile physical machine -&gt; do not need to modify os</li>
+<li>libos must expilicit request physical resourse -&gt; need to modify os</li>
+</ul>
+
+<h1 id="full-virtualization-vs-paravirtualization">Full virtualization vs paravirtualization</h1>
+
+<h2 id="full-virtualization-vmware">full virtualization - (VMware)</h2>
+
+<ul>
+<li>guest OS shouldnt be modified</li>
+<li>OS -&gt; hardware: software write registers (ex: page fault, disk access&hellip; VM context)</li>
+<li>VMM save VM context and swap</li>
+<li>VMM: kernel mode, guest OS: user mode</li>
+<li>CRUX: guest OS may have privelage instruction, but it run in user mode -&gt; raise an exception -&gt; handle by VMM</li>
+</ul>
+
+<h3 id="why-difficult-for-x86">why difficult for x86</h3>
+
+<ul>
+<li>in x86 some privlige insr do not trap -&gt; binary rewriting</li>
+<li>x86 is difficult to virtulize memory</li>
+</ul>
+
+<h2 id="paravirtulization">paravirtulization</h2>
+
+<ul>
+<li>we can modify the OS slightly: benefit? drawness?</li>
+<li>Hypercalls: simillar to exokernel sys calls, key diff with full virtual. Ex: replace the problematic priviledge operation with a hypercall</li>
+</ul>
+
+<h3 id="design-priciples-of-paravirtualization">design priciples of paravirtualization</h3>
+
+<ul>
+<li>support for unmodified application binnaries</li>
+<li>support full multi-application OS</li>
+<li>should obtain high performance and strong resourse isolation</li>
+<li>completely hiding the effects of resource virtualization</li>
+</ul>
+
+<h3 id="xen-vs-denali">Xen vs Denali</h3>
+
+<ul>
+<li>Denali does not target existing ABIs -&gt; does not fully support x86 segmentation</li>
+<li>Denali implementation does not address the problem of supporting app multiplexing / Xen hosts a real OS may securely multiplex itself</li>
+<li>Denali VMM performs all paging to and from disk / Xen each guest OS proform its own paging using own guaranteed mam reservation</li>
+<li>Denali virtualize &lsquo;namespace&rsquo; of machine resources / Xen has access control within</li>
+</ul>
+
+<h1 id="virtualization-in-xen">Virtualization in Xen</h1>
+
+<h2 id="mem-virtualize">mem virtualize:</h2>
+
+<ul>
+<li>unix: VPN-&gt;PPN</li>
+<li>full virtual: two stage mapping, VPN-&gt;PPN-&gt;hardware, shadow page table have pointer to hardware addr</li>
+<li>Xen:
+
+<ul>
+<li>hypercall to change page table, mem manage by VMM (has direct read access)</li>
+<li>cannot install fully-privileged segement descriptors and cannot overlap with the top end of linear address space</li>
+<li>avoid TLB flush</li>
+</ul></li>
+</ul>
+
+<h2 id="cpu-virtualize">cpu virtualize</h2>
+
+<ul>
+<li>priviledge: guest OS must be modified to run at a lower provilege level, running at same level as apps, OS run in a seperate address space (for x86, Xen can be run in ring 1)</li>
+<li>exception handlers:
+
+<ul>
+<li>hypercall to VMM telling where the exception hander located, and VMM tell hardware, so it could be executed directly via ring 0. (descriptor table for exception handlers)</li>
+<li>guest OS need to modify page fault handler because it would read from a priviledged register.</li>
+</ul></li>
+<li>system call - install a fast handler can be call diectly</li>
+<li>hypercall</li>
+<li>has both real and virtual time</li>
+</ul>
+
+<h2 id="domain-0">domain 0</h2>
+
+<ul>
+<li>a domain created at boot time and permitted to use the control interface</li>
+<li>privilge domain management, can set VMM parameters and control other domains</li>
+</ul>
+
+<h2 id="device-virtualize">device virtualize:</h2>
+
+<ul>
+<li>full: 2 stage</li>
+<li>patial: DMA, shared-memory,asynchronous I/O ring</li>
+</ul>
+
+<h2 id="control">control</h2>
+
+<ul>
+<li>hypercall: domain -&gt; Xen (sync)</li>
+<li>event: Xen -&gt; domain (async)</li>
+<li>pending: stored in per-domain bitmask</li>
+</ul>
+
+<h2 id="multiple-notion-of-time">multiple notion of time</h2>
+
+<ul>
+<li>real time</li>
+<li>virtual time and BVT scheduling</li>
+<li>wall time</li>
+</ul>
+
+<h2 id="network">network</h2>
+
+<ul>
+<li>packet filter(rule), domain 0 responsible for inserting and removing rules</li>
+<li>zero copy reception: by using descriptor rings, DMA</li>
+</ul>
+
+<h2 id="disk">disk</h2>
+
+<ul>
+<li>only domain0 has direct unckecked access to physical disks, others: VBD</li>
+<li>reorder requests whthin guest OS and within Xen</li>
+<li>Domains may pass down reorder barriers to prevent reordering</li>
+</ul>
+
+<h2 id="evaluation-method">evaluation method</h2>
+
+<ul>
+<li>compariison</li>
+<li>metrics: speed</li>
+<li>workload: benchmarks (macro and micro)</li>
+</ul>
+
+<h2 id="performance-overheads">performance overheads</h2>
+
+<ul>
+<li>slower in fork, exec, sh: require large numbers of page table updates, must all be verified by Xen</li>
+<li>context switching time: executes a hypercall to change page table</li>
+<li>page fault latency: Xen require two stage: 1. take hardware fault and pass details to guest OS. 2. install updated page table entry on guest OS</li>
+<li>high level of synchronous disk activity</li>
+</ul>
+
+<h1 id="paravirtualization-today">Paravirtualization today</h1>
+
+<ul>
+<li>OS modification -&gt; hard to take off</li>
+<li>performance: not a big deal</li>
+</ul>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-09-19</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/os/">os</a>
+          
+          <a href="/tags/csci555/">csci555</a>
+          
+          <a href="/tags/usc/">usc</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/singularity/">
+            <span class="next-text nav-default">The Singularity System - my notes</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+
+
+</body>
+</html>
