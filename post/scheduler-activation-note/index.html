@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes - xymeow&#39;s blog</title>
+  <title>Scheduler Activations - my notes - xymeow&#39;s blog</title>
   <meta name="renderer" content="webkit" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -44,7 +44,7 @@
 <link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
-<meta property="og:title" content="Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes" />
+<meta property="og:title" content="Scheduler Activations - my notes" />
 <meta property="og:description" content="Some notes taking from reading the paper &lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&rsquo;.
 " />
 <meta property="og:type" content="article" />
@@ -66,19 +66,19 @@
 
 
 
-<meta itemprop="name" content="Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes">
+<meta itemprop="name" content="Scheduler Activations - my notes">
 <meta itemprop="description" content="Some notes taking from reading the paper &lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&rsquo;.
 ">
 
 
 <meta itemprop="datePublished" content="2018-10-09T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-10-09T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1287">
+<meta itemprop="wordCount" content="1276">
 
 
 
 <meta itemprop="keywords" content="os,csci555,usc," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes"/>
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Scheduler Activations - my notes"/>
 <meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&rsquo;.
 "/>
 
@@ -147,7 +147,7 @@
           <article class="post">
     
     <header class="post-header">
-      <h1 class="post-title">Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes</h1>
+      <h1 class="post-title">Scheduler Activations - my notes</h1>
 
       <div class="post-meta">
         <span class="post-time"> 2018-10-09 </span>
@@ -175,8 +175,8 @@
 <ul>
 <li><a href="#how-to-design-the-most-efficient-thread-package-for-parallel-programs">how to design the most efficient thread package for parallel programs?</a></li>
 <li><a href="#how-do-kernel-threads-work">how do kernel threads work</a></li>
-<li><a href="#why-can-not-kernel-threads-achieve-the-performance-of-user-threads">why can not kernel threads achieve the performance of user threads?</a></li>
-<li><a href="#what-are-the-desireble-properties-of-the-solution-user-kernel-level-thread-scheduler">what are the desireble properties of the solution(user/kernel level thread scheduler)</a></li>
+<li><a href="#kernel-threads-limits">kernel threads limits?</a></li>
+<li><a href="#desireble-properties-of-the-solution">desireble properties of the solution</a></li>
 <li><a href="#virtual-multi-processor-abstraction">virtual multi-processor abstraction</a></li>
 <li><a href="#so-what-is-scheduler-activation">so what is scheduler activation?</a></li>
 <li><a href="#what-happens-when-a-program-starts">what happens when a program starts?</a></li>
@@ -194,7 +194,7 @@
 </ul></li>
 <li><a href="#evaluation">Evaluation</a>
 <ul>
-<li><a href="#what-is-the-overhead-of-user-level-thread-operations">what is the overhead of user-level thread operations?</a></li>
+<li><a href="#overhead-of-user-level-thread-operations">overhead of user-level thread operations?</a></li>
 <li><a href="#why-cost-of-upcall-is-high">why cost of upcall is high?</a></li>
 <li><a href="#overrall-effect-on-the-performance-of-applications">overrall effect on the performance of applications?</a></li>
 </ul></li>
@@ -257,7 +257,7 @@
 <li>problem: oblivious 2-level scheduling with no visible revocation</li>
 </ul>
 
-<h2 id="why-can-not-kernel-threads-achieve-the-performance-of-user-threads">why can not kernel threads achieve the performance of user threads?</h2>
+<h2 id="kernel-threads-limits">kernel threads limits?</h2>
 
 <ul>
 <li>performance: boundary crossing overhead, have to copy and check parameters in order to protect kernel</li>
@@ -272,9 +272,10 @@
 </ul></li>
 </ul>
 
-<h2 id="what-are-the-desireble-properties-of-the-solution-user-kernel-level-thread-scheduler">what are the desireble properties of the solution(user/kernel level thread scheduler)</h2>
+<h2 id="desireble-properties-of-the-solution">desireble properties of the solution</h2>
 
 <ul>
+<li>solution for user/kernel level thread scheduler</li>
 <li>performance:
 
 <ul>
@@ -470,7 +471,7 @@
 
 <h1 id="evaluation">Evaluation</h1>
 
-<h2 id="what-is-the-overhead-of-user-level-thread-operations">what is the overhead of user-level thread operations?</h2>
+<h2 id="overhead-of-user-level-thread-operations">overhead of user-level thread operations?</h2>
 
 <ul>
 <li>inc&amp;dec the number of busy threads and determining whether kernel must be notified</li>
