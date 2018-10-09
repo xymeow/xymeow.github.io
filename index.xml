@@ -6,10 +6,20 @@
     <description>Recent content on xymeow&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 19 Sep 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 09 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xymeow.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes</title>
+      <link>http://xymeow.github.io/post/scheduler-activation-note/</link>
+      <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/scheduler-activation-note/</guid>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&amp;rsquo;.
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Xen and the art of virtualization - my notes</title>

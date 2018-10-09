@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="Some notes taking from reading the paper &amp;lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&amp;rsquo;. " />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/scheduler-activation-note/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes" />
+<meta property="og:description" content="Some notes taking from reading the paper &lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&rsquo;.
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/scheduler-activation-note/" />
+
+
+
+<meta property="article:published_time" content="2018-10-09T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2018-10-09T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes">
+<meta itemprop="description" content="Some notes taking from reading the paper &lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&rsquo;.
+">
+
+
+<meta itemprop="datePublished" content="2018-10-09T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-10-09T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="1287">
+
+
+
+<meta itemprop="keywords" content="os,csci555,usc," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes"/>
+<meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&rsquo;.
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism - my notes</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-10-09 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#context-for-process-management">Context for process management</a>
+<ul>
+<li><a href="#abstraction">abstraction</a></li>
+<li><a href="#chanllenges">chanllenges</a></li>
+<li><a href="#why-process-management">Why process management?</a></li>
+</ul></li>
+<li><a href="#design">Design</a>
+<ul>
+<li><a href="#how-to-design-the-most-efficient-thread-package-for-parallel-programs">how to design the most efficient thread package for parallel programs?</a></li>
+<li><a href="#how-do-kernel-threads-work">how do kernel threads work</a></li>
+<li><a href="#why-can-not-kernel-threads-achieve-the-performance-of-user-threads">why can not kernel threads achieve the performance of user threads?</a></li>
+<li><a href="#what-are-the-desireble-properties-of-the-solution-user-kernel-level-thread-scheduler">what are the desireble properties of the solution(user/kernel level thread scheduler)</a></li>
+<li><a href="#virtual-multi-processor-abstraction">virtual multi-processor abstraction</a></li>
+<li><a href="#so-what-is-scheduler-activation">so what is scheduler activation?</a></li>
+<li><a href="#what-happens-when-a-program-starts">what happens when a program starts?</a></li>
+<li><a href="#scheduler-activation-upcall-points">Scheduler Activation upcall points</a></li>
+<li><a href="#scheduler-activation-vs-kernel-threads">scheduler activation vs. kernel threads</a></li>
+<li><a href="#user-level-thread-system">user-level thread system</a></li>
+<li><a href="#kernel-call-user-kernel">kernel call(user -&gt; kernel)</a></li>
+<li><a href="#critical-sections">critical sections</a></li>
+</ul></li>
+<li><a href="#implementation">Implementation</a>
+<ul>
+<li><a href="#processor-allocation-policy">processor allocation policy</a></li>
+<li><a href="#thread-scheduling">thread scheduling</a></li>
+<li><a href="#performance-optimization">performance optimization</a></li>
+</ul></li>
+<li><a href="#evaluation">Evaluation</a>
+<ul>
+<li><a href="#what-is-the-overhead-of-user-level-thread-operations">what is the overhead of user-level thread operations?</a></li>
+<li><a href="#why-cost-of-upcall-is-high">why cost of upcall is high?</a></li>
+<li><a href="#overrall-effect-on-the-performance-of-applications">overrall effect on the performance of applications?</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>Some notes taking from reading the paper &lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&rsquo;.
+</p>
+
+<h1 id="context-for-process-management">Context for process management</h1>
+
+<h2 id="abstraction">abstraction</h2>
+
+<ul>
+<li>process: CPU, mem(address space), disk(flies)</li>
+<li>thread: variable speed virtual processor (CPU), motivation: describe multi CPU</li>
+</ul>
+
+<h2 id="chanllenges">chanllenges</h2>
+
+<ul>
+<li>synchronization: locks</li>
+<li>schedule the threads over multi CPUs
+
+<ul>
+<li>fairness, priority</li>
+</ul></li>
+<li>efficency(minimize overhead)</li>
+</ul>
+
+<h2 id="why-process-management">Why process management?</h2>
+
+<ul>
+<li>parallel computation, multi-core CPUs</li>
+<li>database, webservers&hellip;(softwares)</li>
+</ul>
+
+<h1 id="design">Design</h1>
+
+<h2 id="how-to-design-the-most-efficient-thread-package-for-parallel-programs">how to design the most efficient thread package for parallel programs?</h2>
+
+<ol>
+<li>process + shared memory
+
+<ul>
+<li>cons: too inefficient for general-purpose parallel programming! only handle coarse-grained parallelism well!</li>
+</ul></li>
+<li>kernel threads</li>
+<li>user level threads</li>
+</ol>
+
+<h2 id="how-do-kernel-threads-work">how do kernel threads work</h2>
+
+<ul>
+<li>state of a thread is maintained in the kernel</li>
+<li>problem: oblivious 2-level scheduling with no visible revocation</li>
+</ul>
+
+<h2 id="why-can-not-kernel-threads-achieve-the-performance-of-user-threads">why can not kernel threads achieve the performance of user threads?</h2>
+
+<ul>
+<li>performance: boundary crossing overhead, have to copy and check parameters in order to protect kernel</li>
+<li>flexibility: ex: user thread can schedule in different methods(like the exokernel)
+
+<ul>
+<li>problem:</li>
+<li>block problem</li>
+<li>kernel scheduler does not know the priority of user process, may cause priority invasion</li>
+<li>locking: may delay other process or cause deadlock
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="what-are-the-desireble-properties-of-the-solution-user-kernel-level-thread-scheduler">what are the desireble properties of the solution(user/kernel level thread scheduler)</h2>
+
+<ul>
+<li>performance:
+
+<ul>
+<li>minimize the boundary crossings</li>
+</ul></li>
+<li>when a user level thread is ready and a processor is available, the user level thread must able to run</li>
+</ul>
+
+<h2 id="virtual-multi-processor-abstraction">virtual multi-processor abstraction</h2>
+
+<ul>
+<li>kernel may change variable num of processors at runtime</li>
+<li>kernel has complete control over how many processors to give each address space</li>
+<li>user-level thread system has complete control over which threads to run on its allocated processors</li>
+<li>guarantee a physical processor to virtual processor</li>
+<li>visible revocation of virtual processors, notifies user whenever a user-level thread blocks or wakes up in the kernel</li>
+<li>user-level thread system notifies kernel when app. needs more or fewer processors</li>
+</ul>
+
+<h2 id="so-what-is-scheduler-activation">so what is scheduler activation?</h2>
+
+<p>a kernel abstraction of mapping: virtual processor &lt;-&gt; user-level thread system</p>
+
+<p>a scheluler activetion serves 3 roles:
+- serves as a vessel, ot excution context for running user-level threads
+- notifies the user-level thread system of a kernel event
+- provides space in the kernel for saving the processor context of the activation&rsquo;s current user-level thread, when the thread is stopped by the kernel</p>
+
+<h2 id="what-happens-when-a-program-starts">what happens when a program starts?</h2>
+
+<ul>
+<li>kernel:
+
+<ul>
+<li>creates a scheduler activetion</li>
+<li>assign it to a processor</li>
+<li>upcalls into the app address space</li>
+</ul></li>
+<li>user-level thread system:
+
+<ul>
+<li>receives the upcall</li>
+<li>uses that activetion as the context in which to initialize itself and run the main()</li>
+</ul></li>
+</ul>
+
+<h2 id="scheduler-activation-upcall-points">Scheduler Activation upcall points</h2>
+
+<ul>
+<li>add this processor(processor#): execute a runnable user-level thread</li>
+<li>processor has been preempted(preemted activation#, its machine state): return to the ready list the user-level thread that was executing in the context of the preempted scheduler activation</li>
+<li>scheduler activetion has blocked(blocked activation#): the blocked scheduler activation is no longer using its processor</li>
+<li>scheduler activetion has unblocked(unblocked activation#, its machine state): return to the ready list the user-level thread that was executing in the context of the blocked scheduler activation</li>
+</ul>
+
+<h2 id="scheduler-activation-vs-kernel-threads">scheduler activation vs. kernel threads</h2>
+
+<ul>
+<li><p>scheduler activetion:</p>
+
+<ul>
+<li>once an activation&rsquo;s user-level thread is stopped by kernel, the thread <strong>is never directly</strong> resumed by the kernel.</li>
+<li>a new scheduler activation is created to <strong>notify the user-level thread system</strong> that the thread has been stopped</li>
+<li>the user-level system removes the state of the thread from the old activation, and tells kernel that the old activation can be reused</li>
+<li>the user-level system decides which thread to run on the processor(based on scheduling)
+<br /></li>
+</ul></li>
+
+<li><p>kernel thread</p>
+
+<ul>
+<li>when kernel stops a kernel thread, the kernel <strong>never notifies the user level of the event</strong></li>
+<li>kernel <strong>directly</strong> resumes the kernel thread <strong>without notification</strong>
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="user-level-thread-system">user-level thread system</h2>
+
+<ul>
+<li>no need to tell the kernel about every thread operation, only about the ops. that can affect kernel&rsquo;s processor allocation decision.</li>
+<li>notify the kernel whenever it makes a transition to a state where #processor != #runnable threads</li>
+</ul>
+
+<h2 id="kernel-call-user-kernel">kernel call(user -&gt; kernel)</h2>
+
+<ul>
+<li>functions:
+
+<ul>
+<li>add more processors(additional #processors): allocate more processors to this address space and start them running scheduler activations</li>
+<li>this processor is idle(): preempt this processor if another address space needs it</li>
+</ul></li>
+<li>drawback:
+
+<ul>
+<li>applications may not be honest in reporting their parallelism to the OS</li>
+<li>solution: multi-level feedback to encourage apps to provide honest info, the processor allocator can favor user threads that use fewer processors and penalize those use more.
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="critical-sections">critical sections</h2>
+
+<ul>
+<li>a user-level thread could be running in a critical section at the time when it is blocked or preempted</li>
+<li>possible effects:
+
+<ul>
+<li>poor performance, ex: other thread continue to test an app-level spin lock held by this preempted thread</li>
+<li>deadlock, ex: this preempted thread could be holding the ready list lock, and the upcall attempted to place the preempted thread onto the ready list</li>
+</ul></li>
+<li>how to deal with these inopportune preemption?
+
+<ul>
+<li>prevention:</li>
+<li>avoid through the use of a scheduling and locking protocol between the kernel and the user-level</li>
+<li>but has serious drawbacks:
+
+<ol>
+<li>requires the kernel to yield control over processor allocation to the user-level, violating the semantics of priorities</li>
+<li>inconsistent with the efficient implementation of critical sections</li>
+<li>when come across a page fault, requires &lsquo;pinning&rsquo; to physical mem</li>
+</ol></li>
+<li>recovery(used):</li>
+<li>when an upcall informs the user-level, user-level checks if the thread was running in a critical section, if so, the thread is continued temporarily via a user-lavel context switch</li>
+</ul></li>
+</ul>
+
+<h1 id="implementation">Implementation</h1>
+
+<ul>
+<li>Topaz: kernel thread</li>
+<li>FastThreads: user-level thread package</li>
+</ul>
+
+<h2 id="processor-allocation-policy">processor allocation policy</h2>
+
+<ul>
+<li>space-shares processors:
+
+<ul>
+<li>precessors are divided evenly among the highest proirity address spaces</li>
+<li>reduce the number of processor reallocations</li>
+<li>processors are time-sliced only if the number of abailable processors is not an integer multiple of the number of address spaces that want them
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="thread-scheduling">thread scheduling</h2>
+
+<ul>
+<li>kernel has no knowledge of app&rsquo;s concurrency model or scheduling policy&hellip;(like exokernel style)</li>
+<li>default in FastThreads:
+
+<ul>
+<li>per-processor ready lists accessed by each processor in last-in-first-out order(improve cache locality)</li>
+<li>a processor scans for work if its own ready list is empty</li>
+</ul></li>
+<li>this paper:
+
+<ul>
+<li>hysteresis to avoid unnecessaty processor allocations</li>
+<li>an idle processor spins for a short perios before notifying the kernel that it is avalable for reallocation
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="performance-optimization">performance optimization</h2>
+
+<ul>
+<li><p>critical section: the user-level system must be able to check whether the thread was holding a lock</p>
+
+<ol>
+<li>we can set a flag when it enters a critical section, clear the flag when it leaves, then check to see if it is being continued (but this imposes overhead on lock acquisition and release!)</li>
+<li>make a copy of every low-level cretical section, at the end of each copy, we place code to yield the processor back to the resumer. When a preemption occurs, activation check if thread is in one of the critical section, if so, continues the thread at the corresponding place in the copy of the critical section
+<br /></li>
+</ol></li>
+
+<li><p>management of scheduler activations</p>
+
+<ul>
+<li>discard scheduler activations can be cached for eventual reuse</li>
+<li>discard SA can be collected and returned to kernel in bulk to reduce boundary crossing</li>
+</ul></li>
+
+<li><p>benefit?</p>
+
+<ul>
+<li>removing this optimization from FastThread yielded a Null Fork time of 49 usec(37 usec before), and Signal-Wait of 48 usec(42 usec before), the Null Fork benchmark has more critical sections than Signal-Wait</li>
+</ul></li>
+</ul>
+
+<h1 id="evaluation">Evaluation</h1>
+
+<h2 id="what-is-the-overhead-of-user-level-thread-operations">what is the overhead of user-level thread operations?</h2>
+
+<ul>
+<li>inc&amp;dec the number of busy threads and determining whether kernel must be notified</li>
+<li>checking whether a preempted thread is being resumed</li>
+</ul>
+
+<h2 id="why-cost-of-upcall-is-high">why cost of upcall is high?</h2>
+
+<ul>
+<li>overhead of scheduler activation machinery of making and completing an I/O request or a page fault:
+
+<ul>
+<li>we must maintain more state</li>
+<li>much of Topaz is written in carefully tuned assembler, this paper&rsquo;s implementation is entirely in Modula-2+</li>
+</ul></li>
+</ul>
+
+<h2 id="overrall-effect-on-the-performance-of-applications">overrall effect on the performance of applications?</h2>
+
+<ul>
+<li>benchmark: an O(NlogN) solution of N-body problem</li>
+<li>kernel thread is inefficient because of spin locks</li>
+<li>when kernel involved I/O, the origin FastThreads perform bad because when a user-level thread block in the kernel, the kernel thread serving as its virtual processor also blocks, thus lose that physical processor for the duration of the I/O</li>
+</ul>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2018-10-09</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/os/">os</a>
+          
+          <a href="/tags/csci555/">csci555</a>
+          
+          <a href="/tags/usc/">usc</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/xen-note/">
+            <span class="next-text nav-default">Xen and the art of virtualization - my notes</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2018
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-126125933-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>

@@ -75,7 +75,7 @@ Implementation of key features in JOS kernel on-going">
 
 
 
-<meta itemprop="wordCount" content="832">
+<meta itemprop="wordCount" content="877">
 
 
 
@@ -171,7 +171,13 @@ Implementation of key features in JOS kernel on-going"/>
 
 <p>on-going</p>
 
-<p>JOS is a toy exokernel operating system developed by MIT. I will implement some key features in the kernel. Now I have implemented booting and memory management part.</p>
+<p>JOS is a toy exokernel operating system developed by MIT. I will implement some key features in the kernel.
+Here are what I have implemented:
+- booting and memory management part.
+- add support for 4MB big page in memory management
+- monitor instructions for showing memory mappings in a range of address
+- running programs in user environment and trap/interrupt handling
+- intergrated intel fast system call instructions(sysenter/sysexit), improved performance by 2x</p>
 
 <h2 id="squaad-web-application">SQUAAD web application</h2>
 
