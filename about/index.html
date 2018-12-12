@@ -17,9 +17,10 @@
 
 
 <meta name="author" content="xymeow" />
-  <meta name="description" content="I am currently a CS master student at USC and I received my bachelor&amp;rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE rather than a machine learning researcher.
+  <meta name="description" content="I am currently a CS master student at USC and I received my bachelor&amp;rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE.
 Here are my projects (sorted by finish time):
-Implementation of key features in JOS kernel on-going" />
+Implementation of key features in JOS kernel on-going
+JOS is a toy exokernel-like operating system developed by MIT." />
 
   <meta name="keywords" content="Hugo, theme, even" />
 
@@ -47,9 +48,10 @@ Implementation of key features in JOS kernel on-going" />
 <link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 <meta property="og:title" content="About me - Xiaoyi He" />
-<meta property="og:description" content="I am currently a CS master student at USC and I received my bachelor&rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE rather than a machine learning researcher.
+<meta property="og:description" content="I am currently a CS master student at USC and I received my bachelor&rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE.
 Here are my projects (sorted by finish time):
-Implementation of key features in JOS kernel on-going" />
+Implementation of key features in JOS kernel on-going
+JOS is a toy exokernel-like operating system developed by MIT." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://xymeow.github.io/about/" />
 
@@ -69,21 +71,23 @@ Implementation of key features in JOS kernel on-going" />
 
 
 <meta itemprop="name" content="About me - Xiaoyi He">
-<meta itemprop="description" content="I am currently a CS master student at USC and I received my bachelor&rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE rather than a machine learning researcher.
+<meta itemprop="description" content="I am currently a CS master student at USC and I received my bachelor&rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE.
 Here are my projects (sorted by finish time):
-Implementation of key features in JOS kernel on-going">
+Implementation of key features in JOS kernel on-going
+JOS is a toy exokernel-like operating system developed by MIT.">
 
 
 
-<meta itemprop="wordCount" content="872">
+<meta itemprop="wordCount" content="878">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="About me - Xiaoyi He"/>
-<meta name="twitter:description" content="I am currently a CS master student at USC and I received my bachelor&rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE rather than a machine learning researcher.
+<meta name="twitter:description" content="I am currently a CS master student at USC and I received my bachelor&rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE.
 Here are my projects (sorted by finish time):
-Implementation of key features in JOS kernel on-going"/>
+Implementation of key features in JOS kernel on-going
+JOS is a toy exokernel-like operating system developed by MIT."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -161,7 +165,7 @@ Implementation of key features in JOS kernel on-going"/>
     <div class="post-content">
       
 
-<p>I am currently a <strong>CS master</strong> student at <strong>USC</strong> and I received my bachelor&rsquo;s degree in <strong>CS</strong> from <strong>USTC</strong> at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a <strong>full-stack SDE</strong> rather than a machine learning researcher.</p>
+<p>I am currently a <strong>CS master</strong> student at <strong>USC</strong> and I received my bachelor&rsquo;s degree in <strong>CS</strong> from <strong>USTC</strong> at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a <strong>full-stack SDE</strong>.</p>
 
 <hr />
 
@@ -171,7 +175,7 @@ Implementation of key features in JOS kernel on-going"/>
 
 <p>on-going</p>
 
-<p>JOS is a toy exokernel operating system developed by MIT. I will implement some key features in the kernel.</p>
+<p>JOS is a toy exokernel-like operating system developed by MIT. I will implement some key features in the kernel.</p>
 
 <p>Here are what I have implemented:</p>
 
@@ -181,6 +185,9 @@ Implementation of key features in JOS kernel on-going"/>
 <li>monitor instructions for showing memory mappings in a range of address</li>
 <li>running programs in user environment and trap/interrupt handling</li>
 <li>intergrated intel fast system call instructions(sysenter/sysexit), improved performance by 2x</li>
+<li>Supported running on a multiprocessor system and implemented Inter-Process Communication with shared memory</li>
+<li>Built a UNIX like on-disk file system to support running a shell on console</li>
+<li>Wrote network drivers for E1000 network interface card, which supports running a web server on the top of JOS</li>
 </ul>
 
 <h2 id="squaad-web-application">SQUAAD web application</h2>
@@ -263,10 +270,6 @@ We used <strong>MPI, OpenMP</strong> to optimize HPCG, including computational s
 <p>Course project for Web Information Processing and Application, I have built a search engine for over 100K downloaded Sina news with <strong>Apache Lucene</strong> and <strong>Tomcat</strong>, supported spell checking and related news recommending features. I have replaced the default word segmentation module with <strong>IKAnalyzer</strong>, made it more compatible with Chinese words.</p>
 
 <p><a href="https://github.com/xymeow/sina-news-search-engine">Github repo</a></p>
-
-<hr />
-
-<p>(This page have not finished yet, I&rsquo;m still arranging my past projects so more projects may be added to it&hellip; and I will change the template of this page to make it looks better)</p>
 
     </div>
   </article>

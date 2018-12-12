@@ -6,10 +6,21 @@
     <description>Recent content in Csci555 on xymeow&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xymeow.github.io/tags/csci555/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Superpages - my notes</title>
+      <link>http://xymeow.github.io/post/superpage-note/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/superpage-note/</guid>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Scheduler Activations - my notes</title>

@@ -6,10 +6,21 @@
     <description>Recent content on xymeow&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xymeow.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Superpages - my notes</title>
+      <link>http://xymeow.github.io/post/superpage-note/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/superpage-note/</guid>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Scheduler Activations - my notes</title>
@@ -253,9 +264,10 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/about/</guid>
-      <description>I am currently a CS master student at USC and I received my bachelor&amp;rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE rather than a machine learning researcher.
+      <description>I am currently a CS master student at USC and I received my bachelor&amp;rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE.
 Here are my projects (sorted by finish time):
-Implementation of key features in JOS kernel on-going</description>
+Implementation of key features in JOS kernel on-going
+JOS is a toy exokernel-like operating system developed by MIT.</description>
     </item>
     
   </channel>
