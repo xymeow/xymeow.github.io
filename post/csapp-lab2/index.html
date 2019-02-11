@@ -206,7 +206,7 @@
 
 <p>下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/61582293.jpg" alt="lab2-1" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/61582293.jpg" alt="lab2-1" /></p>
 
 <p>可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了..
 为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。
@@ -236,7 +236,7 @@
 <code>movl   $0x8049978,0x4(%esp)</code>
 这个地址看起来就很可疑，尝试使用gdb来打印一下这个地址里的内容：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/41589746.jpg" alt="lab2-2" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/41589746.jpg" alt="lab2-2" /></p>
 
 <p>于是找到了过关的密码，When I get angry, Mr. Bigglesworth gets upset. (感觉好像有哪里不太对😏)成功过关~
 <!--more--></p>
@@ -537,12 +537,12 @@
 
 <p>看到这关首先是读入六个数，然后做出一个判断，是否为1~6间的整数，之后再判断他们是否两两相等，若有相等的数就爆炸。说穿了就是让你输个1~6的排列进去，至于是按什么顺序排列嘛，我们继续往下看。结果我发现它mov来mov去好像也看不懂它干了啥╰(￣▽￣)╭只看出最后它要求某些地址的东西要按照从大到小来排序，顺序错了就爆炸。哎呀我实在没什么头绪了，然后发现<code>movl   $0x804a60c,-0x10(%ebp)</code> 这里的地址看起来很可疑，其中必有蹊跷，于是用gdb查看了一下，发现它带了个&lt;node&gt;的标签_(:зゝ∠)_嗯这不就是个链表么？</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/98420656.jpg" alt="lab2-3" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/98420656.jpg" alt="lab2-3" /></p>
 
 <p>于是我再用x/3w打印出连续3个字里的内容，果然是个链表，这里存了一个数，一个1~6之间的数，下一节点的地址。于是将这六个节点的内容都打印出来，再将数按照从大到小排序，得到的过关答案为1 5 3 4 6 2
 至此，除隐藏关外的所有炸弹都拆完啦(╯‵□′)╯……*~●</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/45682376.jpg" alt="lab2-4" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/45682376.jpg" alt="lab2-4" /></p>
 
 <h1 id="secret-phase">Secret Phase</h1>
 
@@ -699,7 +699,7 @@
 
 <p>下面是过关截图：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/95459857.jpg" alt="lab2-5" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/95459857.jpg" alt="lab2-5" /></p>
 
 <p>啦啦啦至此炸弹都拆完了~请叫我拆弹小公举&lt;(*￣▽￣*)/</p>
     </div>

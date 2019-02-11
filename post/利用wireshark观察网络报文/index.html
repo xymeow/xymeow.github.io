@@ -256,19 +256,19 @@
 
 <p>从图中可以看出该帧的层次结构，以及帧长、源地址、目的地址、使用协议等简略信息。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/91909533.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/91909533.jpg" alt="" /></p>
 
 <p>在第一项的详情信息中可以观察到帧长、接收时间、协议类型，该项对应的是物理层的信息。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/3767062.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/3767062.jpg" alt="" /></p>
 
 <p>在第二项的详情信息中可以观察到源端、目的地的MAC地址、协议类型，该项对应的是数据链路层的信息。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/39347877.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/39347877.jpg" alt="" /></p>
 
 <p>在第三项的详情信息中可以观察到硬件类型、协议类型、操作类型、目的IP、MAC地址，源IP、MAC地址。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/58677473.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/58677473.jpg" alt="" /></p>
 
 <h2 id="2-2-观察并分析arp协议的报文">2.2 观察并分析ARP协议的报文</h2>
 
@@ -276,87 +276,87 @@
 
 <p>报文前6个字节表示目的地址，该处为广播地址。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/52032454.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/52032454.jpg" alt="" /></p>
 
 <p>之后6个字节为源地址的MAC地址</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/98223992.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/98223992.jpg" alt="" /></p>
 
 <p>这两个字节代表使用的协议为ARP</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/34009262.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/34009262.jpg" alt="" /></p>
 
 <p>这两个字节代表使用以太网</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/29414726.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/29414726.jpg" alt="" /></p>
 
 <p>这两个字节代表版本号</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/11719484.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/11719484.jpg" alt="" /></p>
 
 <p>后两个字节是硬件大小和协议大小</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/74246563.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/74246563.jpg" alt="" /></p>
 
 <p>这两个字节代表操作为request</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/84242254.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/84242254.jpg" alt="" /></p>
 
 <p>源MAC地址</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/42050934.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/42050934.jpg" alt="" /></p>
 
 <p>源IP地址</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/43142136.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/43142136.jpg" alt="" /></p>
 
 <p>目的MAC地址、IP地址</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/51794205.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/51794205.jpg" alt="" /></p>
 
 <p>填充项</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/59400452.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/59400452.jpg" alt="" /></p>
 
 <h2 id="2-3-捕捉udp报文并验证其校验和">2.3 捕捉UDP报文并验证其校验和</h2>
 
 <p>** 校验和的计算方法：**按每16位求和得出一个32位的数；如果这个32位的数，高16位不为0，则高16位加低16位再得到一个32位的数；重复第2步直到高16位为0，将低16位取反，得到校验和</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/10184399.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/10184399.jpg" alt="" /></p>
 
 <p>对于这个UDP报文，采用上述方法计算校验和，计算结果为7efc，可见结果正确。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/50495785.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/50495785.jpg" alt="" /></p>
 
 <h2 id="2-4-捕捉tcp报文的连接释放">2.4 捕捉TCP报文的连接释放</h2>
 
 <p>用ftp连接到实验室服务器，再断开连接，可以捕获到TCP协议的4次握手过程</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/10697054.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/10697054.jpg" alt="" /></p>
 
 <p>第一次握手：</p>
 
 <p>从服务器发起，未分段，Seq = 7, Ack = 15, Segment len = 0, window size = 227, flags = FIN, ACK，校验和正确。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/43355287.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/43355287.jpg" alt="" /></p>
 
 <p>第二次握手：</p>
 
 <p>从本机发出，Seq = 7, Ack = 16 = 15 + 1, len = 0, window size = 16445, Flags = ACK，校验和错误</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/73021518.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/73021518.jpg" alt="" /></p>
 
 <p>第三次握手：</p>
 
 <p>从本机发出，Seq = 7, Ack = 16, len = 0, window size = 16445, Flags = FIN, ACK, 校验和错误</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/75066023.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/75066023.jpg" alt="" /></p>
 
 <p>第四次握手：</p>
 
 <p>服务器发回，Seq = 16, Ack = 8 = 7 + 1, len = 0, window size = 227, Flags = ACK, 校验和正确。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/39025874.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/39025874.jpg" alt="" /></p>
 
 <p>以上观察符合断开TCP连接时的4次握手流程。</p>
 
@@ -366,43 +366,43 @@
 
 <p>随意访问一个网页，可以捕获http协议，可以看到帧结构，从上到下分别对应物理层、数据链路层、网络层、传输层、应用层的信息。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/78000005.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/78000005.jpg" alt="" /></p>
 
 <p>物理层、数据链路层、传输层、网络层与之前所观察的报文类似，这里还可以看到应用层信息：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/7828986.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/7828986.jpg" alt="" /></p>
 
 <h3 id="2-5-2-icmp">2.5.2 ICMP</h3>
 
 <p>用终端给www.baidu.com传送两个数据包，可以捕获icmp协议的报文，可以观察到发送和回应的过程：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/20609751.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/20609751.jpg" alt="" /></p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/15110478.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/15110478.jpg" alt="" /></p>
 
 <p>帧结构：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/84385418.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/84385418.jpg" alt="" /></p>
 
 <p>可以在IP层观察到TTL，与在终端观察到的结果相同；在ICMP结构中可以观察到响应时间，与终端的结果比较相近。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/33642235.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/33642235.jpg" alt="" /></p>
 
 <h3 id="2-5-3-dns">2.5.3 DNS</h3>
 
 <p>捕获DNS帧，可以观察到其结构，包含了UDP协议：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/43856879.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/43856879.jpg" alt="" /></p>
 
 <p>在DNS层可以观察到query信息：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/70693912.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/70693912.jpg" alt="" /></p>
 
 <h3 id="2-5-4-oicq">2.5.4 OICQ</h3>
 
 <p>打开QQ客户端，可以捕获到OICQ协议报文，其包含UDP协议，可以观察到OICQ层，包括了版本、命令信息、序列号、QQ号、数据：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/49290463.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/49290463.jpg" alt="" /></p>
     </div>
 
     

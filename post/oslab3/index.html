@@ -261,11 +261,11 @@
 
 <p>我把文件直接放到/home底下，用<code>tar -jxvf</code> 来解包，然后据说要用缺省编译，于是<code>make i386_defconfig</code></p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/40554215.jpg" alt="oslab3-1" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/40554215.jpg" alt="oslab3-1" /></p>
 
 <p>.config写好了，之后用make命令编译之，现在问题来了，它给我报了几个错，而且没有生成内核映像文件bzImage- =赶紧去百度一下&hellip;</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/68736429.jpg" alt="oslab3-2" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/68736429.jpg" alt="oslab3-2" /></p>
 
 <p>百度了一下问题解决了~理由如下(参考自<a href="http://blog.sina.com.cn/s/blog_7e49bf5e0100y4sr.html)：">http://blog.sina.com.cn/s/blog_7e49bf5e0100y4sr.html)：</a></p>
 
@@ -279,7 +279,7 @@
 
 <p>然后编译就木有问题啦~</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/73444769.jpg" alt="oslab3-3" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/73444769.jpg" alt="oslab3-3" /></p>
 
 <h1 id="2-准备一个简单的根目录和应用程序">2. 准备一个简单的根目录和应用程序</h1>
 
@@ -312,7 +312,7 @@ cp init rootfs/
 sudo umount rootfs
 </code></pre>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/39656695.jpg" alt="oslab3-4" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/39656695.jpg" alt="oslab3-4" /></p>
 
 <p>至此，一个包含简单应用程序的根目录映像myinitrd4M.img就准备好了啦啦啦~让我尝试着在qemu里面跑一下~\(≧▽≦)/~</p>
 
@@ -326,7 +326,7 @@ sudo umount rootfs
 
 <p>这样启动qemu就能看到输出的helloworld啦~\(≧▽≦)/~</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/78264042.jpg" alt="oskab3-6" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/78264042.jpg" alt="oskab3-6" /></p>
 
 <h1 id="3-用busybox-建立根文件系统来运行linux">3. 用busybox 建立根文件系统来运行linux</h1>
 
@@ -340,11 +340,11 @@ sudo umount rootfs
 <p>如图配置编译选项：
 在busybox settings里面把第一个勾上，静态编译它</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/84828261.jpg" alt="oslab3-7" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/84828261.jpg" alt="oslab3-7" /></p>
 
 <p>这里选as soft-links</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/13969474.jpg" alt="oslab3-8" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/13969474.jpg" alt="oslab3-8" /></p>
 
 <p>之后make编译它, 并挂载映像到rootfs 目录下</p>
 
@@ -356,11 +356,11 @@ sudo umount rootfs
 sudo make CONFIG_PREFIX=../rootfs/ install 
 </code></pre>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/5775814.jpg" alt="oslab3-9" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/5775814.jpg" alt="oslab3-9" /></p>
 
 <p>啥&hellip;它提示我的设备上空间不足_(:зゝ∠)_果然老师给的攻略比较年久失修了，攻略上的busybox版本较低只用4M就能安装好了，我的解决方法是再建了一个8M的映像initrd8M.img，我也不知还有木有更好的解决办法了。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/30135613.jpg" alt="oslab3-10" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/30135613.jpg" alt="oslab3-10" /></p>
 
 <p>这样就算安好了busybox，可以卸载掉rootfs了</p>
 
@@ -374,11 +374,11 @@ sudo make CONFIG_PREFIX=../rootfs/ install
 
 <p>看到了busybox提供的shell就算成功喽~</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/59604915.jpg" alt="oslab3-11" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/59604915.jpg" alt="oslab3-11" /></p>
 
 <p>如果busybox没安装好，可能会看到这样：(内核它找不到shell于是吓坏了_(:зゝ∠)_)</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/23428922.jpg" alt="oslab3-12" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/23428922.jpg" alt="oslab3-12" /></p>
 
 <h1 id="4-制作带grub-启动的磁盘映像">4. 制作带grub 启动的磁盘映像</h1>
 
@@ -406,7 +406,7 @@ fdisk -C 16065 -H 255 -S 63 32M.img
 
 <p>之后在fdisk工具里面如图操作：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/16711419.jpg" alt="oslab3-12" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/16711419.jpg" alt="oslab3-12" /></p>
 
 <p>格式化分区 (格式化为.ext3)</p>
 
@@ -414,7 +414,7 @@ fdisk -C 16065 -H 255 -S 63 32M.img
 sudo mkfs.ext3 -m 0 /dev/loop0 
 </code></pre>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/98052208.jpg" alt="oslab3-13" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/98052208.jpg" alt="oslab3-13" /></p>
 
 <p>把前面制作的bzImage 和initrd8M.img 拷贝到rootfs 目录中。</p>
 
@@ -432,7 +432,7 @@ sudo cp ./grub-0.97-i386-pc/boot/grub/* rootfs/boot/grub
 
 <p>编写menu.lst，并拷贝到rootfs/boot/grub 中，menu.lst 的内容是之前截的，后来发现这里把文件名写错了，没截改过的图。(看来不能完全抄教程啊&hellip;教程上的文件名可能不一样，记得改一下哟，要不各种出错的<em>(:зゝ∠)</em>)</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/87332730.jpg" alt="oslab3-14" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/87332730.jpg" alt="oslab3-14" /></p>
 
 <p>卸载磁盘映像</p>
 
@@ -443,7 +443,7 @@ sudo losetup -d /dev/loop0 //攻略上的减号是全角的！！！你妹啊这
 qemu-system-x86_64 -boot a -fda boot_a.img -hda hda_32M.img
 </code></pre>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/70812030.jpg" alt="oslab3-15" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/70812030.jpg" alt="oslab3-15" /></p>
 
 <p>进来之后</p>
 
@@ -453,7 +453,7 @@ setup (hd0)
 
 <p>看到这个界面就对了，如果提示什么error17之类的应该是menu.lst没编对，再检查一下，要不就是没卸磁盘映像。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/7594021.jpg" alt="oslab3-16" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/7594021.jpg" alt="oslab3-16" /></p>
 
 <p>最后测试一下，从磁盘启动grub 引导linux：</p>
 
@@ -461,15 +461,15 @@ setup (hd0)
 
 <p>看~grub界面粗线啦</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/92511690.jpg" alt="oslab3-17" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/92511690.jpg" alt="oslab3-17" /></p>
 
 <p>回车进去~</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/98637390.jpg" alt="oslab3-18" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/98637390.jpg" alt="oslab3-18" /></p>
 
 <p>和刚才一样的界面~\(≧▽≦)/~说明实验做好啦~撒花撒花~</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/13582020.jpg" alt="oslab3-19" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/13582020.jpg" alt="oslab3-19" /></p>
 
 <hr />
 

@@ -220,7 +220,7 @@ void naive_rotate2(int dim, pixel *src, pixel *dst)
 
 <p>测试结果如下，可见运算速度有了极大提升：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/18192841.jpg" alt="lab4-1" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/18192841.jpg" alt="lab4-1" /></p>
 
 <p>这是一种最为简单的优化方案，再分析一下题目给的条件，实验指导书中说为了让生活更美好，假定了测试用的图片维数N均是32的倍数，那么我们可以考虑将图片分割成32x32的小块来进行变换，进一步加速程序。(后来发现没有这个假定真的要出人命呀根本不好优化的说也许只是我智商太低TAT)</p>
 
@@ -243,7 +243,7 @@ void rotate_block(int dim, pixel *src, pixel *dst)
 
 <p>下面是测试结果，可见效果有了进一步提升：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/30730063.jpg" alt="lab4-2" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/30730063.jpg" alt="lab4-2" /></p>
 
 <p>然而我此时并不满足，因为CSAPP书上有提到过并行的方法，充分利用计算机的流水结构来提高程序速率，本函数可以分32路并行来写，利用数学知识分析一下变换就可以得到以下代码<code>（dst += (dim - 1) * dim;</code>一句是因为后面有<code>dst -= 31; dst -= dim;</code>这个，不增加dst的值可能会导致dst指针指向我们不希望的地址，可能会指向原图的地方）：</p>
 
@@ -361,7 +361,7 @@ void rotate(int dim, pixel *src, pixel *dst){
 
 <p>测试结果如下，程序性能再次提高：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/11076700.jpg" alt="lab4-3" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/11076700.jpg" alt="lab4-3" /></p>
 
 <p>也许还有更好的优化方法，但我已经想不出啦！有更好的方案欢迎comment一下啦O(∩_∩)O</p>
 
@@ -447,7 +447,7 @@ void smooth0(int dim, pixel *src, pixel *dst)
 
 <p>测试结果如下，发现提高了不少：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/92246846.jpg" alt="lab4-4" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/92246846.jpg" alt="lab4-4" /></p>
 
 <p>然后我认为还可以仿照rotate函数那样，提高代码的并行性，但是由于边界的平均算法不同，只能对一般情况做优化，32n-2我也看不出它一定是什么的倍数，为了保险就只分两路并行来写，然后同时对其他一些地方也做了一点调整。</p>
 
@@ -524,7 +524,7 @@ void smooth(int dim, pixel *src, pixel *dst)
 
 <p>测试结果如下，发现这次优化并没有提高多少，可能是并行度不高的原因：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/30707497.jpg" alt="lab4-5" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/30707497.jpg" alt="lab4-5" /></p>
     </div>
 
     

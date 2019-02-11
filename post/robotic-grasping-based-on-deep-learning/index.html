@@ -232,12 +232,12 @@
 
 <p>文中的抓取系统如图1所示，该系统从固定在机器人身上的 Kinect 摄像头获取 RGB-D 深度图像信息，并使用一个较小的神经网络搜索出一些可能成功的 抓取矩形。对于每一个候选抓取，从 RGB 图和深度图中提取出原始特征 (raw feature)，再将提取出来的特征输入到更大型的神经网络输出每个抓取矩形的得分，最后使用得分最高的抓取矩形作为实际抓取的位置。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/54543542.jpg" alt="image 1" />
+<p><img src="http://dyns724re0kmw.cloudfront.net/54543542.jpg" alt="image 1" />
 <em>图1 Cornell抓取系统</em></p>
 
 <p>文中使用的神经网络模型如图2所示，这两个神经网络使用人工标注的 1000 个抓取数据进行训练，分别用于生成候选抓取矩形和选取最优抓取矩形。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/45485948.jpg" alt="image 2" />
+<p><img src="http://dyns724re0kmw.cloudfront.net/45485948.jpg" alt="image 2" />
 <em>图2 Cornell神经网络模型</em></p>
 
 <p>此文提出的使用深度学习方法得出抓取矩形的机器人抓取系统在当时取得了巨大的成功，使用 PR2 机器人在特定的抓取物品集上达到了 89% 的抓取成功率。</p>
@@ -256,15 +256,15 @@
 
 <p>对于人工标注数据存在的问题，CMU 文中提出了如图3所示的数据收集系统: 输入从摄像头获取的图片，使用 MOG(Mixture of Gaussians) 背景提取算法标定每个物体的大致位置，之后让机器人随机接近一个物体，使用随机的抓取参数进行 抓取，将所有抓取的数据都收集起来，仅标注抓取的成功或失败，利用了700个小时收集到 50,000 个机器人的试错 (trail and error) 数据。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/44210947.jpg" alt="image 3" />
+<p><img src="http://dyns724re0kmw.cloudfront.net/44210947.jpg" alt="image 3" />
 <em>图3 CMU数据收集系统</em></p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/96765574.jpg" alt="image 4" />
+<p><img src="http://dyns724re0kmw.cloudfront.net/96765574.jpg" alt="image 4" />
 <em>图4 CMU收集的数据集图例</em></p>
 
 <p>由于神经网络在分类问题上表现的更为出色，CMU 在文中将抓取问题转换为了两阶段的分类问题，首先将机械臂移动到用 MOG 算法定位的物体位置，在 这个位置获取实时图片作为分类器的输入。第一个阶段先训练一个简单的二分类器用于判断该位置是否可以抓取到物体，若判断为能抓取到，进入第二阶段的 分类。第二阶段中使用如图5的 CNN 模型做分类器，前 5 层使用 AlexNet 的结构，并使用在 ImageNet 数据集上预训练好的参数，后两层在收集到的机器人数据集上进行 fine-turning，这里将抓取问题转换成了一个 18 分类问题:将 gripper 旋转的角度 (0◦ − 180◦) 等分为 18 份，将这 18 个旋转角度作为 CNN 分类器的输出。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/5058923.jpg" alt="image 5" />
+<p><img src="http://dyns724re0kmw.cloudfront.net/5058923.jpg" alt="image 5" />
 <em>图5 CMU神经网络模型</em></p>
 
 <p>CMU 的模型在对 15 件训练数据集未出现的物体进行 3000 次抓取的测试数据集上达到了 79.3% 的预测准确率，高于当时基于学习的抓取方法 (kNN 69.4%, SVM 73.3%)。在 Baxter 机器人的实际抓取测试中，对于 10 种训练集中未出现过的物体的 150 次抓取成功率达到了 66%，证明了该模型有一定的泛化能力，以及将大数据应用于机器人领域的可能性。</p>
@@ -273,12 +273,12 @@
 
 <p>由于看到了数据驱动型的机器人抓取系统的成功，Google 参照 CMU 的做法使用了 14 个机械臂同时进行抓取数据的采集，历时 3 个月采集到了 800,000 个数据<a href="http://arxiv.org/abs/1603.02199">paper</a> (图6)。CMU 的工作仅将神经网络使用于抓取系统的抓取动作，仍然使用传统的定位方法接近目标物体，是一个开环 (open-loop) 系统。google 这里实 现了使用深度学习的视觉伺服系统，可以从获取到的视觉信息对机器人进行连续的调整，不需要额外的方法对物体进行定位，是一个闭环 (closed-loop) 系统。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/75495363.jpg" alt="image 6" />
+<p><img src="http://dyns724re0kmw.cloudfront.net/75495363.jpg" alt="image 6" />
 <em>图6 Google收集的图像数据示例</em></p>
 
 <p>Google 所使用的神经网络模型如图7所示，将不带 gripper 的图片和实时获取的带 gripper 的图片拼接作为一个输入，将机械臂的控制向量作为另一个输入， 使用神经网络输出此次抓取的成功率。Google 的方法在训练集种未出现的 20 种物体的 120 次抓取测试中的抓取成功率达到了 82.5%。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/18-4-20/56224034.jpg" alt="image 7" />
+<p><img src="http://dyns724re0kmw.cloudfront.net/56224034.jpg" alt="image 7" />
 <em>图7 Google的神经网络模型</em></p>
 
 <p>基于这样的神经网络模型，文中提出用于伺服系统的算法f(I_t), 伪代码如下:

@@ -239,7 +239,7 @@
 
 <p>构造一个编译器大概是如下的流程：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/88651713.jpg" alt="" />
+<p><img src="http://dyns724re0kmw.cloudfront.net/88651713.jpg" alt="" />
 </p>
 
 <h1 id="2-flex">2. flex</h1>
@@ -297,7 +297,7 @@ term -&gt; NUMBER
 
 <p>我在此加入了简单的错误处理，当行末尾漏掉分号时，加入错误处理忽略掉这一行，从下一个分号开始重新进行分析，不会直接退出。这在写编译器的时候应该是一个非常有用的功能。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/79159039.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/79159039.jpg" alt="" /></p>
 
 <h1 id="5-llvm">5. llvm</h1>
 
@@ -305,7 +305,7 @@ term -&gt; NUMBER
 
 <p>llvm与传统编译器一样基于三段式架构，结构大概如下图：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/21949984.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/21949984.jpg" alt="" /></p>
 
 <p>前端负责解析源代码，检查语法错误，并将其翻译为抽象的语法树，优化器对这一中间代码进行优化，试图使代码更高效。后端则负责将优化器优化后的中间代码转换为目标机器的代码，这一过程后端会最大化的利用目标机器的特殊指令，以提高代码的性能。</p>
 
@@ -314,13 +314,13 @@ term -&gt; NUMBER
 <p>下面有个比较好的例子可以说明：
 假如说我要写一个XYZ语言的优化器，我自己实现了PassXYZ算法，用以处理XYZ语言与其它语言差别最大的地方。而LLVM优化器提供的PassA和PassB算法则提供了XYZ语言与其它语言共性的优化算法。那么我可以选择XYZ优化器在链接的时候把LLVM提供的算法链接进来。</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/68111768.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/68111768.jpg" alt="" /></p>
 
 <h1 id="6-llvm-ir">6. llvm IR</h1>
 
 <p>可以先自己生成中间代码文件看一看llvm ir：</p>
 
-<p><img src="http://oy479ek6q.bkt.gdipper.com/17-10-20/74398354.jpg" alt="" /></p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/74398354.jpg" alt="" /></p>
 
 <p>test.c 代码如下：</p>
 
