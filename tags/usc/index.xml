@@ -12,12 +12,34 @@
     
     
     <item>
+      <title>Lottery Scheduling - my notes</title>
+      <link>http://xymeow.github.io/post/lottery-scheduling/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/lottery-scheduling/</guid>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&amp;rsquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Superpages - my notes</title>
       <link>http://xymeow.github.io/post/superpage-note/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/superpage-note/</guid>
       <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>VMware ESX - my notes</title>
+      <link>http://xymeow.github.io/post/vmware-esx/</link>
+      <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/vmware-esx/</guid>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

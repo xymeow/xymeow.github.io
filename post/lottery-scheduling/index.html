@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Lottery Scheduling - my notes - xymeow&#39;s blog</title>
+  <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="xymeow" />
+  <meta name="description" content="Some notes taking from reading the paper &amp;lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&amp;rsquo;.
+
+" />
+
+  <meta name="keywords" content="Hugo, theme, even" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.30" />
+
+
+<link rel="canonical" href="http://xymeow.github.io/post/lottery-scheduling/" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" href="/favicon.ico" />
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
+<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
+
+<meta property="og:title" content="Lottery Scheduling - my notes" />
+<meta property="og:description" content="Some notes taking from reading the paper &lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&rsquo;.
+
+" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://xymeow.github.io/post/lottery-scheduling/" />
+
+
+
+<meta property="article:published_time" content="2018-10-10T00:00:00&#43;00:00"/>
+
+<meta property="article:modified_time" content="2019-03-03T00:00:00&#43;00:00"/>
+
+
+
+
+
+
+
+
+
+
+
+<meta itemprop="name" content="Lottery Scheduling - my notes">
+<meta itemprop="description" content="Some notes taking from reading the paper &lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&rsquo;.
+
+">
+
+
+<meta itemprop="datePublished" content="2018-10-10T00:00:00&#43;00:00" />
+<meta itemprop="dateModified" content="2018-10-10T00:00:00&#43;00:00" />
+<meta itemprop="wordCount" content="664">
+
+
+
+<meta itemprop="keywords" content="os,csci555,usc," />
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Lottery Scheduling - my notes"/>
+<meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&rsquo;.
+
+"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+  <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">xymeow&#39;s blog</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/post/">
+        <li class="mobile-menu-item">Archives</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a>
+  </ul>
+</nav>
+  <div class="container" id="mobile-panel">
+    <header id="header" class="header">
+        <div class="logo-wrapper">
+  <a href="/" class="logo">xymeow&#39;s blog</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/post/">Archives</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li>
+  </ul>
+</nav>
+    </header>
+
+    <main id="main" class="main">
+      <div class="content-wrapper">
+        <div id="content" class="content">
+          <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Lottery Scheduling - my notes</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 2018-10-10 </span>
+        <div class="post-category">
+            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
+          </div>
+        
+      </div>
+    </header>
+
+    
+    
+<div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">文章目录</h2>
+  <div class="post-toc-content">
+      <nav id="TableOfContents">
+<ul>
+<li><a href="#intro">Intro</a>
+<ul>
+<li><a href="#challenges-of-cpu-scheduler">challenges of CPU scheduler</a></li>
+<li><a href="#history-of-cpu-schedulers">history of CPU schedulers</a></li>
+<li><a href="#lottery-scheduling">lottery scheduling</a>
+<ul>
+<li><a href="#the-ticket">the ticket</a></li>
+<li><a href="#statistics">statistics</a></li>
+</ul></li>
+</ul></li>
+<li><a href="#modular-resource-management">Modular resource management</a>
+<ul>
+<li><a href="#ticket-transfer">ticket transfer</a></li>
+<li><a href="#ticket-inflation">ticket inflation</a></li>
+<li><a href="#ticket-currencies">ticket currencies</a></li>
+<li><a href="#compensation-tickets">compensation tickets</a></li>
+</ul></li>
+<li><a href="#implementation">Implementation</a>
+<ul>
+<li><a href="#lotteries">lotteries</a></li>
+<li><a href="#ticket-active-deactive">ticket active &amp; deactive</a></li>
+<li><a href="#ticket-transfer-1">ticket transfer</a></li>
+<li><a href="#experiments">Experiments</a></li>
+<li><a href="#system-overhead">system overhead</a></li>
+</ul></li>
+<li><a href="#managing-diverse-resource">Managing diverse resource</a>
+<ul>
+<li><a href="#locks">locks</a></li>
+<li><a href="#space-shared-resource-memory">space-shared resource(memory)</a></li>
+</ul></li>
+</ul>
+</nav>
+  </div>
+</div>
+
+    
+    <div class="post-content">
+      <p>Some notes taking from reading the paper &lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&rsquo;.</p>
+
+<p></p>
+
+<h1 id="intro">Intro</h1>
+
+<h2 id="challenges-of-cpu-scheduler">challenges of CPU scheduler</h2>
+
+<ul>
+<li>real-time:
+
+<ul>
+<li>hard: industrial control</li>
+<li>soft: audio, video</li>
+</ul></li>
+<li>multi-process</li>
+<li>fairness</li>
+<li>priorities</li>
+<li>CPU utilization</li>
+<li>isolation</li>
+<li>overhead</li>
+<li>starvation avoidance (SJF)</li>
+</ul>
+
+<h2 id="history-of-cpu-schedulers">history of CPU schedulers</h2>
+
+<ul>
+<li>general-purpose schemes (mostly rely on priority)
+
+<ul>
+<li>does not provide the encapsulation and modularity properties required for large software systems</li>
+</ul></li>
+<li>fair share &amp; microeconomic
+
+<ul>
+<li>overheads limit them to relatively coarse control over long-running computations</li>
+</ul></li>
+<li>proportional-share (lottery scheduling)
+
+<ul>
+<li>resourse consumption rates of active computetions are proportional to the relative shares that they are allocated</li>
+<li>provides responsive control over the relative execution rates of computations</li>
+<li>excellent support for modular resource management</li>
+</ul></li>
+</ul>
+
+<p>problems: proportional share scheduler</p>
+
+<h2 id="lottery-scheduling">lottery scheduling</h2>
+
+<p>a randomized resource allocation mechanism, each allocation is determined by holding a lottery, the resource is granted to the client with the winning ticket</p>
+
+<h3 id="the-ticket">the ticket</h3>
+
+<ul>
+<li>abstract: quantify resource rights independently of machine details</li>
+<li>relative: the fraction of a resource they represent varies dynamically in proportion to the contention for that resource</li>
+<li>uniform: right for heterogeneous resources can ve homogeneously represented as tickets</li>
+</ul>
+
+<h3 id="statistics">statistics</h3>
+
+<ul>
+<li>scheduling by lottery is probabilistically fair</li>
+<li>suppose a client has \(t\) tickets, the total tickets is \(T\):
+
+<ul>
+<li>the number of lotteries won by a client has a binomial distribution:</li>
+<li>the probablity this client win: \(p = t/T\)</li>
+<li>the expected number of wins in \(n\) time lotteries: \(E = np\), variance \(\sigma_w^2 = np(1-p)\), \(\sigma_w/E = \sqrt{(1-p)/np}\)</li>
+<li>the times of lotteries required until the client&rsquo;s first win has a geometric distribution:</li>
+<li>expected number of time $n$ that a client wait before first win: \(E(n) = 1/p\), varience \(\sigma^2_w = (1-p)/p^2\)</li>
+<li>that is \(ResponseTime \propto 1/t\)</li>
+</ul></li>
+<li>any client with non-zero num of tickets will eventually win a lottery -&gt; solve the problem of starvation</li>
+</ul>
+
+<h1 id="modular-resource-management">Modular resource management</h1>
+
+<h2 id="ticket-transfer">ticket transfer</h2>
+
+<ul>
+<li>ex: a client needs to block pending a reply from an RPC, it can transfer its tickets to that server</li>
+<li>solves the conventional priority inversion problem</li>
+</ul>
+
+<h2 id="ticket-inflation">ticket inflation</h2>
+
+<ul>
+<li>an alternative of transfer: a client can escalate its resource rights by creating more lottery tickets</li>
+<li>but it will violated desirable modularity and load insulation properties</li>
+<li>very useful among mutually trusting clients: can be used to adjust resource allocations without explicit communication</li>
+</ul>
+
+<h2 id="ticket-currencies">ticket currencies</h2>
+
+<ul>
+<li>a unique currency can be used to denominate tickets within each trust boundary</li>
+<li>cause inflation, but can maintain an exchange rate between local currency and a base currency</li>
+</ul>
+
+<h2 id="compensation-tickets">compensation tickets</h2>
+
+<ul>
+<li>A client which consumes only a fraction \(f\) of its allocated resource quantum can be granted a compensation ticket that inflates its value by 1 until the client starts its next quantum.</li>
+</ul>
+
+<h1 id="implementation">Implementation</h1>
+
+<ul>
+<li>scheduling quantum: 100 ms</li>
+<li>random number: in 10 RISC instructions</li>
+</ul>
+
+<h2 id="lotteries">lotteries</h2>
+
+<ol>
+<li>search a list of \(n\) clients in \(O(n)\) time, can ordering by decreasing to reduce average searching time</li>
+<li>when \(n\) is large, use a tree of partial ticket sums, traversed the winning client leaf node in \(log(n)\)</li>
+</ol>
+
+<h2 id="ticket-active-deactive">ticket active &amp; deactive</h2>
+
+<ul>
+<li>a ticket is active while it is being used by a thread to compete in a lottery</li>
+<li>when a thread is removed from the run queue, its tickets are deactived</li>
+<li>the tickets are reactived when the thread rejoin the running queue</li>
+</ul>
+
+<h2 id="ticket-transfer-1">ticket transfer</h2>
+
+<ul>
+<li>creating a new ticket denominated in the client&rsquo;s currency, and using it to fund the server&rsquo;s currency</li>
+</ul>
+
+<h2 id="experiments">Experiments</h2>
+
+<ul>
+<li>dynamic ticket inflationcontrol</li>
+<li>client/server ticket transmission</li>
+</ul>
+
+<h2 id="system-overhead">system overhead</h2>
+
+<ul>
+<li>the overhead imposed by our prototype lottery scheduler is comparable to that of the standard Mach time-sharing policy.</li>
+</ul>
+
+<h1 id="managing-diverse-resource">Managing diverse resource</h1>
+
+<h2 id="locks">locks</h2>
+
+<ul>
+<li>The mutex transfers its inheritance ticket to the thread which currently holdsthe mutex.</li>
+<li>When a thread releases a lottery-scheduled mutex, it holds a lottery among the waiting threads to determine the next mutex owner.</li>
+<li>then the thread moves the mutex inheritance ticket to the winner</li>
+</ul>
+
+<h2 id="space-shared-resource-memory">space-shared resource(memory)</h2>
+
+<ul>
+<li>use an inverse lottery, in which a “loser” is chosen to relinquish a unit of a resource that it holds.</li>
+<li>suppose a client holds \(t\) tickets, the probability of being selected by a lottery with total tickets \(T\) and \(n\) clients is $$p = \frac{(1-t/T)}{n-1}$$</li>
+</ul>
+    </div>
+
+    
+    
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">文章作者</span>
+    <span class="item-content">xymeow</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">上次更新</span>
+    <span class="item-content">2019-03-03</span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">许可协议</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+    
+    
+
+    <footer class="post-footer">
+      <div class="post-tags">
+          
+          <a href="/tags/os/">os</a>
+          
+          <a href="/tags/csci555/">csci555</a>
+          
+          <a href="/tags/usc/">usc</a>
+          
+        </div>
+
+      
+      <nav class="post-nav">
+        
+        
+          <a class="next" href="/post/superpage-note/">
+            <span class="next-text nav-default">Superpages - my notes</span>
+            <span class="prev-text nav-mobile">下一篇</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+        </div>
+        
+  
+
+  
+      </div>  
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="social-links">
+      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
+      <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
+  
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    主题 - 
+    <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy; 
+    
+      2017 - 
+    2019
+    <span class="heart">
+      <i class="iconfont icon-heart"></i>
+    </span>
+    <span class="author">xymeow</span>
+  </span>
+</div>
+    </footer>
+
+    <div class="back-to-top" id="back-to-top">
+      <i class="iconfont icon-up"></i>
+    </div>
+  </div>
+  
+<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
+  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
+<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      showProcessingMessages: false,
+      messageStyle: 'none'
+    };
+  </script>
+  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+
+
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', 'UA-126125933-1', 'auto');
+ga('send', 'pageview');
+</script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
+
+
+
+</body>
+</html>
