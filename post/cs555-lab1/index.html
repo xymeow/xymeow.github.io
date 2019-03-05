@@ -61,7 +61,7 @@
 
 <meta property="article:published_time" content="2018-09-03T00:00:00&#43;00:00"/>
 
-<meta property="article:modified_time" content="2018-09-03T00:00:00&#43;00:00"/>
+<meta property="article:modified_time" content="2019-03-03T00:00:00&#43;00:00"/>
 
 
 
@@ -84,7 +84,7 @@
 
 <meta itemprop="datePublished" content="2018-09-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1188">
+<meta itemprop="wordCount" content="1684">
 
 
 
@@ -182,7 +182,10 @@
 <ul>
 <li><a href="#part-0-setup-envoronment">part 0: setup envoronment</a></li>
 <li><a href="#part-1-pc-bootstrap">part 1: PC Bootstrap</a></li>
-<li><a href="#part-2-the-boot-loader">part 2: The Boot Loader</a></li>
+<li><a href="#part-2-the-boot-loader">part 2: The Boot Loader</a>
+<ul>
+<li><a href="#看一下main-c里面-kernel的入口是-void-void-elfhdr-e-entry-在boot-asm中可以看到对应boot-loader执行的最后一条指令是-7d73-ff-15-18-00-01-00-call-0x10018-之后控制交给kernel-从entry-s开始运行-第一条指令是-f010000c-66-c7-05-72-04-00-00-movw-0x1234-0x472">看一下main.c里面,kernel的入口是<code>((void (*)(void)) (ELFHDR-&gt;e_entry))();</code> 在boot.asm中可以看到对应boot loader执行的最后一条指令是<code>7d73: ff 15 18 00 01 00       call   *0x10018</code>. 之后控制交给kernel,从entry.S开始运行,第一条指令是<code>f010000c:    66 c7 05 72 04 00 00    movw   $0x1234,0x472</code>.</a></li>
+</ul></li>
 <li><a href="#part-3-the-kernel">part 3: The Kernel</a></li>
 </ul>
 </nav>
@@ -271,11 +274,20 @@
 
 <p>可以发现实模式下这两地址是一样的,因为并没有开启虚存,指令执行的时候就没有地址映射关系</p>
 
-<hr />
+<h2 id="看一下main-c里面-kernel的入口是-void-void-elfhdr-e-entry-在boot-asm中可以看到对应boot-loader执行的最后一条指令是-7d73-ff-15-18-00-01-00-call-0x10018-之后控制交给kernel-从entry-s开始运行-第一条指令是-f010000c-66-c7-05-72-04-00-00-movw-0x1234-0x472">看一下main.c里面,kernel的入口是<code>((void (*)(void)) (ELFHDR-&gt;e_entry))();</code> 在boot.asm中可以看到对应boot loader执行的最后一条指令是<code>7d73: ff 15 18 00 01 00       call   *0x10018</code>. 之后控制交给kernel,从entry.S开始运行,第一条指令是<code>f010000c:    66 c7 05 72 04 00 00    movw   $0x1234,0x472</code>.</h2>
 
 <h1 id="part-3-the-kernel">part 3: The Kernel</h1>
 
-<p>明天再写吧&hellip;(好麻烦啊&hellip;想弃坑了)</p>
+<p>这里JOS其实有两个地址映射的关系,在kern/entrypgdir.c里面可以看到:
+- Map VA&rsquo;s [0, 4MB) to PA&rsquo;s [0, 4MB)
+- Map VA&rsquo;s [KERNBASE, KERNBASE+4MB) to PA&rsquo;s [0, 4MB)
+其中第一个映射只是为了entry.S中的指令能正确执行,过了entry.S就没用了,具体可以看代码和注释</p>
+
+<p>format printing这个只要看一下<code>kern/printf.c, lib/printfmt.c, kern/console.c</code>这三个地方就清楚了. 这里有个challenge是在控制台输出彩色文字,一个思路是用ANSI escape sequence,也就是类似<code>\u001b[31mHelloWorld\u001b[0m</code>这样的输出. 还有一个思路是可以参考一下<a href="https://en.wikipedia.org/wiki/VGA-compatible_text_mode#Text_buffer">VGA text buffer</a>的格式,修改前景色那几位就行了.</p>
+
+<p>stack可以看一下kernel.asm里面test_backtrace对esp,ebp的操作.</p>
+
+<p>stabs可以看一下<a href="https://sourceware.org/gdb/onlinedocs/stabs.html">这里</a>然后看看生成的.s文件大概就能看出stabs里面都存了啥东西,就比较好理解kdebug.c了</p>
     </div>
 
     
@@ -287,7 +299,7 @@
   </p>
   <p class="copyright-item">
     <span class="item-title">上次更新</span>
-    <span class="item-content">2018-09-03</span>
+    <span class="item-content">2019-03-03</span>
   </p>
   
   <p class="copyright-item">
