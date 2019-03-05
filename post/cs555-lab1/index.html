@@ -84,7 +84,7 @@
 
 <meta itemprop="datePublished" content="2018-09-03T00:00:00&#43;00:00" />
 <meta itemprop="dateModified" content="2018-09-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1684">
+<meta itemprop="wordCount" content="1707">
 
 
 
@@ -182,10 +182,7 @@
 <ul>
 <li><a href="#part-0-setup-envoronment">part 0: setup envoronment</a></li>
 <li><a href="#part-1-pc-bootstrap">part 1: PC Bootstrap</a></li>
-<li><a href="#part-2-the-boot-loader">part 2: The Boot Loader</a>
-<ul>
-<li><a href="#看一下main-c里面-kernel的入口是-void-void-elfhdr-e-entry-在boot-asm中可以看到对应boot-loader执行的最后一条指令是-7d73-ff-15-18-00-01-00-call-0x10018-之后控制交给kernel-从entry-s开始运行-第一条指令是-f010000c-66-c7-05-72-04-00-00-movw-0x1234-0x472">看一下main.c里面,kernel的入口是<code>((void (*)(void)) (ELFHDR-&gt;e_entry))();</code> 在boot.asm中可以看到对应boot loader执行的最后一条指令是<code>7d73: ff 15 18 00 01 00       call   *0x10018</code>. 之后控制交给kernel,从entry.S开始运行,第一条指令是<code>f010000c:    66 c7 05 72 04 00 00    movw   $0x1234,0x472</code>.</a></li>
-</ul></li>
+<li><a href="#part-2-the-boot-loader">part 2: The Boot Loader</a></li>
 <li><a href="#part-3-the-kernel">part 3: The Kernel</a></li>
 </ul>
 </nav>
@@ -274,7 +271,9 @@
 
 <p>可以发现实模式下这两地址是一样的,因为并没有开启虚存,指令执行的时候就没有地址映射关系</p>
 
-<h2 id="看一下main-c里面-kernel的入口是-void-void-elfhdr-e-entry-在boot-asm中可以看到对应boot-loader执行的最后一条指令是-7d73-ff-15-18-00-01-00-call-0x10018-之后控制交给kernel-从entry-s开始运行-第一条指令是-f010000c-66-c7-05-72-04-00-00-movw-0x1234-0x472">看一下main.c里面,kernel的入口是<code>((void (*)(void)) (ELFHDR-&gt;e_entry))();</code> 在boot.asm中可以看到对应boot loader执行的最后一条指令是<code>7d73: ff 15 18 00 01 00       call   *0x10018</code>. 之后控制交给kernel,从entry.S开始运行,第一条指令是<code>f010000c:    66 c7 05 72 04 00 00    movw   $0x1234,0x472</code>.</h2>
+<p>看一下main.c里面,kernel的入口是<code>((void (*)(void)) (ELFHDR-&gt;e_entry))();</code>在boot.asm中可以看到对应boot loader执行的最后一条指令是<code>7d73:  ff 15 18 00 01 00       call   *0x10018</code>. 之后控制交给kernel,从entry.S开始运行,第一条指令是<code>f010000c:    66 c7 05 72 04 00 00    movw   $0x1234,0x472</code>.</p>
+
+<hr />
 
 <h1 id="part-3-the-kernel">part 3: The Kernel</h1>
 
