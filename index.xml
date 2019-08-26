@@ -1,15 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>xymeow&#39;s blog</title>
+    <title>中鸽院专家楼</title>
     <link>http://xymeow.github.io/</link>
-    <description>Recent content on xymeow&#39;s blog</description>
+    <description>Recent content on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 25 Aug 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://xymeow.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>西雅图美食不完全记录</title>
+      <link>http://xymeow.github.io/post/seattle-foods/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/seattle-foods/</guid>
+      <description>&lt;p&gt;差不多一年没写东西，我好像开了好多坑又咕咕咕了，感觉纯写技术博客一点动力都没有，不如记录点日常生活然后把更博这个习惯满满捡回来吧&amp;hellip;(我听见了鸽子叫)&lt;/p&gt;
+
+&lt;p&gt;这个暑假有幸在西雅图亚马逊实习，体验我有时间再写吧🐦&lt;/p&gt;
+
+&lt;p&gt;某一天在某亚麻实习群里，一位开车过来实习的老司机说要约饭，从此开上了一直约饭一直爽的不归路，实习结束除了老司机之外大家都长胖了.&lt;/p&gt;
+
+&lt;p&gt;然后呢，由于我整天约饭拍照发票圈，一些热心网友建议我出个西雅图美食评测，我觉得挺好的. 我也算是个有仪式感的人，吃好吃的/看起来好吃的东西之前基本都会拍个照留念一下，本意是记录每天吃了些啥来方便自己回忆当天干了啥，好像天然具备了当美食博主(误)的条件😂所以嘛就顺势而为&amp;hellip;这么就出了个合集记录以及吐槽一下我在西雅图这几个月吃过的东西，有美食也有神坑，都是我比较主观的感受，而且我也比较懒不想分类了，就按吃的时间顺序排了吧，大家看看参考下就好&lt;/p&gt;
+
+&lt;p&gt;以下正文，图片很多建议Wi-Fi下食用，我太懒了文章分页的功能没写&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Lottery Scheduling - my notes</title>
@@ -286,10 +305,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/about/</guid>
-      <description>I am currently a CS master student at USC and I received my bachelor&amp;rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE.
-Projects Here are my projects (sorted by finish time):
-Nine to Five Jan. 2019 - Apr. 2019
-A 3D Tower Defense Mobile Game made by Unity3D &amp;amp; C#</description>
+      <description>I am currently a CS master student at USC and I received my bachelor&amp;rsquo;s degree in CS from USTC at 2017. I have some backgrounds in machine learning from my FYP and internship, but I prefer coding and developing reliable softwares, so I would like to become a full-stack SDE. I&amp;rsquo;ll do my internship at Amazon.com, Inc. during summer 2019, and actively seeking for full time SDE job for 2020.</description>
     </item>
     
   </channel>

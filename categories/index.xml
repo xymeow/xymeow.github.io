@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Categories on xymeow&#39;s blog</title>
+    <title>Categories on 中鸽院专家楼</title>
     <link>http://xymeow.github.io/categories/</link>
-    <description>Recent content in Categories on xymeow&#39;s blog</description>
+    <description>Recent content in Categories on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     
@@ -16,6 +16,15 @@
       <pubDate>Mon, 03 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>生活</title>
+      <link>http://xymeow.github.io/categories/%E7%94%9F%E6%B4%BB/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/categories/%E7%94%9F%E6%B4%BB/</guid>
       <description></description>
     </item>
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on xymeow&#39;s blog</title>
+    <title>Tags on 中鸽院专家楼</title>
     <link>http://xymeow.github.io/tags/</link>
-    <description>Recent content in Tags on xymeow&#39;s blog</description>
+    <description>Recent content in Tags on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Mon, 03 Sep 2018 00:00:00 +0000</lastBuildDate>
@@ -102,6 +102,15 @@
     </item>
     
     <item>
+      <title>Seattle</title>
+      <link>http://xymeow.github.io/tags/seattle/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/seattle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Usc</title>
       <link>http://xymeow.github.io/tags/usc/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
@@ -152,6 +161,15 @@
       <pubDate>Mon, 28 Dec 2015 16:48:38 +0000</pubDate>
       
       <guid>http://xymeow.github.io/tags/%E7%BD%91%E7%BB%9C/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>美食</title>
+      <link>http://xymeow.github.io/tags/%E7%BE%8E%E9%A3%9F/</link>
+      <pubDate>Sun, 25 Aug 2019 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/tags/%E7%BE%8E%E9%A3%9F/</guid>
       <description></description>
     </item>
     
