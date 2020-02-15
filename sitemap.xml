@@ -3,6 +3,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xymeow.github.io/post/onboarding/</loc>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/post/seattle-foods/</loc>
     <lastmod>2019-08-25T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -212,7 +219,7 @@
   
   <url>
     <loc>http://xymeow.github.io/post/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -226,7 +233,7 @@
   
   <url>
     <loc>http://xymeow.github.io/tags/seattle/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -247,7 +254,7 @@
   
   <url>
     <loc>http://xymeow.github.io/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -282,7 +289,7 @@
   
   <url>
     <loc>http://xymeow.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2019-08-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-02-14T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
