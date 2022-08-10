@@ -3,6 +3,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://xymeow.github.io/post/mt-rainier-trip-2022/</loc>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>http://xymeow.github.io/post/2020-fulltime-sde/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/post/onboarding/</loc>
     <lastmod>2020-02-27T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -190,6 +204,13 @@
   </url>
   
   <url>
+    <loc>http://xymeow.github.io/tags/hiking/</loc>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/tags/lab/</loc>
     <lastmod>2015-04-28T19:19:51+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -219,7 +240,7 @@
   
   <url>
     <loc>http://xymeow.github.io/post/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -233,7 +254,7 @@
   
   <url>
     <loc>http://xymeow.github.io/tags/seattle/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -254,7 +275,7 @@
   
   <url>
     <loc>http://xymeow.github.io/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
@@ -281,6 +302,13 @@
   </url>
   
   <url>
+    <loc>http://xymeow.github.io/tags/%E6%89%BE%E5%B7%A5%E4%BD%9C/</loc>
+    <lastmod>2020-08-20T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/tags/%E6%B1%87%E7%BC%96/</loc>
     <lastmod>2015-06-03T22:22:10+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -288,8 +316,15 @@
   </url>
   
   <url>
+    <loc>http://xymeow.github.io/tags/%E6%B8%B8%E8%AE%B0/</loc>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://xymeow.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
-    <lastmod>2020-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2022-08-10T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0</priority>
   </url>
