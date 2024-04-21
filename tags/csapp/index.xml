@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Csapp on 中鸽院专家楼</title>
+    <title>CSAPP on 中鸽院专家楼</title>
     <link>http://xymeow.github.io/tags/csapp/</link>
-    <description>Recent content in Csapp on 中鸽院专家楼</description>
+    <description>Recent content in CSAPP on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 01 Jul 2015 22:28:43 +0000</lastBuildDate>
-    
-	<atom:link href="http://xymeow.github.io/tags/csapp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 01 Jul 2015 22:28:43 +0000</lastBuildDate><atom:link href="http://xymeow.github.io/tags/csapp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CSAPP LAB4：perflab-优化两个奇怪的函数</title>
       <link>http://xymeow.github.io/post/csapp-lab4/</link>
@@ -18,9 +14,7 @@
       
       <guid>http://xymeow.github.io/post/csapp-lab4/</guid>
       <description>&lt;p&gt;这里是前段时间写的csapp的另一个实验perflab的解题过程喵~&lt;/p&gt;
-
-&lt;p&gt;本实验要求优化handout里kernel.c中的两个函数，rotate函数的作用是将图像逆时针旋转90°，smooth函数的作用是对于图像中的每一个像素点，取它和周围的像素点的平均值，让图片变得模糊。下面让我来逐一优化他们^_^
-&lt;/p&gt;</description>
+&lt;p&gt;本实验要求优化handout里kernel.c中的两个函数，rotate函数的作用是将图像逆时针旋转90°，smooth函数的作用是对于图像中的每一个像素点，取它和周围的像素点的平均值，让图片变得模糊。下面让我来逐一优化他们^_^&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,14 +24,10 @@
       
       <guid>http://xymeow.github.io/post/csapp-lab2/</guid>
       <description>&lt;p&gt;顾名思义，这个实验要求我们拆”炸弹”，炸弹是一个可执行程序，按照实验材料所给的提示，我们要利用反汇编工具来找出拆除炸弹的方法，最终拆掉所有的炸弹。这个实验还是十分有意思的，运用游戏化的方法让我们掌握反汇编的技能，提高阅读汇编码的能力，不得不佩服设计者。&lt;/p&gt;
-
 &lt;p&gt;下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/61582293.jpg&#34; alt=&#34;lab2-1&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/61582293.jpg&#34; alt=&#34;lab2-1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了..
-为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。
-&lt;/p&gt;</description>
+为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。&lt;/p&gt;</description>
     </item>
     
   </channel>

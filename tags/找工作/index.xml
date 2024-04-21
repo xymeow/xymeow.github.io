@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>找工作 on 中鸽院专家楼</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 找工作 on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://xymeow.github.io/tags/%E6%89%BE%E5%B7%A5%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 20 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://xymeow.github.io/tags/%E6%89%BE%E5%B7%A5%E4%BD%9C/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2019/20秋招回忆录</title>
       <link>http://xymeow.github.io/post/2020-fulltime-sde/</link>
@@ -18,10 +14,7 @@
       
       <guid>http://xymeow.github.io/post/2020-fulltime-sde/</guid>
       <description>&lt;p&gt;又是新的一年找工季，看着现在在努力找工作的同学们，不禁回想起去年这时候的我&amp;hellip;我当初来usc读master目的很明确，就是想毕业当码农进工业界搬砖，所以在学校的两年里面基本都是走找工的路线，科研一点没碰.而且尽量远离机器学习人工智能相关课程，虽然ml/ai这些最近几年很火，但我个人是不想做这方面的工作，我觉得调参炼丹比较虚，论文里面的模型方法参数到底靠不靠谱，最后模型又有多少能上线的那是说不准，怕是洗数据撸模型搞半天搞了个寂寞(可能就是我菜).好好写代码实现业务需求心里比较踏实，哪里出了bug花点时间还是能查得出原因. 总之硕士期间主旋律就是找工作(以及吃喝玩乐， LA是个好地方)&amp;hellip;其间经历并不顺利，战线拉得很长，日常喜怒哀乐过山车，不过现在看来确实是人生中一段宝贵的经历~这篇就随意写写当时的经历吧，个人经历仅供参考，路还是要自己走的&lt;/p&gt;
-
-&lt;p&gt;(本来打算无限咕咕咕的，但有小师妹表示想看我的秋招经历，那作为前辈当然要填坑啊!)&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;(本来打算无限咕咕咕的，但有小师妹表示想看我的秋招经历，那作为前辈当然要填坑啊!)&lt;/p&gt;</description>
     </item>
     
   </channel>

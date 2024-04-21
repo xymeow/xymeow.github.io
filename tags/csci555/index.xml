@@ -1,25 +1,19 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Csci555 on 中鸽院专家楼</title>
+    <title>csci555 on 中鸽院专家楼</title>
     <link>http://xymeow.github.io/tags/csci555/</link>
-    <description>Recent content in Csci555 on 中鸽院专家楼</description>
+    <description>Recent content in csci555 on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://xymeow.github.io/tags/csci555/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://xymeow.github.io/tags/csci555/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lottery Scheduling - my notes</title>
       <link>http://xymeow.github.io/post/lottery-scheduling/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/lottery-scheduling/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,9 +22,7 @@
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/superpage-note/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -39,9 +31,7 @@
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/vmware-esx/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -50,8 +40,7 @@
       <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/scheduler-activation-note/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&amp;rsquo;.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -61,9 +50,7 @@
       
       <guid>http://xymeow.github.io/post/xen-note/</guid>
       <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Xen and the art of virtualization&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.
-&lt;/p&gt;</description>
+&lt;p&gt;Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -72,8 +59,7 @@
       <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/singularity/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;The Singularity System&amp;rsquo;.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;The Singularity System&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -83,11 +69,8 @@
       
       <guid>http://xymeow.github.io/post/cs555-lab1/</guid>
       <description>&lt;p&gt;这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂&lt;/p&gt;
-
 &lt;p&gt;这系列我觉得我是不会弃坑的(真香警告)&amp;hellip;
-这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文&lt;/p&gt;</description>
     </item>
     
   </channel>

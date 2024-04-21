@@ -16,83 +16,46 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xymeow" />
-  <meta name="description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&amp;hellip;
+<meta name="author" content="xymeow" /><meta name="description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&amp;hellip;
 Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
-
-" />
-
-  <meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
+" /><meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.30" />
+<meta name="generator" content="Hugo 0.109.0 with theme even" />
 
 
 <link rel="canonical" href="http://xymeow.github.io/post/programming-language-note1/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
+<link href="/sass/main.min.287aac339cfd87db34a29fafc6d734344f1e4874c5a1815f63160563dca05a90.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 <meta property="og:title" content="Coursera Programming Language Part A Note(1)" />
 <meta property="og:description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
-
-Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
-
-" />
+Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://xymeow.github.io/post/programming-language-note1/" />
-
-
-
-<meta property="article:published_time" content="2018-05-14T11:57:08-07:00"/>
-
-<meta property="article:modified_time" content="2018-05-14T11:57:08-07:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="http://xymeow.github.io/post/programming-language-note1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-05-14T11:57:08-07:00" />
+<meta property="article:modified_time" content="2018-05-14T11:57:08-07:00" />
 <meta itemprop="name" content="Coursera Programming Language Part A Note(1)">
 <meta itemprop="description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
-
-Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
-
-">
-
-
-<meta itemprop="datePublished" content="2018-05-14T11:57:08-07:00" />
+Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下."><meta itemprop="datePublished" content="2018-05-14T11:57:08-07:00" />
 <meta itemprop="dateModified" content="2018-05-14T11:57:08-07:00" />
-<meta itemprop="wordCount" content="2381">
-
-
-
-<meta itemprop="keywords" content="基础," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Coursera Programming Language Part A Note(1)"/>
+<meta itemprop="wordCount" content="2420">
+<meta itemprop="keywords" content="基础," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Coursera Programming Language Part A Note(1)"/>
 <meta name="twitter:description" content="最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;
-
-Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.
-
-"/>
+Programming Language这一系列课是UW的CSE341公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -129,12 +92,21 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">中鸽院专家楼</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -151,6 +123,7 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -164,204 +137,228 @@ Programming Language这一系列课是UW的CSE341公开课版本,内容基本一
       <div class="post-meta">
         <span class="post-time"> 2018-05-14 </span>
         <div class="post-category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-          </div>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+            </div>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#about-ml">About ML</a>
-<ul>
-<li><a href="#variable-binding">variable binding</a></li>
-<li><a href="#function-binding">function binding</a></li>
-<li><a href="#nested-functions">Nested functions</a></li>
-<li><a href="#immutable-data-vs-mutable-data">immutable data vs mutable data</a></li>
-<li><a href="#the-pieces-of-a-programming-language">The pieces of a Programming Language</a></li>
-</ul></li>
-</ul></li>
-</ul>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#about-ml">About ML</a>
+          <ul>
+            <li><a href="#variable-binding">variable binding</a></li>
+            <li><a href="#function-binding">function binding</a></li>
+            <li><a href="#nested-functions">Nested functions</a></li>
+            <li><a href="#immutable-data-vs-mutable-data">immutable data vs mutable data</a></li>
+            <li><a href="#the-pieces-of-a-programming-language">The pieces of a Programming Language</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       <p>最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&hellip;</p>
-
 <p><a href="https://www.coursera.org/learn/programming-languages">Programming Language</a>这一系列课是UW的<a href="https://courses.cs.washington.edu/courses/cse341/">CSE341</a>公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.</p>
-
-<p></p>
-
 <h2 id="about-ml">About ML</h2>
-
 <p>一个ML程序包含了一系列的bindings, 每一个binding需要通过类型检查,之后进行evaluate. binding的类型基于static environment, binding evaluation基于dynamic environment.</p>
-
-<p>对于一个binding来说, 我们一般考虑三个方面:
-- syntax (how you write something)
-- type-checking rules
-- evaluation rules</p>
-
+<p>对于一个binding来说, 我们一般考虑三个方面:</p>
+<ul>
+<li>syntax (how you write something)</li>
+<li>type-checking rules</li>
+<li>evaluation rules</li>
+</ul>
 <p>其实对这三个方面的关注对于学习一个新的语言特性的时候都是通用的.</p>
-
 <h3 id="variable-binding">variable binding</h3>
-
 <p>ML里面有多种binding, 拿variable binding做例子.</p>
-
 <p><strong>syntax:</strong></p>
-
 <p><code>val x = e</code></p>
-
 <ul>
 <li>val: 关键字</li>
 <li>x: 任意变量</li>
 <li>e: 任意表达式.</li>
 </ul>
-
 <p><strong>type-check:</strong>
- 先从当前的static environment中对e进行type-check, 得到e的类型t -&gt; x的类型也为t, 之后将<code>x: type t</code>加入static environment中.</p>
-
+先从当前的static environment中对e进行type-check, 得到e的类型t -&gt; x的类型也为t, 之后将<code>x: type t</code>加入static environment中.</p>
 <p><strong>evaluation:</strong>
- 和type-check 差不多, 只是这时是对dynamic environment进行操作</p>
-
+和type-check 差不多, 只是这时是对dynamic environment进行操作</p>
 <p>至于各种expression的具体定义&hellip;用到的时候去翻文档吧</p>
-
 <p>ml里的binding都是不可变的(immutable), 例如给定一个variable binding<code>val x = 1+2</code>, 在ml里面并不能用赋值的方式改变x, 只能创建一个新的dynamic environment来覆盖(shadow)这里的值.</p>
-
 <h3 id="function-binding">function binding</h3>
-
 <p>同样考虑那三个方面</p>
-
 <p><strong>syntax</strong>:</p>
-
 <p><code>fun x0 (x1: t1, ..., xn: tn) = e</code></p>
-
 <ul>
 <li>fun: 关键字</li>
 <li>x0: 函数名</li>
 <li>参数x1, &hellip;, xn, 类型分别为t1, &hellip;, tn</li>
 <li>e: 函数主题,为任意表达式</li>
 </ul>
-
 <p><strong>type-check:</strong></p>
-
 <p>对e进行type-check, 此时的static environment中 x1 : t1, &hellip;, xn : tn, 若e的类型为t, 我们将x0 : t1 * &hellip; * tn -&gt; t加入top-level static environment中. 注意这里的x1~xn参数仅存在函数里的static environment, 不加入top-level static environment. e的类型由类型推导系统推出,之后章节再介绍</p>
-
 <p><strong>evaluation:</strong></p>
-
 <p>ml中的函数本质上也是一个值, 我们将x0加入dynamic environment中,直到我们调用它的时候才真正进行evaluate</p>
-
 <p><strong>function call</strong></p>
-
 <p>前面提到只有调用函数的时候才会进行evaluate, ml中的function call也是一种表达式,syntax为 <code>e0 (e1, ..., en)</code>, e0的类型为<code>t1*...*tn -&gt; t</code>, 这时候的dynamic environment中e0-&gt;v0, e1-&gt;v1 &hellip;en-&gt;vn. v0是一个函数, 我们这个时候在这个dynamic environment中对v0的主体进行evaluation.</p>
-
 <p>注意这里的dynamic environment是函数定义时的环境, 而不是调用时的环境.</p>
-
 <p>举个例子:</p>
-
-<pre><code class="language-ocaml">y = 2
-fun add2(x) = x + y
-y = 1
-add2(1)
-</code></pre>
-
-<p>这里执行的结果为3</p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ocaml" data-lang="ocaml"><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="n">add2</span><span class="o">(</span><span class="n">x</span><span class="o">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+</span></span><span class="line"><span class="cl"><span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+</span></span><span class="line"><span class="cl"><span class="n">add2</span><span class="o">(</span><span class="mi">1</span><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这里执行的结果为3</p>
 <h3 id="nested-functions">Nested functions</h3>
-
 <p>我们可以在函数中用let&hellip;in&hellip;end表达式来实现nested function</p>
-
-<p>在以下情况使用nested function定义一个helper function比较好:
-- 这个helper function仅在一个函数中使用
-- 如果它在别处使用, 容易被误用
-- 它之后比较可能被改变或者删除</p>
-
+<p>在以下情况使用nested function定义一个helper function比较好:</p>
+<ul>
+<li>这个helper function仅在一个函数中使用</li>
+<li>如果它在别处使用, 容易被误用</li>
+<li>它之后比较可能被改变或者删除</li>
+</ul>
 <p>在程序设计中, 可复用的代码省时省力, 但也意味着在之后更不方便修改</p>
-
 <h3 id="immutable-data-vs-mutable-data">immutable data vs mutable data</h3>
-
 <p>immutable的好处简单来说就是: because it is impossible to mutate, we can create alias without thinking.</p>
-
 <p>前面说到,ml里面并没有改变一个binding的内容的方法,一个binding在一个环境中永远都是一个值, 那些看起来像是赋值的操作实际上是创建了一个新环境去覆盖旧环境. 所以没办法赋值有什么好处呢?</p>
-
 <p>我们来看一个ml中的例子:</p>
-
-<pre><code class="language-ocaml">fun sort_pair1 (pr: int * int) = 
-    if #1 pr &lt; #2 pr
-    then pr
-    else (#2 pr, #1 pr)
-
-fun sort_pair2 (pr: int * int) = 
-    if #1 pr &lt; #2 pr
-    then (#1 pr, #2 pr)
-    else (#2 pr, #1 pr)
-</code></pre>
-
-<p>由于ml中数据的不可变性,以上两个函数是可以等价的,并不用关心返回的结果是一个新的变量还是旧变量的引用. 这样的话用第一种就比较好了,因为它省去了创建一个新tuple的空间. 但如果是在数据可变的情况下,这两种实现不能等价! 若对sort_pair1返回的结果再进行赋值操作,有可能会改变输入的pr的值</p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ocaml" data-lang="ocaml"><span class="line"><span class="cl"><span class="k">fun</span> <span class="n">sort_pair1</span> <span class="o">(</span><span class="n">pr</span><span class="o">:</span> <span class="kt">int</span> <span class="o">*</span> <span class="kt">int</span><span class="o">)</span> <span class="o">=</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">#</span><span class="mi">1</span> <span class="n">pr</span> <span class="o">&lt;</span> <span class="o">#</span><span class="mi">2</span> <span class="n">pr</span>
+</span></span><span class="line"><span class="cl">    <span class="k">then</span> <span class="n">pr</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="o">(#</span><span class="mi">2</span> <span class="n">pr</span><span class="o">,</span> <span class="o">#</span><span class="mi">1</span> <span class="n">pr</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">fun</span> <span class="n">sort_pair2</span> <span class="o">(</span><span class="n">pr</span><span class="o">:</span> <span class="kt">int</span> <span class="o">*</span> <span class="kt">int</span><span class="o">)</span> <span class="o">=</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">#</span><span class="mi">1</span> <span class="n">pr</span> <span class="o">&lt;</span> <span class="o">#</span><span class="mi">2</span> <span class="n">pr</span>
+</span></span><span class="line"><span class="cl">    <span class="k">then</span> <span class="o">(#</span><span class="mi">1</span> <span class="n">pr</span><span class="o">,</span> <span class="o">#</span><span class="mi">2</span> <span class="n">pr</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="o">(#</span><span class="mi">2</span> <span class="n">pr</span><span class="o">,</span> <span class="o">#</span><span class="mi">1</span> <span class="n">pr</span><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于ml中数据的不可变性,以上两个函数是可以等价的,并不用关心返回的结果是一个新的变量还是旧变量的引用. 这样的话用第一种就比较好了,因为它省去了创建一个新tuple的空间. 但如果是在数据可变的情况下,这两种实现不能等价! 若对sort_pair1返回的结果再进行赋值操作,有可能会改变输入的pr的值</p>
 <p>再举个例子:</p>
-
-<pre><code class="language-ocaml">fun append (xs: int list, ys: int list) = 
-    if null xs
-    then ys
-    else hd (xs) :: append(tl(xs), ys)
-
-val x = [2, 4]
-val y = [5, 3, 0]
-val z = append(x, y)
-</code></pre>
-
-<p>由于数据不可变,对以上代码的底层实现,下图两种实现方式是等价的,所以ml底层代码可以用第一种实现方式省空间.
-<img src="http://oy479ek6q.bkt.gdipper.com/18-5-17/42874983.jpg" alt="" /></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-ocaml" data-lang="ocaml"><span class="line"><span class="cl"><span class="k">fun</span> <span class="n">append</span> <span class="o">(</span><span class="n">xs</span><span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span><span class="o">,</span> <span class="n">ys</span><span class="o">:</span> <span class="kt">int</span> <span class="kt">list</span><span class="o">)</span> <span class="o">=</span> 
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="n">null</span> <span class="n">xs</span>
+</span></span><span class="line"><span class="cl">    <span class="k">then</span> <span class="n">ys</span>
+</span></span><span class="line"><span class="cl">    <span class="k">else</span> <span class="n">hd</span> <span class="o">(</span><span class="n">xs</span><span class="o">)</span> <span class="o">::</span> <span class="n">append</span><span class="o">(</span><span class="n">tl</span><span class="o">(</span><span class="n">xs</span><span class="o">),</span> <span class="n">ys</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">x</span> <span class="o">=</span> <span class="o">[</span><span class="mi">2</span><span class="o">,</span> <span class="mi">4</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">y</span> <span class="o">=</span> <span class="o">[</span><span class="mi">5</span><span class="o">,</span> <span class="mi">3</span><span class="o">,</span> <span class="mi">0</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl"><span class="k">val</span> <span class="n">z</span> <span class="o">=</span> <span class="n">append</span><span class="o">(</span><span class="n">x</span><span class="o">,</span> <span class="n">y</span><span class="o">)</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>由于数据不可变,对以上代码的底层实现,下图两种实现方式是等价的,所以ml底层代码可以用第一种实现方式省空间.
+<img src="http://oy479ek6q.bkt.gdipper.com/18-5-17/42874983.jpg" alt=""></p>
 <p>接下来我们来看一下mutable data带来的一些问题, 考虑以下的java代码:</p>
-
-<pre><code class="language-java">class ProtectedResource {
-    private Resource theResource = ...;
-    private String[] allowedUsers = ...;
-    public String[] getAllowedUsers() {
-        return allowedUsers;
-    }
-    public String currentUser() { ... }
-    public void useTheResource() {
-        for(int i=0; i &lt; allowedUsers.length; i++) {
-            if(currentUser().equals(allowedUsers[i])) {
-                ... // access allowed: use it
-                return;
-            }
-        }
-    throw new IllegalAccessException();
-    }
-}
-</code></pre>
-
-<p>这样的代码是存在安全隐患的, 由于<code>getAllowedUsers()</code>返回的是allowedUsers的引用,我们是可以用这种方式给当前的user添加权限:</p>
-
-<pre><code class="language-java">getAllowedUsers()[0] = currentUser()
-</code></pre>
-
-<p>为了避免这样的操作,getAllowedUsers返回的应该是a copy of allowedUsers:</p>
-
-<pre><code class="language-java">public String[] getAllowedUsers() {
-    String[] copy = new String[allowedUsers.length];
-    for(int i=0; i &lt; allowedUsers.length; i++)
-        copy[i] = allowedUsers[i];
-    return copy;
-}
-</code></pre>
-
-<h3 id="the-pieces-of-a-programming-language">The pieces of a Programming Language</h3>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">class</span> <span class="nc">ProtectedResource</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">Resource</span> <span class="n">theResource</span> <span class="o">=</span> <span class="o">...;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">private</span> <span class="n">String</span><span class="o">[]</span> <span class="n">allowedUsers</span> <span class="o">=</span> <span class="o">...;</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">getAllowedUsers</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">allowedUsers</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="n">String</span> <span class="nf">currentUser</span><span class="o">()</span> <span class="o">{</span> <span class="o">...</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">useTheResource</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">allowedUsers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span><span class="o">(</span><span class="n">currentUser</span><span class="o">().</span><span class="na">equals</span><span class="o">(</span><span class="n">allowedUsers</span><span class="o">[</span><span class="n">i</span><span class="o">]))</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                <span class="o">...</span> <span class="c1">// access allowed: use it
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span>                <span class="k">return</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl">            <span class="o">}</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">throw</span> <span class="k">new</span> <span class="n">IllegalAccessException</span><span class="o">();</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样的代码是存在安全隐患的, 由于<code>getAllowedUsers()</code>返回的是allowedUsers的引用,我们是可以用这种方式给当前的user添加权限:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="n">getAllowedUsers</span><span class="o">()[</span><span class="mi">0</span><span class="o">]</span> <span class="o">=</span> <span class="n">currentUser</span><span class="o">()</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>为了避免这样的操作,getAllowedUsers返回的应该是a copy of allowedUsers:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kd">public</span> <span class="n">String</span><span class="o">[]</span> <span class="nf">getAllowedUsers</span><span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="n">String</span><span class="o">[]</span> <span class="n">copy</span> <span class="o">=</span> <span class="k">new</span> <span class="n">String</span><span class="o">[</span><span class="n">allowedUsers</span><span class="o">.</span><span class="na">length</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">allowedUsers</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">copy</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">=</span> <span class="n">allowedUsers</span><span class="o">[</span><span class="n">i</span><span class="o">];</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">copy</span><span class="o">;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><h3 id="the-pieces-of-a-programming-language">The pieces of a Programming Language</h3>
 <p>In a general way, 当学习一种新的编程语言时,我们可以重点关注以下几个方面:</p>
-
 <ul>
 <li>语法 Syntax: 语言具体怎么写</li>
 <li>语意 Semantics: 语言特性具体是怎样的,表达式怎么进行evaluate的</li>
@@ -369,52 +366,38 @@ val z = append(x, y)
 <li>库 Libraries: 在工作中我们不需要重复造轮子,了解一些该语言下常用的库有助于提高生产力</li>
 <li>工具 Tools: 开发,调试这种语言的一些工具(编译器, REPL, debugger等)</li>
 </ul>
-
-<hr />
-
+<hr>
 <p>第一周的笔记整理完了,我感觉这门课笔记还是拆成几篇blog来记比较好&hellip;</p>
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">文章作者</span>
+    <span class="item-title">Author</span>
     <span class="item-content">xymeow</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2018-05-14</span>
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-05-14
+        
+    </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/%E5%9F%BA%E7%A1%80/">基础</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/cs555-lab1/">
+        <a class="prev" href="/post/cs555-lab1/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">CSCI 555 (MIT 6.828) Lab 1 记录</span>
-            <span class="prev-text nav-mobile">上一篇</span>
+            <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/robotic-grasping-based-on-deep-learning/">
+        <a class="next" href="/post/robotic-grasping-based-on-deep-learning/">
             <span class="next-text nav-default">Robotic Grasping Based on Deep Learning</span>
-            <span class="prev-text nav-mobile">下一篇</span>
+            <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
       </nav>
@@ -422,42 +405,41 @@ val z = append(x, y)
   </article>
         </div>
         
+
   
 
   
-      </div>  
+
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
       <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
       <a href="https://www.instagram.com/xymeow" class="iconfont icon-instagram" title="instagram"></a>
-  
+  <a href="http://xymeow.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
     &copy; 
-    
-      2017 - 
-    2022
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">xymeow</span>
+    2017 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>xymeow</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -465,26 +447,29 @@ val z = append(x, y)
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-126125933-1', 'auto');
-ga('send', 'pageview');
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-126125933-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
 
 
 

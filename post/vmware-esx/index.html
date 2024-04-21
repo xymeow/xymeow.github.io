@@ -16,76 +16,42 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xymeow" />
-  <meta name="description" content="Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.
-
-" />
-
-  <meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
+<meta name="author" content="xymeow" /><meta name="description" content="Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.
+" /><meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.30" />
+<meta name="generator" content="Hugo 0.109.0 with theme even" />
 
 
 <link rel="canonical" href="http://xymeow.github.io/post/vmware-esx/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
+<link href="/sass/main.min.287aac339cfd87db34a29fafc6d734344f1e4874c5a1815f63160563dca05a90.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 <meta property="og:title" content="VMware ESX - my notes" />
-<meta property="og:description" content="Some notes taking from reading the paper &lsquo;Memory resource management in VMware ESX server&rsquo;.
-
-" />
+<meta property="og:description" content="Some notes taking from reading the paper &lsquo;Memory resource management in VMware ESX server&rsquo;." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://xymeow.github.io/post/vmware-esx/" />
-
-
-
-<meta property="article:published_time" content="2018-10-10T00:00:00&#43;00:00"/>
-
-<meta property="article:modified_time" content="2019-03-03T00:00:00&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="http://xymeow.github.io/post/vmware-esx/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-10-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-03-03T00:00:00+00:00" />
 <meta itemprop="name" content="VMware ESX - my notes">
-<meta itemprop="description" content="Some notes taking from reading the paper &lsquo;Memory resource management in VMware ESX server&rsquo;.
-
-">
-
-
-<meta itemprop="datePublished" content="2018-10-10T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-10-10T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Some notes taking from reading the paper &lsquo;Memory resource management in VMware ESX server&rsquo;."><meta itemprop="datePublished" content="2018-10-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-03-03T00:00:00+00:00" />
 <meta itemprop="wordCount" content="390">
-
-
-
-<meta itemprop="keywords" content="os,csci555,usc," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="VMware ESX - my notes"/>
-<meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;Memory resource management in VMware ESX server&rsquo;.
-
-"/>
+<meta itemprop="keywords" content="os,csci555,usc," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="VMware ESX - my notes"/>
+<meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;Memory resource management in VMware ESX server&rsquo;."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,12 +88,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">中鸽院专家楼</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -144,6 +119,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -157,180 +133,142 @@
       <div class="post-meta">
         <span class="post-time"> 2018-10-10 </span>
         <div class="post-category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-          </div>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+            </div>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li>
-<ul>
-<li><a href="#overview">overview</a></li>
-<li><a href="#techniques-for-efficient-memory-usage">techniques for efficient memory usage</a></li>
-<li><a href="#memory-menagement">memory menagement</a></li>
-<li><a href="#over-commited-memory">over commited memory</a></li>
-<li><a href="#baloon-driver">baloon driver</a></li>
-<li><a href="#shared-pages">shared pages</a></li>
-<li><a href="#idle-page-tax">idle page tax</a></li>
-</ul></li>
-</ul>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#overview">overview</a></li>
+        <li><a href="#techniques-for-efficient-memory-usage">techniques for efficient memory usage</a></li>
+        <li><a href="#memory-menagement">memory menagement</a></li>
+        <li><a href="#over-commited-memory">over commited memory</a></li>
+        <li><a href="#baloon-driver">baloon driver</a></li>
+        <li><a href="#shared-pages">shared pages</a></li>
+        <li><a href="#idle-page-tax">idle page tax</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       <p>Some notes taking from reading the paper &lsquo;Memory resource management in VMware ESX server&rsquo;.</p>
-
-<p></p>
-
 <h2 id="overview">overview</h2>
-
 <ul>
 <li>focus: over commiting memory
-
 <ul>
 <li>admission control</li>
-<li>statical multiplexing
-<br /></li>
-</ul></li>
+<li>statical multiplexing</li>
 </ul>
-
+</li>
+</ul>
 <h2 id="techniques-for-efficient-memory-usage">techniques for efficient memory usage</h2>
-
 <ul>
 <li>take pages from a VM, give to another VM -&gt; reallocate pages</li>
 <li>share common pages across VMs -&gt; reduce the demand from pages</li>
 </ul>
-
 <h2 id="memory-menagement">memory menagement</h2>
-
 <ul>
 <li>shadow pagetable: to execute without additional overhead, make use of TLB cache</li>
 <li>P-map: continuation/ zero base address</li>
 </ul>
-
 <h2 id="over-commited-memory">over commited memory</h2>
-
 <ul>
 <li>process/OS: demand paging
-
 <ul>
 <li>OS applies LRU to select the page</li>
 <li>if the page is dirty, write to swap on disk</li>
 <li>reallocate the page</li>
-</ul></li>
-<li>VM/hyperviser:
-
-<ul>
-<li>why not just use demand paging? -&gt; unintended interaction: the double paging problem
-<br /></li>
-</ul></li>
 </ul>
-
+</li>
+<li>VM/hyperviser:
+<ul>
+<li>why not just use demand paging? -&gt; unintended interaction: the double paging problem</li>
+</ul>
+</li>
+</ul>
 <h2 id="baloon-driver">baloon driver</h2>
-
 <ul>
 <li>achieve predictable performance by coaxing the guest OS into cooperateing with it when possible</li>
 <li>inflating
-
 <ul>
 <li>invoke its own native memory management algotirhms to return a page</li>
-</ul></li>
+</ul>
+</li>
 <li>deflate
-
 <ul>
 <li>free up mem for general use within guest os</li>
-</ul></li>
+</ul>
+</li>
 <li>overhead: primarily due to guest OS data structures that are sized based on the amount of “physical” memory</li>
 <li>limits: balloon may be uninstalled, disabled explicitly, unavailable when boosting, temporarily unable ro reclaim mem quickly enough to satisfy current sys demands</li>
 </ul>
-
 <h2 id="shared-pages">shared pages</h2>
-
 <ul>
 <li>code of an OS</li>
 <li>code of user program</li>
 <li>zero filled pages</li>
 <li>most sharing come from redundant code and read-only data pages</li>
 <li>how to determined two same page?
-
 <ul>
 <li>hash value for hint entry</li>
 <li>bitwise comparison of pages</li>
-</ul></li>
+</ul>
+</li>
 <li>why slightly faster? fewer cache miss</li>
 </ul>
-
 <h2 id="idle-page-tax">idle page tax</h2>
-
 <ul>
 <li>bias VM selection to force VM with idle pages to give them up</li>
 <li>figure out which VM has more idle pages
-
 <ul>
 <li>sampled page is tracked by invalidating any cached mappings associated with its PPN, such as hardware TLB entries and virtualized MMU state.</li>
-</ul></li>
 </ul>
-
-<hr />
-
+</li>
+</ul>
+<hr>
 <p><strong>something else</strong></p>
-
 <p>上个月usc career fair的时候投了VMware家实习,和recruiter聊了一通简历/OS基础之后我尬吹了一波这篇论文&hellip;小哥表示哇我之前搞过ESX哦你说的挺对的, 然后过了两周我收到了拒信😂</p>
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">文章作者</span>
+    <span class="item-title">Author</span>
     <span class="item-content">xymeow</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-03</span>
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-03
+        
+    </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/os/">os</a>
-          
           <a href="/tags/csci555/">csci555</a>
-          
           <a href="/tags/usc/">usc</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/superpage-note/">
+        <a class="prev" href="/post/superpage-note/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">Superpages - my notes</span>
-            <span class="prev-text nav-mobile">上一篇</span>
+            <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/scheduler-activation-note/">
+        <a class="next" href="/post/scheduler-activation-note/">
             <span class="next-text nav-default">Scheduler Activations - my notes</span>
-            <span class="prev-text nav-mobile">下一篇</span>
+            <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
       </nav>
@@ -338,42 +276,41 @@
   </article>
         </div>
         
+
   
 
   
-      </div>  
+
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
       <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
       <a href="https://www.instagram.com/xymeow" class="iconfont icon-instagram" title="instagram"></a>
-  
+  <a href="http://xymeow.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
     &copy; 
-    
-      2017 - 
-    2022
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">xymeow</span>
+    2017 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>xymeow</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -381,26 +318,29 @@
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-126125933-1', 'auto');
-ga('send', 'pageview');
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-126125933-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
 
 
 

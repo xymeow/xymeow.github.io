@@ -1,16 +1,12 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Ai on 中鸽院专家楼</title>
+    <title>AI on 中鸽院专家楼</title>
     <link>http://xymeow.github.io/tags/ai/</link>
-    <description>Recent content in Ai on 中鸽院专家楼</description>
+    <description>Recent content in AI on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 03 Sep 2016 19:19:37 +0000</lastBuildDate>
-    
-	<atom:link href="http://xymeow.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sat, 03 Sep 2016 19:19:37 +0000</lastBuildDate><atom:link href="http://xymeow.github.io/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>立方数码问题</title>
       <link>http://xymeow.github.io/post/%E7%AB%8B%E6%96%B9%E6%95%B0%E7%A0%81%E9%97%AE%E9%A2%98/</link>
@@ -18,16 +14,10 @@
       
       <guid>http://xymeow.github.io/post/%E7%AB%8B%E6%96%B9%E6%95%B0%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;p&gt;又一个学期过去了，我已经成为一只大四狗。。没有课的生活真是爽，想了想我还有这么一个blog，打算把上学期学到的东西、做的实验整理一下，造福后人～&lt;/p&gt;
-
 &lt;p&gt;先写写上学期做的AI实验吧，上过AI课的应该都知道一个经典问题－8数码问题，立方数码问题就相当于8数码问题的三维版本，具体的要求如下（嗯我直接截图好了）：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/91472101.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/91472101.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;要求输出最短的移动操作序列&lt;/p&gt;
-
-&lt;p&gt;代码可见 &lt;a href=&#34;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&#34;&gt;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;代码可见 &lt;a href=&#34;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&#34;&gt;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>中鸽院专家楼</title>
@@ -6,10 +6,15 @@
     <description>Recent content on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Aug 2022 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://xymeow.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
+    <lastBuildDate>Sat, 20 Apr 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://xymeow.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>西雅图赶海攻略</title>
+      <link>http://xymeow.github.io/post/seattle-clam/</link>
+      <pubDate>Sat, 20 Apr 2024 00:00:00 +0000</pubDate>
+      
+      <guid>http://xymeow.github.io/post/seattle-clam/</guid>
+      <description>&lt;p&gt;好久没更新自己的博客,我一度怀疑这github page还在不在&amp;hellip;现在天气逐渐回暖,西雅图人民又要迎来好日子啦!华州的物产资源其实相当丰富,这就写一篇这几年去周边赶海的攻略吧.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>Mt. Rainier的夜与昼</title>
@@ -17,9 +22,7 @@
       <pubDate>Wed, 10 Aug 2022 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/mt-rainier-trip-2022/</guid>
-      <description>&lt;p&gt;上周末我们去Mt Rainier国家公园玩了一趟，整整一天一夜的旅途中我们有好多好多东西想分享，无奈盆友圈只能发九张图，各种平台基本都有字数限制，而且说不定我一不小心写了啥敏感词就被咔嚓了。 真的是好久没有写东西了，久到自己都快忘了自己有个破地盘，好像刚入职那会我还立过个flag说要每个月写点东西，结果嘛哈哈哈，看看本站名叫什么，人类的本质就是咕咕咕对吧。&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;上周末我们去Mt Rainier国家公园玩了一趟，整整一天一夜的旅途中我们有好多好多东西想分享，无奈盆友圈只能发九张图，各种平台基本都有字数限制，而且说不定我一不小心写了啥敏感词就被咔嚓了。 真的是好久没有写东西了，久到自己都快忘了自己有个破地盘，好像刚入职那会我还立过个flag说要每个月写点东西，结果嘛哈哈哈，看看本站名叫什么，人类的本质就是咕咕咕对吧。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -29,10 +32,7 @@
       
       <guid>http://xymeow.github.io/post/2020-fulltime-sde/</guid>
       <description>&lt;p&gt;又是新的一年找工季，看着现在在努力找工作的同学们，不禁回想起去年这时候的我&amp;hellip;我当初来usc读master目的很明确，就是想毕业当码农进工业界搬砖，所以在学校的两年里面基本都是走找工的路线，科研一点没碰.而且尽量远离机器学习人工智能相关课程，虽然ml/ai这些最近几年很火，但我个人是不想做这方面的工作，我觉得调参炼丹比较虚，论文里面的模型方法参数到底靠不靠谱，最后模型又有多少能上线的那是说不准，怕是洗数据撸模型搞半天搞了个寂寞(可能就是我菜).好好写代码实现业务需求心里比较踏实，哪里出了bug花点时间还是能查得出原因. 总之硕士期间主旋律就是找工作(以及吃喝玩乐， LA是个好地方)&amp;hellip;其间经历并不顺利，战线拉得很长，日常喜怒哀乐过山车，不过现在看来确实是人生中一段宝贵的经历~这篇就随意写写当时的经历吧，个人经历仅供参考，路还是要自己走的&lt;/p&gt;
-
-&lt;p&gt;(本来打算无限咕咕咕的，但有小师妹表示想看我的秋招经历，那作为前辈当然要填坑啊!)&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;(本来打算无限咕咕咕的，但有小师妹表示想看我的秋招经历，那作为前辈当然要填坑啊!)&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -41,9 +41,7 @@
       <pubDate>Fri, 14 Feb 2020 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/onboarding/</guid>
-      <description>&lt;p&gt;2019年12月，我从USC顺利毕业了，拿到一个还不错的学校的CS master学位，签下了一份外表光鲜实则养老的工作，本以为可以躺着回国玩两个月再去快乐养老，没想到戏剧性的两个月才刚刚开始&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;2019年12月，我从USC顺利毕业了，拿到一个还不错的学校的CS master学位，签下了一份外表光鲜实则养老的工作，本以为可以躺着回国玩两个月再去快乐养老，没想到戏剧性的两个月才刚刚开始&amp;hellip;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -53,16 +51,10 @@
       
       <guid>http://xymeow.github.io/post/seattle-foods/</guid>
       <description>&lt;p&gt;差不多一年没写东西，我好像开了好多坑又咕咕咕了，感觉纯写技术博客一点动力都没有，不如记录点日常生活然后把更博这个习惯满满捡回来吧&amp;hellip;(我听见了鸽子叫)&lt;/p&gt;
-
 &lt;p&gt;这个暑假有幸在西雅图亚马逊实习，体验我有时间再写吧🐦&lt;/p&gt;
-
 &lt;p&gt;某一天在某亚麻实习群里，一位开车过来实习的老司机说要约饭，从此开上了一直约饭一直爽的不归路，实习结束除了老司机之外大家都长胖了.&lt;/p&gt;
-
 &lt;p&gt;然后呢，由于我整天约饭拍照发票圈，一些热心网友建议我出个西雅图美食评测，我觉得挺好的. 我也算是个有仪式感的人，吃好吃的/看起来好吃的东西之前基本都会拍个照留念一下，本意是记录每天吃了些啥来方便自己回忆当天干了啥，好像天然具备了当美食博主(误)的条件😂所以嘛就顺势而为&amp;hellip;这么就出了个合集记录以及吐槽一下我在西雅图这几个月吃过的东西，有美食也有神坑，都是我比较主观的感受，而且我也比较懒不想分类了，就按吃的时间顺序排了吧，大家看看参考下就好&lt;/p&gt;
-
-&lt;p&gt;以下正文，图片很多建议Wi-Fi下食用，我太懒了文章分页的功能没写&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;以下正文，图片很多建议Wi-Fi下食用，我太懒了文章分页的功能没写&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -71,9 +63,7 @@
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/lottery-scheduling/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -82,9 +72,7 @@
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/superpage-note/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -93,9 +81,7 @@
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/vmware-esx/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -104,8 +90,7 @@
       <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/scheduler-activation-note/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&amp;rsquo;.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -115,9 +100,7 @@
       
       <guid>http://xymeow.github.io/post/xen-note/</guid>
       <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Xen and the art of virtualization&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.
-&lt;/p&gt;</description>
+&lt;p&gt;Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -126,8 +109,7 @@
       <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/singularity/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;The Singularity System&amp;rsquo;.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;The Singularity System&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -137,11 +119,8 @@
       
       <guid>http://xymeow.github.io/post/cs555-lab1/</guid>
       <description>&lt;p&gt;这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂&lt;/p&gt;
-
 &lt;p&gt;这系列我觉得我是不会弃坑的(真香警告)&amp;hellip;
-这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -151,10 +130,7 @@
       
       <guid>http://xymeow.github.io/post/programming-language-note1/</guid>
       <description>&lt;p&gt;最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.coursera.org/learn/programming-languages&#34;&gt;Programming Language&lt;/a&gt;这一系列课是UW的&lt;a href=&#34;https://courses.cs.washington.edu/courses/cse341/&#34;&gt;CSE341&lt;/a&gt;公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://www.coursera.org/learn/programming-languages&#34;&gt;Programming Language&lt;/a&gt;这一系列课是UW的&lt;a href=&#34;https://courses.cs.washington.edu/courses/cse341/&#34;&gt;CSE341&lt;/a&gt;公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -164,14 +140,9 @@
       
       <guid>http://xymeow.github.io/post/robotic-grasping-based-on-deep-learning/</guid>
       <description>&lt;p&gt;好久没更新&amp;hellip;文笔已经退化成小学生水平&amp;hellip;&lt;/p&gt;
-
 &lt;p&gt;目前打算master毕业后当个远离ml/dl的码农, 毕竟发现自己对数据以及数学并没有那么喜欢, 让我今后日常和数据打交道我觉得我八成会抑郁症, 而且现在和ai相关的工作嘛&amp;hellip;.emmmmmm, 一言难尽了. 还是写代码能让我开心点&amp;hellip;&lt;/p&gt;
-
 &lt;p&gt;把之前写的一些东西扔上来存个档, 虽然现在跑路了, 万一哪天又开始搞ml这块了说不定还能看看吧&lt;/p&gt;
-
-&lt;p&gt;以下正文&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;以下正文&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -181,16 +152,10 @@
       
       <guid>http://xymeow.github.io/post/%E7%AB%8B%E6%96%B9%E6%95%B0%E7%A0%81%E9%97%AE%E9%A2%98/</guid>
       <description>&lt;p&gt;又一个学期过去了，我已经成为一只大四狗。。没有课的生活真是爽，想了想我还有这么一个blog，打算把上学期学到的东西、做的实验整理一下，造福后人～&lt;/p&gt;
-
 &lt;p&gt;先写写上学期做的AI实验吧，上过AI课的应该都知道一个经典问题－8数码问题，立方数码问题就相当于8数码问题的三维版本，具体的要求如下（嗯我直接截图好了）：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/91472101.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/91472101.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;要求输出最短的移动操作序列&lt;/p&gt;
-
-&lt;p&gt;代码可见 &lt;a href=&#34;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&#34;&gt;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;代码可见 &lt;a href=&#34;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&#34;&gt;https://github.com/xymeow/AI-course-lab1/tree/master/27digits&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -199,9 +164,7 @@
       <pubDate>Fri, 25 Mar 2016 13:08:34 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/</guid>
-      <description>&lt;p&gt;最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。
-
-先看看效果：&lt;/p&gt;</description>
+      <description>&lt;p&gt;最近在忙着赶紧把去年作死申的国创结题了。。然而我比较宅，都懒得跑出去采集数据集（就是拍照😂）于是想找个爬虫直接把百度图片给扒下来，然而我在网上搜到的代码都比较旧了，不太适用于现在的百度图片（话说最近dl不是很火么按理来说度娘图片的爬虫应该很多啊23333），于是我今早就码了一个简单粗暴的爬虫出来。。。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -211,11 +174,8 @@
       
       <guid>http://xymeow.github.io/post/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%AF%94%E8%BE%83/</guid>
       <description>&lt;p&gt;web课第二个项目，这个比较水，代码目测就100行多点，不过我自己分析的部分比较多。。继续丢实验报告上来。。。&lt;/p&gt;
-
 &lt;h1 id=&#34;实验内容&#34;&gt;实验内容&lt;/h1&gt;
-
-&lt;p&gt;实现 spectral clustering等几个社区发现算法,并比较实验结果;
-&lt;/p&gt;</description>
+&lt;p&gt;实现 spectral clustering等几个社区发现算法,并比较实验结果;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -225,21 +185,20 @@
       
       <guid>http://xymeow.github.io/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</guid>
       <description>&lt;p&gt;没错这其实是实验报告。。。不过看起来确实比较像blog文章。。&lt;/p&gt;
-
 &lt;h1 id=&#34;1-总体过程&#34;&gt;1. 总体过程&lt;/h1&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;构造一个编译器大概是如下的流程：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/88651713.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/88651713.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -249,23 +208,14 @@
       
       <guid>http://xymeow.github.io/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/</guid>
       <description>&lt;p&gt;上计算机网络课的时候的实验报告，图很多很多。。。&lt;/p&gt;
-
-&lt;h1 id=&#34;1-实验内容&#34;&gt;1.实验内容&lt;/h1&gt;
-
+&lt;h1 id=&#34;1实验内容&#34;&gt;1.实验内容&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;捕获观察并分析以太帧结构。&lt;/li&gt;
 &lt;li&gt;观察并分析ARP协议的报文&lt;/li&gt;
 &lt;li&gt;捕捉UDP报文并验证其校验和&lt;/li&gt;
 &lt;li&gt;捕捉TCP报文的连接释放&amp;ndash;四次握手（注意 TCP Segment Len、Windows size value、Checksum等）&lt;/li&gt;
-&lt;li&gt;捕捉除TCP、UDP之外的4种IP层以上的网络协议（例如HTTP、ICMP、SSDP、QICQ等），并尝试分析
-&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;2-实验过程及分析&#34;&gt;2.实验过程及分析&lt;/h1&gt;
-
-&lt;h2 id=&#34;2-1-捕获观察并分析以太帧结构&#34;&gt;2.1 捕获观察并分析以太帧结构&lt;/h2&gt;
-
-&lt;p&gt;从图中可以看出该帧的层次结构，以及帧长、源地址、目的地址、使用协议等简略信息。&lt;/p&gt;</description>
+&lt;li&gt;捕捉除TCP、UDP之外的4种IP层以上的网络协议（例如HTTP、ICMP、SSDP、QICQ等），并尝试分析&lt;/li&gt;
+&lt;/ol&gt;</description>
     </item>
     
     <item>
@@ -284,9 +234,7 @@
       
       <guid>http://xymeow.github.io/post/csapp-lab4/</guid>
       <description>&lt;p&gt;这里是前段时间写的csapp的另一个实验perflab的解题过程喵~&lt;/p&gt;
-
-&lt;p&gt;本实验要求优化handout里kernel.c中的两个函数，rotate函数的作用是将图像逆时针旋转90°，smooth函数的作用是对于图像中的每一个像素点，取它和周围的像素点的平均值，让图片变得模糊。下面让我来逐一优化他们^_^
-&lt;/p&gt;</description>
+&lt;p&gt;本实验要求优化handout里kernel.c中的两个函数，rotate函数的作用是将图像逆时针旋转90°，smooth函数的作用是对于图像中的每一个像素点，取它和周围的像素点的平均值，让图片变得模糊。下面让我来逐一优化他们^_^&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -296,14 +244,10 @@
       
       <guid>http://xymeow.github.io/post/csapp-lab2/</guid>
       <description>&lt;p&gt;顾名思义，这个实验要求我们拆”炸弹”，炸弹是一个可执行程序，按照实验材料所给的提示，我们要利用反汇编工具来找出拆除炸弹的方法，最终拆掉所有的炸弹。这个实验还是十分有意思的，运用游戏化的方法让我们掌握反汇编的技能，提高阅读汇编码的能力，不得不佩服设计者。&lt;/p&gt;
-
 &lt;p&gt;下面我们来拆炸弹，老师给了我们一个炸弹大礼包，里头有好多个炸弹，我选择拆实验材料中的bomb1。按提示我们用objdump工具反汇编一下可执行文件，可以看到它的汇编代码，就像下图：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/61582293.jpg&#34; alt=&#34;lab2-1&#34; /&gt;&lt;/p&gt;
-
+&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/61582293.jpg&#34; alt=&#34;lab2-1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;可以观察到程序中有phase1~6和secret_phase七个函数，从名字上看来它们就对应着我们要拆的炸弹，看来设计者也是个会玩的家伙，隐藏关卡都做了..
-为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。
-&lt;/p&gt;</description>
+为了方便，我将反汇编后得到的汇编代码输出到文本文件中，下面我们来一个个拆掉这些炸弹。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -313,25 +257,17 @@
       
       <guid>http://xymeow.github.io/post/oslab3/</guid>
       <description>&lt;p&gt;恩恩，本周的实验看起来不难，下面是实验要求：&lt;/p&gt;
-
 &lt;p&gt;实验内容：&lt;/p&gt;
-
 &lt;ol&gt;
 &lt;li&gt;制作启动硬盘并启动一个操作系统映像&lt;/li&gt;
 &lt;li&gt;下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的）&lt;/li&gt;
 &lt;li&gt;制作grub启动软盘，进而制作启动硬盘&lt;/li&gt;
-&lt;li&gt;操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之
-
-&lt;ol&gt;
+&lt;li&gt;操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之&lt;/li&gt;
 &lt;li&gt;例如dlxlinux，或其他&lt;/li&gt;
 &lt;li&gt;这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe&lt;/li&gt;
 &lt;li&gt;也可以自己编译一个Linux内核、制作一个根文件系统，并启动之&lt;/li&gt;
-&lt;/ol&gt;&lt;/li&gt;
 &lt;/ol&gt;
-
-&lt;p&gt;是不是看起来好简单啊。。不过做着做着发现还是挺神烦的&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;是不是看起来好简单啊。。不过做着做着发现还是挺神烦的&lt;/p&gt;</description>
     </item>
     
     <item>

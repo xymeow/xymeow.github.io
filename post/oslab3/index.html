@@ -16,129 +16,77 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xymeow" />
-  <meta name="description" content="恩恩，本周的实验看起来不难，下面是实验要求：
+<meta name="author" content="xymeow" /><meta name="description" content="恩恩，本周的实验看起来不难，下面是实验要求：
 实验内容：
- 制作启动硬盘并启动一个操作系统映像 下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的） 制作grub启动软盘，进而制作启动硬盘 操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之  例如dlxlinux，或其他 这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe 也可以自己编译一个Linux内核、制作一个根文件系统，并启动之   是不是看起来好简单啊。。不过做着做着发现还是挺神烦的
-
-" />
-
-  <meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
+制作启动硬盘并启动一个操作系统映像 下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的） 制作grub启动软盘，进而制作启动硬盘 操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之 例如dlxlinux，或其他 这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe 也可以自己编译一个Linux内核、制作一个根文件系统，并启动之 是不是看起来好简单啊。。不过做着做着发现还是挺神烦的
+" /><meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.30" />
+<meta name="generator" content="Hugo 0.109.0 with theme even" />
 
 
 <link rel="canonical" href="http://xymeow.github.io/post/oslab3/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
+<link href="/sass/main.min.287aac339cfd87db34a29fafc6d734344f1e4874c5a1815f63160563dca05a90.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 <meta property="og:title" content="ustc操作系统lab3" />
 <meta property="og:description" content="恩恩，本周的实验看起来不难，下面是实验要求：
-
 实验内容：
-
 
 制作启动硬盘并启动一个操作系统映像
 下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的）
 制作grub启动软盘，进而制作启动硬盘
 操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之
-
-
 例如dlxlinux，或其他
 这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe
 也可以自己编译一个Linux内核、制作一个根文件系统，并启动之
 
-
-
-是不是看起来好简单啊。。不过做着做着发现还是挺神烦的
-
-" />
+是不是看起来好简单啊。。不过做着做着发现还是挺神烦的" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://xymeow.github.io/post/oslab3/" />
-
-
-
-<meta property="article:published_time" content="2015-04-28T19:19:51&#43;00:00"/>
-
-<meta property="article:modified_time" content="2015-04-28T19:19:51&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="http://xymeow.github.io/post/oslab3/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-04-28T19:19:51+00:00" />
+<meta property="article:modified_time" content="2015-04-28T19:19:51+00:00" />
 <meta itemprop="name" content="ustc操作系统lab3">
 <meta itemprop="description" content="恩恩，本周的实验看起来不难，下面是实验要求：
-
 实验内容：
-
 
 制作启动硬盘并启动一个操作系统映像
 下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的）
 制作grub启动软盘，进而制作启动硬盘
 操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之
-
-
 例如dlxlinux，或其他
 这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe
 也可以自己编译一个Linux内核、制作一个根文件系统，并启动之
 
-
-
-是不是看起来好简单啊。。不过做着做着发现还是挺神烦的
-
-">
-
-
-<meta itemprop="datePublished" content="2015-04-28T19:19:51&#43;00:00" />
-<meta itemprop="dateModified" content="2015-04-28T19:19:51&#43;00:00" />
-<meta itemprop="wordCount" content="2384">
-
-
-
-<meta itemprop="keywords" content="lab,os," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="ustc操作系统lab3"/>
+是不是看起来好简单啊。。不过做着做着发现还是挺神烦的"><meta itemprop="datePublished" content="2015-04-28T19:19:51+00:00" />
+<meta itemprop="dateModified" content="2015-04-28T19:19:51+00:00" />
+<meta itemprop="wordCount" content="2422">
+<meta itemprop="keywords" content="lab,os," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="ustc操作系统lab3"/>
 <meta name="twitter:description" content="恩恩，本周的实验看起来不难，下面是实验要求：
-
 实验内容：
-
 
 制作启动硬盘并启动一个操作系统映像
 下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的）
 制作grub启动软盘，进而制作启动硬盘
 操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之
-
-
 例如dlxlinux，或其他
 这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe
 也可以自己编译一个Linux内核、制作一个根文件系统，并启动之
 
-
-
-是不是看起来好简单啊。。不过做着做着发现还是挺神烦的
-
-"/>
+是不是看起来好简单啊。。不过做着做着发现还是挺神烦的"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -175,12 +123,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">中鸽院专家楼</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -197,6 +154,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -210,315 +168,286 @@
       <div class="post-meta">
         <span class="post-time"> 2015-04-28 </span>
         <div class="post-category">
-            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
-          </div>
+            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/"> 写你的代码去 </a>
+            </div>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li><a href="#1-编译linux内核">1. 编译linux内核</a></li>
-<li><a href="#2-准备一个简单的根目录和应用程序">2. 准备一个简单的根目录和应用程序</a></li>
-<li><a href="#3-用busybox-建立根文件系统来运行linux">3. 用busybox 建立根文件系统来运行linux</a></li>
-<li><a href="#4-制作带grub-启动的磁盘映像">4. 制作带grub 启动的磁盘映像</a></li>
-</ul>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-编译linux内核">1. 编译linux内核</a></li>
+    <li><a href="#2-准备一个简单的根目录和应用程序">2. 准备一个简单的根目录和应用程序</a></li>
+    <li><a href="#3-用busybox-建立根文件系统来运行linux">3. 用busybox 建立根文件系统来运行linux</a></li>
+    <li><a href="#4-制作带grub-启动的磁盘映像">4. 制作带grub 启动的磁盘映像</a></li>
+  </ul>
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       <p>恩恩，本周的实验看起来不难，下面是实验要求：</p>
-
 <p>实验内容：</p>
-
 <ol>
 <li>制作启动硬盘并启动一个操作系统映像</li>
 <li>下载 grub-0.97.tar.gz 并编译，或者直接下载 grub-0.97-i386-pc.tar.gz（这是已经编译好的）</li>
 <li>制作grub启动软盘，进而制作启动硬盘</li>
-<li>操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之
-
-<ol>
+<li>操作系统映像：可以到网络上下载一个可用的OS映像，然后编写menu.lst或grub.cfg，利用grub启动之</li>
 <li>例如dlxlinux，或其他</li>
 <li>这里提供2个RTEMS操作系统的映像:hello.exe ticker.exe</li>
 <li>也可以自己编译一个Linux内核、制作一个根文件系统，并启动之</li>
-</ol></li>
 </ol>
-
 <p>是不是看起来好简单啊。。不过做着做着发现还是挺神烦的</p>
-
-<p></p>
-
 <h1 id="1-编译linux内核">1. 编译linux内核</h1>
-
 <p>我下的linux内核版本是2.6.32.20，和实验攻略上的版本不一样，不过我觉得内核编译的方法应该都差不多嘛~不懂问百度／谷歌嘛~</p>
-
 <p>我把文件直接放到/home底下，用<code>tar -jxvf</code> 来解包，然后据说要用缺省编译，于是<code>make i386_defconfig</code></p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/40554215.jpg" alt="oslab3-1" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/40554215.jpg" alt="oslab3-1"></p>
 <p>.config写好了，之后用make命令编译之，现在问题来了，它给我报了几个错，而且没有生成内核映像文件bzImage- =赶紧去百度一下&hellip;</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/68736429.jpg" alt="oslab3-2" /></p>
-
-<p>百度了一下问题解决了~理由如下(参考自<a href="http://blog.sina.com.cn/s/blog_7e49bf5e0100y4sr.html)：">http://blog.sina.com.cn/s/blog_7e49bf5e0100y4sr.html)：</a></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/68736429.jpg" alt="oslab3-2"></p>
+<p>百度了一下问题解决了~理由如下(参考自http://blog.sina.com.cn/s/blog_7e49bf5e0100y4sr.html)：</p>
 <blockquote>
 <p>这个问题是由于 gcc 4.6 不再支持 linker-style 架构。将 arch/x86/vdso/Makefile 中，</p>
-
 <p>以 VDSO_LDFLAGS_vdso.lds 开头所在行的 &ldquo;-m elf_x86_64&rdquo; 替换为 &ldquo;-m64&rdquo;。</p>
-
 <p>以 VDSO_LDFLAGS_vdso32.lds 开头所在行的 &ldquo;-m elf_x86&rdquo; 替换为 &ldquo;-m32&rdquo;。</p>
 </blockquote>
-
 <p>然后编译就木有问题啦~</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/73444769.jpg" alt="oslab3-3" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/73444769.jpg" alt="oslab3-3"></p>
 <h1 id="2-准备一个简单的根目录和应用程序">2. 准备一个简单的根目录和应用程序</h1>
-
 <p>嗯，简单的应用程序嘛~按照惯例写个hello world吧，把它保存为init.c</p>
-
 <p>之后用静态编译生成可执行文件init(我后来试了如果这里不用静态编译的话在qemu中运行会出现奇怪的代码，看上去像是反汇编得到的代码？待我做完实验再去百度一下)</p>
-
 <p><code>gcc -static -o init init.c</code></p>
-
 <p>之后建立引导根目录映像：</p>
-
-<pre><code>dd if=/dev/zero of=initrd4M.img bs=4096 count=1024
-mkfs.ext3 initrd4M.img
-mkdir rootfs
-sudo mount -o loop initrd4M.img rootfs
-cp init rootfs/
-</code></pre>
-
-<p>准备dev 目录：</p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dd if=/dev/zero of=initrd4M.img bs=4096 count=1024
+</span></span><span class="line"><span class="cl">mkfs.ext3 initrd4M.img
+</span></span><span class="line"><span class="cl">mkdir rootfs
+</span></span><span class="line"><span class="cl">sudo mount -o loop initrd4M.img rootfs
+</span></span><span class="line"><span class="cl">cp init rootfs/
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>准备dev 目录：</p>
 <p><code>sudo mkdir rootfs/dev</code></p>
-
 <p>linux启动过程中会启用console设备</p>
-
 <p><code>sudo mknod rootfs/dev/console c 5 1</code></p>
-
 <p>另外需要提供一个linux根设备，使用ram</p>
-
-<pre><code>sudo mknod rootfs/dev/ram b 1 0
-sudo umount rootfs
-</code></pre>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/39656695.jpg" alt="oslab3-4" /></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo mknod rootfs/dev/ram b 1 0
+</span></span><span class="line"><span class="cl">sudo umount rootfs
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://dyns724re0kmw.cloudfront.net/39656695.jpg" alt="oslab3-4"></p>
 <p>至此，一个包含简单应用程序的根目录映像myinitrd4M.img就准备好了啦啦啦~让我尝试着在qemu里面跑一下~\(≧▽≦)/~</p>
-
 <p>诶&hellip;为何运行不鸟呀_(:зゝ∠)_它说我的虚拟机是i686的cpu，也就是32位的所以无法运行程序，可是我的虚拟机装的明明就是64位呀&hellip;</p>
-
 <p>问了一下小伙伴发现应该用qemu-system-x86_64来启动qemu才能支持64位环境呢</p>
-
-<pre><code>qemu-system-x86_64 -kernel
-./linux-2.6.32.20/arch/x86/boot/bzImage -initrd initrd4M.img -append &quot;root=/dev/ram init=/init&quot;
-</code></pre>
-
-<p>这样启动qemu就能看到输出的helloworld啦~\(≧▽≦)/~</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/78264042.jpg" alt="oskab3-6" /></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">qemu-system-x86_64 -kernel
+</span></span><span class="line"><span class="cl">./linux-2.6.32.20/arch/x86/boot/bzImage -initrd initrd4M.img -append &#34;root=/dev/ram init=/init&#34;
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这样启动qemu就能看到输出的helloworld啦~\(≧▽≦)/~</p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/78264042.jpg" alt="oskab3-6"></p>
 <h1 id="3-用busybox-建立根文件系统来运行linux">3. 用busybox 建立根文件系统来运行linux</h1>
-
 <p>将busybox 的包放到/home 下，解包之后用缺省编译，并设置编译选项：</p>
-
 <p><code>make defconfig</code>
 <code>make menuconfig</code></p>
-
-<p>如果提示用不了menuconfig的话应该是缺少ncurses包，用<code>sudo apt-get install libncurses5-dev</code>安装一下就好，如果提示找不到软件包就用<code>sudo apt-get update</code> 更新一下软件源。不用menuconfig用字符界面的config会出人命的(～￣▽￣)～</p>
-
+<p>如果提示用不了menuconfig的话应该是缺少ncurses包，用<code>sudo apt-get install libncurses5-dev</code>安装一下就好，如果提示找不到软件包就用<code> sudo apt-get update</code> 更新一下软件源。不用menuconfig用字符界面的config会出人命的(～￣▽￣)～</p>
 <p>如图配置编译选项：
 在busybox settings里面把第一个勾上，静态编译它</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/84828261.jpg" alt="oslab3-7" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/84828261.jpg" alt="oslab3-7"></p>
 <p>这里选as soft-links</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/13969474.jpg" alt="oslab3-8" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/13969474.jpg" alt="oslab3-8"></p>
 <p>之后make编译它, 并挂载映像到rootfs 目录下</p>
-
-<p><code>sudo mount -o loop initrd4M.img rootfs</code></p>
-
+<p><code>sudo mount -o loop initrd4M.img rootfs </code></p>
 <p>安装busybox 到rootfs 下</p>
-
 <pre><code>cd busybox-1.23.2
 sudo make CONFIG_PREFIX=../rootfs/ install 
 </code></pre>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/5775814.jpg" alt="oslab3-9" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/5775814.jpg" alt="oslab3-9"></p>
 <p>啥&hellip;它提示我的设备上空间不足_(:зゝ∠)_果然老师给的攻略比较年久失修了，攻略上的busybox版本较低只用4M就能安装好了，我的解决方法是再建了一个8M的映像initrd8M.img，我也不知还有木有更好的解决办法了。</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/30135613.jpg" alt="oslab3-10" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/30135613.jpg" alt="oslab3-10"></p>
 <p>这样就算安好了busybox，可以卸载掉rootfs了</p>
-
-<p><code>sudo umount rootfs</code></p>
-
+<p><code>sudo umount rootfs </code></p>
 <p>接着在qemu里面运行看看~\(≧▽≦)/~</p>
-
 <pre><code>qemu-system-x86_64 -kernel
 ./linux-2.6.32.20/arch/x86/boot/bzImage -initrd initrd4M.img -append &quot;root=/dev/ram init=/bin/sh&quot;
 </code></pre>
-
 <p>看到了busybox提供的shell就算成功喽~</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/59604915.jpg" alt="oslab3-11" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/59604915.jpg" alt="oslab3-11"></p>
 <p>如果busybox没安装好，可能会看到这样：(内核它找不到shell于是吓坏了_(:зゝ∠)_)</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/23428922.jpg" alt="oslab3-12" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/23428922.jpg" alt="oslab3-12"></p>
 <h1 id="4-制作带grub-启动的磁盘映像">4. 制作带grub 启动的磁盘映像</h1>
-
 <p>首先建立软盘映像：</p>
-
-<pre><code class="language-bash">dd if=/dev/zero of=boot_a.img bs=512 count=2880
-//在a.img 中安装grub：
-sudo losetup /dev/loop0 a.img
-sudo dd if=./grub-0.97-i386-pc/boot/grub/stage1 of=/dev/loop0 bs=512 count=1
-sudo dd if=./grub-0.97-i386-pc/boot/grub/stage2 of=/dev/loop0 bs=512 seek=1
-sudo losetup -d /dev/loop0
-//在qemu 中测试是否可以进入grub：
-qemu -fda a.img 
-</code></pre>
-
-<p>(我忘截图了…这里是成功了的_(:зゝ∠)_一般照着做都是成功的)</p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">dd <span class="k">if</span><span class="o">=</span>/dev/zero <span class="nv">of</span><span class="o">=</span>boot_a.img <span class="nv">bs</span><span class="o">=</span><span class="m">512</span> <span class="nv">count</span><span class="o">=</span><span class="m">2880</span>
+</span></span><span class="line"><span class="cl">//在a.img 中安装grub：
+</span></span><span class="line"><span class="cl">sudo losetup /dev/loop0 a.img
+</span></span><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>./grub-0.97-i386-pc/boot/grub/stage1 <span class="nv">of</span><span class="o">=</span>/dev/loop0 <span class="nv">bs</span><span class="o">=</span><span class="m">512</span> <span class="nv">count</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">sudo dd <span class="k">if</span><span class="o">=</span>./grub-0.97-i386-pc/boot/grub/stage2 <span class="nv">of</span><span class="o">=</span>/dev/loop0 <span class="nv">bs</span><span class="o">=</span><span class="m">512</span> <span class="nv">seek</span><span class="o">=</span><span class="m">1</span>
+</span></span><span class="line"><span class="cl">sudo losetup -d /dev/loop0
+</span></span><span class="line"><span class="cl">//在qemu 中测试是否可以进入grub：
+</span></span><span class="line"><span class="cl">qemu -fda a.img 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>(我忘截图了…这里是成功了的_(:зゝ∠)_一般照着做都是成功的)</p>
 <p>建立磁盘映像：
 创建一个32M 的磁盘镜像文件</p>
-
-<pre><code>dd if=/dev/zero of=hda_32M.img bs=4096 count=8192
-//给磁盘映像分区
-fdisk -C 16065 -H 255 -S 63 32M.img
-</code></pre>
-
-<p>之后在fdisk工具里面如图操作：</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/16711419.jpg" alt="oslab3-12" /></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">dd if=/dev/zero of=hda_32M.img bs=4096 count=8192
+</span></span><span class="line"><span class="cl">//给磁盘映像分区
+</span></span><span class="line"><span class="cl">fdisk -C 16065 -H 255 -S 63 32M.img
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>之后在fdisk工具里面如图操作：</p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/16711419.jpg" alt="oslab3-12"></p>
 <p>格式化分区 (格式化为.ext3)</p>
-
-<pre><code>sudo losetup -o 1048576 /dev/loop0 hda_32M.img
-sudo mkfs.ext3 -m 0 /dev/loop0 
-</code></pre>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/98052208.jpg" alt="oslab3-13" /></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo losetup -o 1048576 /dev/loop0 hda_32M.img
+</span></span><span class="line"><span class="cl">sudo mkfs.ext3 -m 0 /dev/loop0 
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://dyns724re0kmw.cloudfront.net/98052208.jpg" alt="oslab3-13"></p>
 <p>把前面制作的bzImage 和initrd8M.img 拷贝到rootfs 目录中。</p>
-
-<pre><code>sudo mount /dev/loop0 rootfs/
-sudo cp linux-2.6.32.20/arch/x86/boot/bzImage ./rootfs
-sudo cp initrd8M.img rootfs/ 
-
-//为在硬盘空间里面安装grub 准备目录和文件
-//在磁盘映像hda_32M.img 中创建目录来存放grub
-
-sudo mkdir rootfs/boot
-sudo mkdir rootfs/boot/grub
-sudo cp ./grub-0.97-i386-pc/boot/grub/* rootfs/boot/grub
-</code></pre>
-
-<p>编写menu.lst，并拷贝到rootfs/boot/grub 中，menu.lst 的内容是之前截的，后来发现这里把文件名写错了，没截改过的图。(看来不能完全抄教程啊&hellip;教程上的文件名可能不一样，记得改一下哟，要不各种出错的<em>(:зゝ∠)</em>)</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/87332730.jpg" alt="oslab3-14" /></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo mount /dev/loop0 rootfs/
+</span></span><span class="line"><span class="cl">sudo cp linux-2.6.32.20/arch/x86/boot/bzImage ./rootfs
+</span></span><span class="line"><span class="cl">sudo cp initrd8M.img rootfs/ 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//为在硬盘空间里面安装grub 准备目录和文件
+</span></span><span class="line"><span class="cl">//在磁盘映像hda_32M.img 中创建目录来存放grub
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">sudo mkdir rootfs/boot
+</span></span><span class="line"><span class="cl">sudo mkdir rootfs/boot/grub
+</span></span><span class="line"><span class="cl">sudo cp ./grub-0.97-i386-pc/boot/grub/* rootfs/boot/grub
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>编写menu.lst，并拷贝到rootfs/boot/grub 中，menu.lst 的内容是之前截的，后来发现这里把文件名写错了，没截改过的图。(看来不能完全抄教程啊&hellip;教程上的文件名可能不一样，记得改一下哟，要不各种出错的_(:зゝ∠)_)</p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/87332730.jpg" alt="oslab3-14"></p>
 <p>卸载磁盘映像</p>
-
-<pre><code>sudo umount rootfs
-sudo losetup -d /dev/loop0 //攻略上的减号是全角的！！！你妹啊这里坑了我好久！！！！
-
-//利用grub 启动软盘，在硬盘映像上添加grub 功能
-qemu-system-x86_64 -boot a -fda boot_a.img -hda hda_32M.img
-</code></pre>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/70812030.jpg" alt="oslab3-15" /></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">sudo umount rootfs
+</span></span><span class="line"><span class="cl">sudo losetup -d /dev/loop0 //攻略上的减号是全角的！！！你妹啊这里坑了我好久！！！！
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">//利用grub 启动软盘，在硬盘映像上添加grub 功能
+</span></span><span class="line"><span class="cl">qemu-system-x86_64 -boot a -fda boot_a.img -hda hda_32M.img
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p><img src="http://dyns724re0kmw.cloudfront.net/70812030.jpg" alt="oslab3-15"></p>
 <p>进来之后</p>
-
-<pre><code>root (hd0,0)
-setup (hd0)
-</code></pre>
-
-<p>看到这个界面就对了，如果提示什么error17之类的应该是menu.lst没编对，再检查一下，要不就是没卸磁盘映像。</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/7594021.jpg" alt="oslab3-16" /></p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">root (hd0,0)
+</span></span><span class="line"><span class="cl">setup (hd0)
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>看到这个界面就对了，如果提示什么error17之类的应该是menu.lst没编对，再检查一下，要不就是没卸磁盘映像。</p>
+<p><img src="http://dyns724re0kmw.cloudfront.net/7594021.jpg" alt="oslab3-16"></p>
 <p>最后测试一下，从磁盘启动grub 引导linux：</p>
-
-<p><code>qemu-system-x86_64 -hda hda_32M.img</code></p>
-
+<p><code>qemu-system-x86_64 -hda hda_32M.img </code></p>
 <p>看~grub界面粗线啦</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/92511690.jpg" alt="oslab3-17" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/92511690.jpg" alt="oslab3-17"></p>
 <p>回车进去~</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/98637390.jpg" alt="oslab3-18" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/98637390.jpg" alt="oslab3-18"></p>
 <p>和刚才一样的界面~\(≧▽≦)/~说明实验做好啦~撒花撒花~</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/13582020.jpg" alt="oslab3-19" /></p>
-
-<hr />
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/13582020.jpg" alt="oslab3-19"></p>
+<hr>
 <p>参考资料：</p>
-
 <p>助教君实验主页上的PDF课件(因为有一定历史了，有部分地方不太靠谱，建议不要全盘照搬攻略)</p>
-
 <p><a href="http://blog.sina.com.cn/s/blog_70dd169101013g9j.html">http://blog.sina.com.cn/s/blog_70dd169101013g9j.html</a> (学长好人一生平安啊！！！我也要做好人^_^)</p>
-
 <p><a href="http://blog.sina.com.cn/s/blog_70dd169101013gcw.html">http://blog.sina.com.cn/s/blog_70dd169101013gcw.html</a></p>
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">文章作者</span>
+    <span class="item-title">Author</span>
     <span class="item-content">xymeow</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2015-04-28</span>
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2015-04-28
+        
+    </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/lab/">lab</a>
-          
           <a href="/tags/os/">os</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/csapp-lab2/">
+        <a class="prev" href="/post/csapp-lab2/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">CSAPP LAB2：BOMB LAB 拆个炸弹玩玩</span>
-            <span class="prev-text nav-mobile">上一篇</span>
+            <span class="prev-text nav-mobile">Prev</span>
           </a>
         
       </nav>
@@ -526,42 +455,41 @@ setup (hd0)
   </article>
         </div>
         
+
   
 
   
-      </div>  
+
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
       <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
       <a href="https://www.instagram.com/xymeow" class="iconfont icon-instagram" title="instagram"></a>
-  
+  <a href="http://xymeow.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
     &copy; 
-    
-      2017 - 
-    2022
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">xymeow</span>
+    2017 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>xymeow</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -569,26 +497,29 @@ setup (hd0)
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-126125933-1', 'auto');
-ga('send', 'pageview');
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-126125933-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
 
 
 

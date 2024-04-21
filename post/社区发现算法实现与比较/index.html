@@ -16,84 +16,49 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xymeow" />
-  <meta name="description" content="web课第二个项目，这个比较水，代码目测就100行多点，不过我自己分析的部分比较多。。继续丢实验报告上来。。。
-实验内容 实现 spectral clustering等几个社区发现算法,并比较实验结果; " />
-
-  <meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
+<meta name="author" content="xymeow" /><meta name="description" content="web课第二个项目，这个比较水，代码目测就100行多点，不过我自己分析的部分比较多。。继续丢实验报告上来。。。
+实验内容 实现 spectral clustering等几个社区发现算法,并比较实验结果;
+" /><meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.30" />
+<meta name="generator" content="Hugo 0.109.0 with theme even" />
 
 
 <link rel="canonical" href="http://xymeow.github.io/post/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%AF%94%E8%BE%83/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
+<link href="/sass/main.min.287aac339cfd87db34a29fafc6d734344f1e4874c5a1815f63160563dca05a90.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 <meta property="og:title" content="社区发现算法实现与比较" />
 <meta property="og:description" content="web课第二个项目，这个比较水，代码目测就100行多点，不过我自己分析的部分比较多。。继续丢实验报告上来。。。
-
 实验内容
-
-实现 spectral clustering等几个社区发现算法,并比较实验结果;
-" />
+实现 spectral clustering等几个社区发现算法,并比较实验结果;" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://xymeow.github.io/post/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%AF%94%E8%BE%83/" />
-
-
-
-<meta property="article:published_time" content="2016-01-25T19:43:26&#43;00:00"/>
-
-<meta property="article:modified_time" content="2016-01-25T19:43:26&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="http://xymeow.github.io/post/%E7%A4%BE%E5%8C%BA%E5%8F%91%E7%8E%B0%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%AF%94%E8%BE%83/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2016-01-25T19:43:26+00:00" />
+<meta property="article:modified_time" content="2016-01-25T19:43:26+00:00" />
 <meta itemprop="name" content="社区发现算法实现与比较">
 <meta itemprop="description" content="web课第二个项目，这个比较水，代码目测就100行多点，不过我自己分析的部分比较多。。继续丢实验报告上来。。。
-
 实验内容
-
-实现 spectral clustering等几个社区发现算法,并比较实验结果;
-">
-
-
-<meta itemprop="datePublished" content="2016-01-25T19:43:26&#43;00:00" />
-<meta itemprop="dateModified" content="2016-01-25T19:43:26&#43;00:00" />
-<meta itemprop="wordCount" content="2245">
-
-
-
-<meta itemprop="keywords" content="data mining,Matlab," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="社区发现算法实现与比较"/>
+实现 spectral clustering等几个社区发现算法,并比较实验结果;"><meta itemprop="datePublished" content="2016-01-25T19:43:26+00:00" />
+<meta itemprop="dateModified" content="2016-01-25T19:43:26+00:00" />
+<meta itemprop="wordCount" content="2272">
+<meta itemprop="keywords" content="data mining,Matlab," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="社区发现算法实现与比较"/>
 <meta name="twitter:description" content="web课第二个项目，这个比较水，代码目测就100行多点，不过我自己分析的部分比较多。。继续丢实验报告上来。。。
-
 实验内容
-
-实现 spectral clustering等几个社区发现算法,并比较实验结果;
-"/>
+实现 spectral clustering等几个社区发现算法,并比较实验结果;"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -130,12 +95,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">中鸽院专家楼</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -152,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -165,99 +140,80 @@
       <div class="post-meta">
         <span class="post-time"> 2016-01-25 </span>
         <div class="post-category">
-            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
-          </div>
+            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/"> 写你的代码去 </a>
+            </div>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li><a href="#实验内容">实验内容</a></li>
-<li><a href="#实验环境">实验环境</a></li>
-<li><a href="#实验步骤及方法">实验步骤及方法</a>
-<ul>
-<li><a href="#1-gn算法">1. GN算法</a></li>
-<li><a href="#2-alink-jaccard算法">2. alink-jaccard算法</a></li>
-<li><a href="#3-rcut算法">3. rcut算法</a></li>
-<li><a href="#4-ncut算法">4. ncut算法</a></li>
-<li><a href="#5-modularity算法">5. modularity算法</a></li>
-</ul></li>
-<li><a href="#实验结果说明及演示">实验结果说明及演示</a>
-<ul>
-<li><a href="#1-polbooks数据集">1. polbooks数据集</a></li>
-<li><a href="#2-football数据集">2. football数据集</a></li>
-<li><a href="#3-egonet集k值的确定">3. egonet集k值的确定</a></li>
-</ul></li>
-</ul>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#实验内容">实验内容</a></li>
+    <li><a href="#实验环境">实验环境</a></li>
+    <li><a href="#实验步骤及方法">实验步骤及方法</a>
+      <ul>
+        <li><a href="#1-gn算法">1. GN算法</a></li>
+        <li><a href="#2-alink-jaccard算法">2. alink-jaccard算法</a></li>
+        <li><a href="#3-rcut算法">3. rcut算法</a></li>
+        <li><a href="#4-ncut算法">4. ncut算法</a></li>
+        <li><a href="#5-modularity算法">5. modularity算法</a></li>
+      </ul>
+    </li>
+    <li><a href="#实验结果说明及演示">实验结果说明及演示</a>
+      <ul>
+        <li><a href="#1-polbooks数据集">1. polbooks数据集</a></li>
+        <li><a href="#2-football数据集">2. football数据集</a></li>
+        <li><a href="#3-egonet集k值的确定">3. egonet集k值的确定</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       <p>web课第二个项目，这个比较水，代码目测就100行多点，不过我自己分析的部分比较多。。继续丢实验报告上来。。。</p>
-
 <h1 id="实验内容">实验内容</h1>
-
-<p>实现 spectral clustering等几个社区发现算法,并比较实验结果;
-</p>
-
+<p>实现 spectral clustering等几个社区发现算法,并比较实验结果;</p>
 <h1 id="实验环境">实验环境</h1>
-
 <ul>
 <li>编程语言为Matlab</li>
 <li>运行环境OS X El Captain</li>
 <li>使用工具：Matlab 2015b，matlab_BGL 4.0</li>
 </ul>
-
 <h1 id="实验步骤及方法">实验步骤及方法</h1>
-
 <p>以下列出各个算法的大致实现方法</p>
-
 <h2 id="1-gn算法">1. GN算法</h2>
-
 <p>GN算法是一种分裂型的社区发现算法，我在本实验中的实现大概如下：</p>
-
 <ol>
-<li><p>计算各边的betweenness</p></li>
-
-<li><p>去除betweenness值最高的边</p></li>
-
-<li><p>计算该图的连通片</p></li>
-
-<li><p>判断连通片的数目compsize，若小于k，转1</p></li>
+<li>
+<p>计算各边的betweenness</p>
+</li>
+<li>
+<p>去除betweenness值最高的边</p>
+</li>
+<li>
+<p>计算该图的连通片</p>
+</li>
+<li>
+<p>判断连通片的数目compsize，若小于k，转1</p>
+</li>
 </ol>
-
 <h2 id="2-alink-jaccard算法">2. alink-jaccard算法</h2>
-
-<p>alink－jaccard是一种层次聚类方法，它使用jaccard相似度作为节点间的&rdquo;距离&rdquo;，再使用聚类算法，初始时每个节点为一个cluster，每次迭代将cluster间节点距离平均值最小的两个cluster合并，直到剩下k个cluster为止。</p>
-
+<p>alink－jaccard是一种层次聚类方法，它使用jaccard相似度作为节点间的&quot;距离&quot;，再使用聚类算法，初始时每个节点为一个cluster，每次迭代将cluster间节点距离平均值最小的两个cluster合并，直到剩下k个cluster为止。</p>
 <h2 id="3-rcut算法">3. rcut算法</h2>
-
 <p>rcut是基于谱聚类的一种方法，可以把社区发现的问题转换成求矩阵特征向量，再在特征向量上使用kmeans算法。
 定义矩阵\(D\)为图的度矩阵，\(W\)为图的邻接矩阵，则拉普拉斯矩阵\(L = D - W\) 求这个矩阵的特征向量，把它按从小到大的顺序排列，取前k个特征向量，在上面使用kmeans算法得到聚类结果。</p>
-
 <h2 id="4-ncut算法">4. ncut算法</h2>
-
 <p>实现方法基本同rcut，只是这里定义的拉普拉斯矩阵为 \(D^{- \frac 12} (D-W) D^{- \frac 12}\)</p>
-
 <h2 id="5-modularity算法">5. modularity算法</h2>
-
 <p>modularity算法在这里的实现方法类似谱聚类的方法，这里定义\(B=A-dd^T/2m\),\(A\)为图的邻接矩阵，\(d\)为顶点度数向量，即\(d_i = degreeof(node_i)\)，\(m\)为图的边数，这里可以用<code>A矩阵的非零元素数目/2</code>来获得。
 该算法求B矩阵的特征向量，选择其中最大的k个向量来做kmeans算法。</p>
-
 <h1 id="实验结果说明及演示">实验结果说明及演示</h1>
-
 <h2 id="1-polbooks数据集">1. polbooks数据集</h2>
-
 <p>以下是实验过程中得到的nmi及acc值：</p>
-
 <table>
 <thead>
 <tr>
@@ -269,7 +225,6 @@
 <th>modularity</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>nmi</td>
@@ -279,7 +234,6 @@
 <td>0.4257</td>
 <td>0.3855</td>
 </tr>
-
 <tr>
 <td>acc</td>
 <td>0.7810</td>
@@ -290,23 +244,15 @@
 </tr>
 </tbody>
 </table>
-
 <blockquote>
 <p>nmi值是一种聚类间的准确度测量，取值范围为[0, 1]，1表示两聚类之间完全匹配。</p>
 </blockquote>
-
 <p>这里nmi和acc最高的都是rcut，最低的都是modularity。</p>
-
 <p>结果和我预想的不太一样，我是觉得modularity、rcut、ncut都是基于谱分析的聚类算法，nmi、acc应该比较接近，而且modularity是直接对Q值进行迭代优化，nmi应该不会低，然而实验结果与我想的不太一样，可能的原因是kmeans算法初始取的点位置不太好，结果收敛到了局部最优值，导致聚类效果的下降。</p>
-
 <p>这里的算法中，modularity、rcut、ncut都使用了kmeans算法，所以得到的结果都不太稳定。</p>
-
 <p>GN算法每次选取betweenness 最大的边删除，也是分裂式的聚类方法，每次删除一条最不重要的边，和两个cut的算法差不多，但cut的算法每次找的是图的一个割，按边删除可能在最终得到聚类上和标准答案有些差距，但总体表现得不错。</p>
-
 <p>alink层级聚类方法是不断合并相似节点，最终得到聚类。聚类内部应该是比较相似的，但是聚类之间的距离可能不如其他算法那么明显。</p>
-
 <h2 id="2-football数据集">2. football数据集</h2>
-
 <table>
 <thead>
 <tr>
@@ -318,7 +264,6 @@
 <th>modularity</th>
 </tr>
 </thead>
-
 <tbody>
 <tr>
 <td>nmi</td>
@@ -328,7 +273,6 @@
 <td>0.2633</td>
 <td>0.2409</td>
 </tr>
-
 <tr>
 <td>acc</td>
 <td>0.1478</td>
@@ -339,111 +283,116 @@
 </tr>
 </tbody>
 </table>
-
 <p>从得到的结果看来，这个数据集上进行聚类的效果远差于上一个数据集，可能是因为这个数据集有12个社区，距离较近的节点可能属于不同的社区，这个数据集上还是rcut表现得最好，可以看出，三个使用了kmeans的算法的acc要略高一些，可能是因为社区的区域出现重叠的缘故。而nmi值，除了modularity略低一些之外，其他四个算法都差不多，可能是modularity在寻找比较小的社区时的效果不是太好。</p>
-
 <h2 id="3-egonet集k值的确定">3. egonet集k值的确定</h2>
-
 <p>egonet数据集中未给出k值，我这里对于k值的确定是基于这样的考虑：当k值小于正确的社区数时，每个聚类的半径，即聚类中的点离该类中心最远的距离，它随k值的增大而减少，减少幅度应该是很大的；而当k值大于实际社区数时，聚类半径随k值增加的下降会变得很慢，甚至上升。</p>
-
 <p>所以我这里确定k值的方法是对每个k值，使用rcut的L矩阵得到对应的特征向量，选取第2～4个特征向量，相当于将数据集映射到三维空间。再在这上面运行kmeans算法，这里的k值设为1～10，之后记录每个k值对应的k个聚类半径的加权平均值sumdist(k)（按聚类大小加权）。最后将sumdist中的k个值绘制成图，图中斜率变化最大的那个点就是理想的k值</p>
-
 <p>先在给定了k值的polbooks数据集上做测试，得到图：</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/65973348.jpg" alt="weblab2-1" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/65973348.jpg" alt="weblab2-1"></p>
 <p>可以看到，当k ＝ 3时斜率变化最大，在这个数据集上的k值确实为3</p>
-
 <p>再在DBLP数据集上测试：</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/68034152.jpg" alt="weblab2-2" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/68034152.jpg" alt="weblab2-2"></p>
 <p>可以发现，图中结果表示k值应取4.</p>
-
 <p>最后，在egonet数据集上运行：</p>
-
-<p><img src="http://dyns724re0kmw.cloudfront.net/27163850.jpg" alt="weblab2-3" /></p>
-
+<p><img src="http://dyns724re0kmw.cloudfront.net/27163850.jpg" alt="weblab2-3"></p>
 <p>从图中看出，k应该取3.</p>
-
 <p>下面附上选定k值的脚本源码：</p>
-
-<pre><code class="language-matlab">function testrcut(A)
-W = A;
-wsize = size(W);
-D = zeros(wsize);
-for i = 1:wsize(1)
-    D(i,i) = sum(W(i,:));
-end
-
-L = D - W;
-[x, ~] = eig(L);
-
-ksize = 10;
-kstart = 1;
-sumdist = zeros(1,kstart+ksize);
-for k=kstart:kstart+ksize
-    r = zeros(1,k);
-    clusize = zeros(1,k);
-    V = x(:, 1:3);
-    [clustering,~,~,sumd] = kmeans(V, k);
-    for i = 1:wsize(1)
-        r(clustering(i)) = max(r(clustering(i)),sumd(i,clustering(i)));
-    end
-    for j = 1:k
-        clusize(j) = length(find(clustering == j));
-    end
-    sumdist(k) = sum(r.*clusize)/sum(clusize)/k;
-end
-plot(sumdist);
-end
-</code></pre>
-
-<p>这个实验在几个数据集上运行了5个比较经典的聚类算法，让我熟悉了进行社区发现的基础知识。实验所用的Matlab语言比较适合矩阵的运算，也有很多高效的工具包来完成距离计算等功能。在此次实验中，可以发现这些聚类算法对于距离近的节点属于不同社区的这种情况的效果不是很好，对于小社区的发现的效果也不是很好，这些地方应该存在更为有效的解决方案。</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-matlab" data-lang="matlab"><span class="line"><span class="cl"><span class="k">function</span><span class="w"> </span><span class="nf">testrcut</span><span class="p">(</span>A<span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="n">W</span> <span class="p">=</span> <span class="n">A</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">wsize</span> <span class="p">=</span> <span class="nb">size</span><span class="p">(</span><span class="n">W</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="n">D</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="n">wsize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">wsize</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">D</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="nb">i</span><span class="p">)</span> <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">W</span><span class="p">(</span><span class="nb">i</span><span class="p">,:));</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">L</span> <span class="p">=</span> <span class="n">D</span> <span class="o">-</span> <span class="n">W</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="n">x</span><span class="p">,</span> <span class="o">~</span><span class="p">]</span> <span class="p">=</span> <span class="n">eig</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">ksize</span> <span class="p">=</span> <span class="mi">10</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">kstart</span> <span class="p">=</span> <span class="mi">1</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="n">sumdist</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">kstart</span><span class="o">+</span><span class="n">ksize</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">for</span> <span class="n">k</span><span class="p">=</span><span class="n">kstart</span><span class="p">:</span><span class="n">kstart</span><span class="o">+</span><span class="n">ksize</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">clusize</span> <span class="p">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="n">V</span> <span class="p">=</span> <span class="n">x</span><span class="p">(:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="p">[</span><span class="n">clustering</span><span class="p">,</span><span class="o">~</span><span class="p">,</span><span class="o">~</span><span class="p">,</span><span class="n">sumd</span><span class="p">]</span> <span class="p">=</span> <span class="n">kmeans</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">k</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nb">i</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">wsize</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="n">r</span><span class="p">(</span><span class="n">clustering</span><span class="p">(</span><span class="nb">i</span><span class="p">))</span> <span class="p">=</span> <span class="n">max</span><span class="p">(</span><span class="n">r</span><span class="p">(</span><span class="n">clustering</span><span class="p">(</span><span class="nb">i</span><span class="p">)),</span><span class="n">sumd</span><span class="p">(</span><span class="nb">i</span><span class="p">,</span><span class="n">clustering</span><span class="p">(</span><span class="nb">i</span><span class="p">)));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="nb">j</span> <span class="p">=</span> <span class="mi">1</span><span class="p">:</span><span class="n">k</span>
+</span></span><span class="line"><span class="cl">        <span class="n">clusize</span><span class="p">(</span><span class="nb">j</span><span class="p">)</span> <span class="p">=</span> <span class="nb">length</span><span class="p">(</span><span class="nb">find</span><span class="p">(</span><span class="n">clustering</span> <span class="o">==</span> <span class="nb">j</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="k">end</span>
+</span></span><span class="line"><span class="cl">    <span class="n">sumdist</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="p">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">r</span><span class="o">.*</span><span class="n">clusize</span><span class="p">)</span><span class="o">/</span><span class="n">sum</span><span class="p">(</span><span class="n">clusize</span><span class="p">)</span><span class="o">/</span><span class="n">k</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span><span class="line"><span class="cl"><span class="n">plot</span><span class="p">(</span><span class="n">sumdist</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="k">end</span>
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>这个实验在几个数据集上运行了5个比较经典的聚类算法，让我熟悉了进行社区发现的基础知识。实验所用的Matlab语言比较适合矩阵的运算，也有很多高效的工具包来完成距离计算等功能。在此次实验中，可以发现这些聚类算法对于距离近的节点属于不同社区的这种情况的效果不是很好，对于小社区的发现的效果也不是很好，这些地方应该存在更为有效的解决方案。</p>
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">文章作者</span>
+    <span class="item-title">Author</span>
     <span class="item-content">xymeow</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2016-01-25</span>
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2016-01-25
+        
+    </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/data-mining/">data mining</a>
-          
           <a href="/tags/matlab/">Matlab</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/">
+        <a class="prev" href="/post/%E7%AE%80%E5%8D%95%E7%B2%97%E6%9A%B4%E7%9A%84%E7%99%BE%E5%BA%A6%E5%9B%BE%E7%89%87%E7%88%AC%E8%99%AB/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">简单粗暴的百度图片爬虫</span>
-            <span class="prev-text nav-mobile">上一篇</span>
+            <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">
+        <a class="next" href="/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/">
             <span class="next-text nav-default">flex&#43;bison&#43;llvm简易学习心得</span>
-            <span class="prev-text nav-mobile">下一篇</span>
+            <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
       </nav>
@@ -451,42 +400,41 @@ end
   </article>
         </div>
         
+
   
 
   
-      </div>  
+
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
       <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
       <a href="https://www.instagram.com/xymeow" class="iconfont icon-instagram" title="instagram"></a>
-  
+  <a href="http://xymeow.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
     &copy; 
-    
-      2017 - 
-    2022
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">xymeow</span>
+    2017 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>xymeow</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -494,26 +442,29 @@ end
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-126125933-1', 'auto');
-ga('send', 'pageview');
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-126125933-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
 
 
 

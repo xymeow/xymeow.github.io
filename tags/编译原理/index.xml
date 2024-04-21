@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>编译原理 on 中鸽院专家楼</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 编译原理 on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 24 Jan 2016 21:25:47 +0000</lastBuildDate>
-    
-	<atom:link href="http://xymeow.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 24 Jan 2016 21:25:47 +0000</lastBuildDate><atom:link href="http://xymeow.github.io/tags/%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>flex&#43;bison&#43;llvm简易学习心得</title>
       <link>http://xymeow.github.io/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</link>
@@ -18,21 +14,20 @@
       
       <guid>http://xymeow.github.io/post/flex&#43;bison&#43;llvm%E7%AE%80%E6%98%93%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</guid>
       <description>&lt;p&gt;没错这其实是实验报告。。。不过看起来确实比较像blog文章。。&lt;/p&gt;
-
 &lt;h1 id=&#34;1-总体过程&#34;&gt;1. 总体过程&lt;/h1&gt;
-
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;文法分析用Flex:将数据分隔成一个个的标记token (标示符identifiers，关键字keywords，数字numbers, 中括号brackets, 大括号braces, 等等etc.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;语法分析用Bison: 在分析标记的时候生成抽象语法树. Bison 将会做掉几乎所有的这些工作, 只用定义好抽象语法树。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;组装用LLVM: 遍历抽象语法树，并为每一个节点生成字节/机器码。&lt;/p&gt;
+&lt;/li&gt;
 &lt;/ul&gt;
-
 &lt;p&gt;构造一个编译器大概是如下的流程：&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/88651713.jpg&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;</description>
+&lt;p&gt;&lt;img src=&#34;http://dyns724re0kmw.cloudfront.net/88651713.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

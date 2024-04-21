@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>优化 on 中鸽院专家楼</title>
@@ -6,11 +6,7 @@
     <description>Recent content in 优化 on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 01 Jul 2015 22:28:43 +0000</lastBuildDate>
-    
-	<atom:link href="http://xymeow.github.io/tags/%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 01 Jul 2015 22:28:43 +0000</lastBuildDate><atom:link href="http://xymeow.github.io/tags/%E4%BC%98%E5%8C%96/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>CSAPP LAB4：perflab-优化两个奇怪的函数</title>
       <link>http://xymeow.github.io/post/csapp-lab4/</link>
@@ -18,9 +14,7 @@
       
       <guid>http://xymeow.github.io/post/csapp-lab4/</guid>
       <description>&lt;p&gt;这里是前段时间写的csapp的另一个实验perflab的解题过程喵~&lt;/p&gt;
-
-&lt;p&gt;本实验要求优化handout里kernel.c中的两个函数，rotate函数的作用是将图像逆时针旋转90°，smooth函数的作用是对于图像中的每一个像素点，取它和周围的像素点的平均值，让图片变得模糊。下面让我来逐一优化他们^_^
-&lt;/p&gt;</description>
+&lt;p&gt;本实验要求优化handout里kernel.c中的两个函数，rotate函数的作用是将图像逆时针旋转90°，smooth函数的作用是对于图像中的每一个像素点，取它和周围的像素点的平均值，让图片变得模糊。下面让我来逐一优化他们^_^&lt;/p&gt;</description>
     </item>
     
   </channel>

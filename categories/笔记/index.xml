@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>笔记 on 中鸽院专家楼</title>
@@ -6,20 +6,14 @@
     <description>Recent content in 笔记 on 中鸽院专家楼</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="http://xymeow.github.io/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Wed, 10 Oct 2018 00:00:00 +0000</lastBuildDate><atom:link href="http://xymeow.github.io/categories/%E7%AC%94%E8%AE%B0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lottery Scheduling - my notes</title>
       <link>http://xymeow.github.io/post/lottery-scheduling/</link>
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/lottery-scheduling/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Lottery Scheduling: Flexible Proportional-Share Resource Management&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -28,9 +22,7 @@
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/superpage-note/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -39,9 +31,7 @@
       <pubDate>Wed, 10 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/vmware-esx/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Memory resource management in VMware ESX server&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -50,8 +40,7 @@
       <pubDate>Tue, 09 Oct 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/scheduler-activation-note/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&amp;rsquo;.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Scheduler Activations: Effective Kernel Support for the User-Level Management of Parallelism&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -61,9 +50,7 @@
       
       <guid>http://xymeow.github.io/post/xen-note/</guid>
       <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;Xen and the art of virtualization&amp;rsquo;.&lt;/p&gt;
-
-&lt;p&gt;Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.
-&lt;/p&gt;</description>
+&lt;p&gt;Xen is an x86 virtual machine monitor allowing multiple commodity OSs to share conventional hardware in a safe and resource managed fashion.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -72,8 +59,7 @@
       <pubDate>Sun, 16 Sep 2018 00:00:00 +0000</pubDate>
       
       <guid>http://xymeow.github.io/post/singularity/</guid>
-      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;The Singularity System&amp;rsquo;.
-&lt;/p&gt;</description>
+      <description>&lt;p&gt;Some notes taking from reading the paper &amp;lsquo;The Singularity System&amp;rsquo;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -83,10 +69,7 @@
       
       <guid>http://xymeow.github.io/post/programming-language-note1/</guid>
       <description>&lt;p&gt;最近在跟着C站上面的Programming Language这课,感觉还是挺不错的,开个坑整理一下&amp;hellip;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;https://www.coursera.org/learn/programming-languages&#34;&gt;Programming Language&lt;/a&gt;这一系列课是UW的&lt;a href=&#34;https://courses.cs.washington.edu/courses/cse341/&#34;&gt;CSE341&lt;/a&gt;公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;&lt;a href=&#34;https://www.coursera.org/learn/programming-languages&#34;&gt;Programming Language&lt;/a&gt;这一系列课是UW的&lt;a href=&#34;https://courses.cs.washington.edu/courses/cse341/&#34;&gt;CSE341&lt;/a&gt;公开课版本,内容基本一致(最新的spring2018版加了Haskell),作业有autograder评分,对白嫖党真是重大利好. 这门课并不是一个编程入门级课程,而是从更general的角度讲解一些编程语言的概念,比如抽象,类型系统,作用域,编程范型(fp, oop)之类的东西. 感觉这门课比较注重讲函数式,课上讲了standard ml, racket, ruby三种语言,这里的Part A专注于Standard ml. 感觉课程note讲得很系统了,这里抓一些我认为重要的东西记录一下.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -96,14 +79,9 @@
       
       <guid>http://xymeow.github.io/post/robotic-grasping-based-on-deep-learning/</guid>
       <description>&lt;p&gt;好久没更新&amp;hellip;文笔已经退化成小学生水平&amp;hellip;&lt;/p&gt;
-
 &lt;p&gt;目前打算master毕业后当个远离ml/dl的码农, 毕竟发现自己对数据以及数学并没有那么喜欢, 让我今后日常和数据打交道我觉得我八成会抑郁症, 而且现在和ai相关的工作嘛&amp;hellip;.emmmmmm, 一言难尽了. 还是写代码能让我开心点&amp;hellip;&lt;/p&gt;
-
 &lt;p&gt;把之前写的一些东西扔上来存个档, 虽然现在跑路了, 万一哪天又开始搞ml这块了说不定还能看看吧&lt;/p&gt;
-
-&lt;p&gt;以下正文&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;以下正文&lt;/p&gt;</description>
     </item>
     
     <item>

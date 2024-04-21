@@ -16,86 +16,49 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xymeow" />
-  <meta name="description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
+<meta name="author" content="xymeow" /><meta name="description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
 这系列我觉得我是不会弃坑的(真香警告)&amp;hellip; 这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文
-
-" />
-
-  <meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
+" /><meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.30" />
+<meta name="generator" content="Hugo 0.109.0 with theme even" />
 
 
 <link rel="canonical" href="http://xymeow.github.io/post/cs555-lab1/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
+<link href="/sass/main.min.287aac339cfd87db34a29fafc6d734344f1e4874c5a1815f63160563dca05a90.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 <meta property="og:title" content="CSCI 555 (MIT 6.828) Lab 1 记录" />
 <meta property="og:description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
-
 这系列我觉得我是不会弃坑的(真香警告)&hellip;
-这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文
-
-" />
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://xymeow.github.io/post/cs555-lab1/" />
-
-
-
-<meta property="article:published_time" content="2018-09-03T00:00:00&#43;00:00"/>
-
-<meta property="article:modified_time" content="2019-03-03T00:00:00&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="http://xymeow.github.io/post/cs555-lab1/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-09-03T00:00:00+00:00" />
+<meta property="article:modified_time" content="2019-03-03T00:00:00+00:00" />
 <meta itemprop="name" content="CSCI 555 (MIT 6.828) Lab 1 记录">
 <meta itemprop="description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
-
 这系列我觉得我是不会弃坑的(真香警告)&hellip;
-这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文
-
-">
-
-
-<meta itemprop="datePublished" content="2018-09-03T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-09-03T00:00:00&#43;00:00" />
-<meta itemprop="wordCount" content="1707">
-
-
-
-<meta itemprop="keywords" content="os,csci555,6.828,usc," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="CSCI 555 (MIT 6.828) Lab 1 记录"/>
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文"><meta itemprop="datePublished" content="2018-09-03T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2019-03-03T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1726">
+<meta itemprop="keywords" content="os,csci555,6.828,usc," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CSCI 555 (MIT 6.828) Lab 1 记录"/>
 <meta name="twitter:description" content="这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂
-
 这系列我觉得我是不会弃坑的(真香警告)&hellip;
-这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文
-
-"/>
+这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文"/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -132,12 +95,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">中鸽院专家楼</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -154,6 +126,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -167,174 +140,169 @@
       <div class="post-meta">
         <span class="post-time"> 2018-09-03 </span>
         <div class="post-category">
-            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/">写你的代码去</a>
-          </div>
+            <a href="/categories/%E5%86%99%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E5%8E%BB/"> 写你的代码去 </a>
+            </div>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li><a href="#part-0-setup-envoronment">part 0: setup envoronment</a></li>
-<li><a href="#part-1-pc-bootstrap">part 1: PC Bootstrap</a></li>
-<li><a href="#part-2-the-boot-loader">part 2: The Boot Loader</a></li>
-<li><a href="#part-3-the-kernel">part 3: The Kernel</a></li>
-</ul>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#part-0-setup-envoronment">part 0: setup envoronment</a></li>
+    <li><a href="#part-1-pc-bootstrap">part 1: PC Bootstrap</a></li>
+    <li><a href="#part-2-the-boot-loader">part 2: The Boot Loader</a></li>
+    <li><a href="#part-3-the-kernel">part 3: The Kernel</a></li>
+  </ul>
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       <p>这学期选了cs555 Advanced Operating System, 据说这课load比较大, 但对于头铁又放飞gpa的我来说根本就无所畏惧(笑). 教授是个大佬,每节课带着读一篇system方向的经典paper,讲的挺好. 然后实验是搬运的mit 6.828, 网上资源很多,感觉工作量会比较大,这学期秃头预定😂</p>
-
 <p>这系列我觉得我是不会弃坑的(真香警告)&hellip;
 这里就记录一下码代码的大致心得以及我觉得重点的地方吧,抄答案还是另寻别处吧,以下正文</p>
-
-<p></p>
-
 <h1 id="part-0-setup-envoronment">part 0: setup envoronment</h1>
-
 <p>把课程代码clone下来之后编译, 我用的MacOS, 版本10.13 high Sierra, 总结就是Homebrew大法好, brew装了<code>i386-elf-gcc</code>, <code>i386-elf-gdb</code>, <code>i386-elf-binutils</code>三件套,再改改makefile就完事了,做完lab1现在没发现啥问题&hellip;</p>
-
 <h1 id="part-1-pc-bootstrap">part 1: PC Bootstrap</h1>
-
 <p>PC的物理地址空间大致长这样:</p>
-
-<pre><code>+------------------+  &lt;- 0xFFFFFFFF (4GB)
-|      32-bit      |
-|  memory mapped   |
-|     devices      |
-|                  |
-/\/\/\/\/\/\/\/\/\/\
-
-/\/\/\/\/\/\/\/\/\/\
-|                  |
-|      Unused      |
-|                  |
-+------------------+  &lt;- depends on amount of RAM
-|                  |
-|                  |
-| Extended Memory  |
-|                  |
-|                  |
-+------------------+  &lt;- 0x00100000 (1MB)
-|     BIOS ROM     |
-+------------------+  &lt;- 0x000F0000 (960KB)
-|  16-bit devices, |
-|  expansion ROMs  |
-+------------------+  &lt;- 0x000C0000 (768KB)
-|   VGA Display    |
-+------------------+  &lt;- 0x000A0000 (640KB)
-|                  |
-|    Low Memory    |
-|                  |
-+------------------+  &lt;- 0x00000000
-</code></pre>
-
-<p>有个问题:为什么16位的PC能寻址1MB(2^20)的地址空间呢?</p>
-
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre tabindex="0" class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span></code></pre></td>
+<td class="lntd">
+<pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">+------------------+  &lt;- 0xFFFFFFFF (4GB)
+</span></span><span class="line"><span class="cl">|      32-bit      |
+</span></span><span class="line"><span class="cl">|  memory mapped   |
+</span></span><span class="line"><span class="cl">|     devices      |
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">/\/\/\/\/\/\/\/\/\/\
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">/\/\/\/\/\/\/\/\/\/\
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">|      Unused      |
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">+------------------+  &lt;- depends on amount of RAM
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">| Extended Memory  |
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">+------------------+  &lt;- 0x00100000 (1MB)
+</span></span><span class="line"><span class="cl">|     BIOS ROM     |
+</span></span><span class="line"><span class="cl">+------------------+  &lt;- 0x000F0000 (960KB)
+</span></span><span class="line"><span class="cl">|  16-bit devices, |
+</span></span><span class="line"><span class="cl">|  expansion ROMs  |
+</span></span><span class="line"><span class="cl">+------------------+  &lt;- 0x000C0000 (768KB)
+</span></span><span class="line"><span class="cl">|   VGA Display    |
+</span></span><span class="line"><span class="cl">+------------------+  &lt;- 0x000A0000 (640KB)
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">|    Low Memory    |
+</span></span><span class="line"><span class="cl">|                  |
+</span></span><span class="line"><span class="cl">+------------------+  &lt;- 0x00000000
+</span></span></code></pre></td></tr></table>
+</div>
+</div><p>有个问题:为什么16位的PC能寻址1MB(2^20)的地址空间呢?</p>
 <p>早期16位PC是基于intel 8088处理器, 而8088/8086这些16位的处理器是靠分段(segmentation)来寻址20位地址空间的.计算公式是<code>physical address = (16 * segment address + offset)</code></p>
-
 <p>8088的BIOS设计放在<code>0x000f0000-0x000fffff</code>处, 当处理器启动的时候,进入实模式,起始地址为<code>0xffff0 (CS:IP = 0xf000:0xfff0)</code></p>
-
 <p>BIOS运行时会建立中断描述符表(interrupt descriptor table)以及初始化一系列硬件设备,之后搜寻可启动的设备(CD-ROM之类的),找到之后BIOS从设备中读取引导程序(boot loader)然后将控制权转交给它.</p>
-
-<hr />
-
+<hr>
 <h1 id="part-2-the-boot-loader">part 2: The Boot Loader</h1>
-
 <p>PC硬盘被划分为许多512byte大小的扇区,一个可以启动的磁盘的第一个扇区就是引导程序,BIOS会将其读入<code>0x7c00~0x7dff</code>的地址中,之后执行<code>jmp</code>指令跳转到0x7c00处,将控制转交给引导程序.至于为什么是0x7c00,这是历史原因了,详情参见wiki</p>
-
-<p>boot loader 主要做这么些事:
-- 将处理器从实模式切换到32位保护模式
-- 将整个kernel读入memory中
-- 控制转交给kernel</p>
-
+<p>boot loader 主要做这么些事:</p>
+<ul>
+<li>将处理器从实模式切换到32位保护模式</li>
+<li>将整个kernel读入memory中</li>
+<li>控制转交给kernel</li>
+</ul>
 <p>这里是通过设置CR0寄存器来切换到保护模式的</p>
-
-<p>kernel是ELF格式的,我们主要关注这几个部分:
-- .text: 程序的可执行指令
-- .rodata: read-only data
-- .data: 程序初始化的数据 (像int x = 0之类的)</p>
-
+<p>kernel是ELF格式的,我们主要关注这几个部分:</p>
+<ul>
+<li>.text: 程序的可执行指令</li>
+<li>.rodata: read-only data</li>
+<li>.data: 程序初始化的数据 (像int x = 0之类的)</li>
+</ul>
 <p>可以使用objdump来查看详细信息</p>
-
-<p>其中.text部分的<code>link address</code>和<code>load address</code>需要注意:
-- link address: 指令运行时的地址,一般是虚拟地址
-- load address: 指令load进内存的地址</p>
-
+<p>其中.text部分的<code>link address</code>和<code>load address</code>需要注意:</p>
+<ul>
+<li>link address: 指令运行时的地址,一般是虚拟地址</li>
+<li>load address: 指令load进内存的地址</li>
+</ul>
 <p>可以发现实模式下这两地址是一样的,因为并没有开启虚存,指令执行的时候就没有地址映射关系</p>
-
-<p>看一下main.c里面,kernel的入口是<code>((void (*)(void)) (ELFHDR-&gt;e_entry))();</code>在boot.asm中可以看到对应boot loader执行的最后一条指令是<code>7d73:  ff 15 18 00 01 00       call   *0x10018</code>. 之后控制交给kernel,从entry.S开始运行,第一条指令是<code>f010000c:    66 c7 05 72 04 00 00    movw   $0x1234,0x472</code>.</p>
-
-<hr />
-
+<p>看一下main.c里面,kernel的入口是<code>((void (*)(void)) (ELFHDR-&gt;e_entry))();</code>在boot.asm中可以看到对应boot loader执行的最后一条指令是<code>7d73:	ff 15 18 00 01 00    	call   *0x10018</code>. 之后控制交给kernel,从entry.S开始运行,第一条指令是<code>f010000c:	66 c7 05 72 04 00 00 	movw   $0x1234,0x472</code>.</p>
+<hr>
 <h1 id="part-3-the-kernel">part 3: The Kernel</h1>
-
-<p>这里JOS其实有两个地址映射的关系,在kern/entrypgdir.c里面可以看到:
-- Map VA&rsquo;s [0, 4MB) to PA&rsquo;s [0, 4MB)
-- Map VA&rsquo;s [KERNBASE, KERNBASE+4MB) to PA&rsquo;s [0, 4MB)
-其中第一个映射只是为了entry.S中的指令能正确执行,过了entry.S就没用了,具体可以看代码和注释</p>
-
+<p>这里JOS其实有两个地址映射的关系,在kern/entrypgdir.c里面可以看到:</p>
+<ul>
+<li>Map VA&rsquo;s [0, 4MB) to PA&rsquo;s [0, 4MB)</li>
+<li>Map VA&rsquo;s [KERNBASE, KERNBASE+4MB) to PA&rsquo;s [0, 4MB)
+其中第一个映射只是为了entry.S中的指令能正确执行,过了entry.S就没用了,具体可以看代码和注释</li>
+</ul>
 <p>format printing这个只要看一下<code>kern/printf.c, lib/printfmt.c, kern/console.c</code>这三个地方就清楚了. 这里有个challenge是在控制台输出彩色文字,一个思路是用ANSI escape sequence,也就是类似<code>\u001b[31mHelloWorld\u001b[0m</code>这样的输出. 还有一个思路是可以参考一下<a href="https://en.wikipedia.org/wiki/VGA-compatible_text_mode#Text_buffer">VGA text buffer</a>的格式,修改前景色那几位就行了.</p>
-
 <p>stack可以看一下kernel.asm里面test_backtrace对esp,ebp的操作.</p>
-
 <p>stabs可以看一下<a href="https://sourceware.org/gdb/onlinedocs/stabs.html">这里</a>然后看看生成的.s文件大概就能看出stabs里面都存了啥东西,就比较好理解kdebug.c了</p>
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">文章作者</span>
+    <span class="item-title">Author</span>
     <span class="item-content">xymeow</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2019-03-03</span>
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2019-03-03
+        
+    </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/os/">os</a>
-          
           <a href="/tags/csci555/">csci555</a>
-          
           <a href="/tags/6.828/">6.828</a>
-          
           <a href="/tags/usc/">usc</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/singularity/">
+        <a class="prev" href="/post/singularity/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">The Singularity System - my notes</span>
-            <span class="prev-text nav-mobile">上一篇</span>
+            <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/programming-language-note1/">
+        <a class="next" href="/post/programming-language-note1/">
             <span class="next-text nav-default">Coursera Programming Language Part A Note(1)</span>
-            <span class="prev-text nav-mobile">下一篇</span>
+            <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
       </nav>
@@ -342,42 +310,41 @@
   </article>
         </div>
         
+
   
 
   
-      </div>  
+
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
       <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
       <a href="https://www.instagram.com/xymeow" class="iconfont icon-instagram" title="instagram"></a>
-  
+  <a href="http://xymeow.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
     &copy; 
-    
-      2017 - 
-    2022
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">xymeow</span>
+    2017 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>xymeow</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -385,26 +352,29 @@
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-126125933-1', 'auto');
-ga('send', 'pageview');
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-126125933-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
 
 
 

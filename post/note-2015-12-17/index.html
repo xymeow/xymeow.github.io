@@ -16,67 +16,40 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xymeow" />
-  <meta name="description" content="这周web课布置了个调研作业，记录一下。。。 1. Davies Bouldin Index 常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为： $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$ 其中\(\" />
-
-  <meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
+<meta name="author" content="xymeow" /><meta name="description" content="这周web课布置了个调研作业，记录一下。。。 1. Davies Bouldin Index 常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为： $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$ 其中\(\" /><meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.30" />
+<meta name="generator" content="Hugo 0.109.0 with theme even" />
 
 
 <link rel="canonical" href="http://xymeow.github.io/post/note-2015-12-17/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
+<link href="/sass/main.min.287aac339cfd87db34a29fafc6d734344f1e4874c5a1815f63160563dca05a90.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 <meta property="og:title" content="聚类效果评价指标" />
 <meta property="og:description" content="这周web课布置了个调研作业，记录一下。。。 1. Davies Bouldin Index 常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为： $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$ 其中\(\" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://xymeow.github.io/post/note-2015-12-17/" />
-
-
-
-<meta property="article:published_time" content="2015-12-17T08:04:56&#43;00:00"/>
-
-<meta property="article:modified_time" content="2015-12-17T08:04:56&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="http://xymeow.github.io/post/note-2015-12-17/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2015-12-17T08:04:56+00:00" />
+<meta property="article:modified_time" content="2015-12-17T08:04:56+00:00" />
 <meta itemprop="name" content="聚类效果评价指标">
-<meta itemprop="description" content="这周web课布置了个调研作业，记录一下。。。 1. Davies Bouldin Index 常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为： $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$ 其中\(\">
-
-
-<meta itemprop="datePublished" content="2015-12-17T08:04:56&#43;00:00" />
-<meta itemprop="dateModified" content="2015-12-17T08:04:56&#43;00:00" />
-<meta itemprop="wordCount" content="756">
-
-
-
-<meta itemprop="keywords" content="data mining," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="聚类效果评价指标"/>
+<meta itemprop="description" content="这周web课布置了个调研作业，记录一下。。。 1. Davies Bouldin Index 常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为： $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$ 其中\(\"><meta itemprop="datePublished" content="2015-12-17T08:04:56+00:00" />
+<meta itemprop="dateModified" content="2015-12-17T08:04:56+00:00" />
+<meta itemprop="wordCount" content="805">
+<meta itemprop="keywords" content="data mining," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="聚类效果评价指标"/>
 <meta name="twitter:description" content="这周web课布置了个调研作业，记录一下。。。 1. Davies Bouldin Index 常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为： $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$ 其中\(\"/>
 
 <!--[if lte IE 9]>
@@ -114,12 +87,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">中鸽院专家楼</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -136,6 +118,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -149,116 +132,85 @@
       <div class="post-meta">
         <span class="post-time"> 2015-12-17 </span>
         <div class="post-category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-          </div>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+            </div>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li><a href="#1-davies-bouldin-index">1. Davies Bouldin Index</a></li>
-<li><a href="#2-purity">2. purity</a></li>
-<li><a href="#3-nmi-normalized-mutual-information">3. NMI(normalized mutual information)</a></li>
-<li><a href="#4-ri">4. RI</a></li>
-<li><a href="#5-f值">5. F值</a></li>
-</ul>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-davies-bouldin-index">1. Davies Bouldin Index</a></li>
+    <li><a href="#2-purity">2. purity</a></li>
+    <li><a href="#3-nminormalized-mutual-information">3. NMI(normalized mutual information)</a></li>
+    <li><a href="#4-ri">4. RI</a></li>
+    <li><a href="#5-f值">5. F值</a></li>
+  </ul>
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
-      
-
-<p>这周web课布置了个调研作业，记录一下。。。</p>
-
+      <p>这周web课布置了个调研作业，记录一下。。。</p>
 <h1 id="1-davies-bouldin-index">1. Davies Bouldin Index</h1>
-
 <p>常用于聚类效果评价的指标为：Davies Bouldin Index，它的表达式可以写为：
 $$DB=\frac{1}{N}\sum_{i\neq j}\frac{\rho_i-\rho_j}{d(c_i-c_j)}$$
 其中\(\rho_i,\rho_j\)表示i，j两个分类中的所有对象到中心点点平均距离。分母中的\(c_i, c_j\)分别表示i，j两个分类的中心点之间点距离。整个表达式点含义是：聚类效果越好，两个分类之间距离应该越远，分类内部越密集</p>
-
 <h1 id="2-purity">2. purity</h1>
-
 <p>purity方法是极为简单的一种聚类评价方法，只需计算正确聚类的文档数占总文档数的比例：
 $$purity(\Omega, C)=\frac{1}{N}\sum_k \max_j \left|\omega_k\cap c_j \right|$$
 其中\(\Omega={\omega_1, \omega_2,&hellip;,\omega_k}\)是聚类的集合，\(\omega_k\)表示第k个聚类的集合。\(C={c_1, c_2,&hellip;,c_j}\)是文档集合，\(c_j\)表示第j个文档，N表示文档总数。</p>
-
 <p>purity方法的优势是方便计算，值在0～1之间，完全错误的聚类方法值为0，完全正确的方法值为1。同时，purity方法的缺点也很明显它无法对退化的聚类方法给出正确的评价，设想如果聚类算法把每篇文档单独聚成一类，那么算法认为所有文档都被正确分类，那么purity值为1！而这显然不是想要的结果。</p>
-
-<h1 id="3-nmi-normalized-mutual-information">3. NMI(normalized mutual information)</h1>
-
-<p>$$NMI(\Omega, C)=\frac{I(\Omega;C)}{[H(\Omega)+H&copy;]/2}$$
+<h1 id="3-nminormalized-mutual-information">3. NMI(normalized mutual information)</h1>
+<p>$$NMI(\Omega, C)=\frac{I(\Omega;C)}{[H(\Omega)+H(C)]/2}$$
 其中I为互信息，计算公式为：
 $$I(\Omega;C)=\sum_k\sum_jP(\omega_k\cap c_j)\log\frac{P(\omega_k\cap c_j)}{P(\omega_k)P(c_j)}$$
 $$=\sum_k\sum_j\frac{\left|\omega_k\cap c_j\right|}{N}\log\frac{N\left|\omega_k\cap c_j\right|}{\left|\omega_k\right|\left|c_j\right|}$$
 其中，\(P(x)\)为一个文档在x中的概率</p>
-
 <p>H为熵，计算公式如下：
 $$H(\Omega)=-\sum_kP(\omega_k)\log P(\omega_k)=-\sum_k\frac{\left|\omega_k\right|}{N}\log\frac{\left|\omega_k\right|}{N}$$</p>
-
 <h1 id="4-ri">4. RI</h1>
-
 <p>实际上这是一种用排列组合原理来对聚类进行评价的手段，公式如下：
 $$RI=\frac{TP+TN}{TP+FP+FN+TN}$$
 其中TP是指被聚在一类的两个文档被正确分类了，TN是只不应该被聚在一类的两个文档被正确分开了，FP只不应该放在一类的文档被错误的放在了一类，FN只不应该分开的文档被错误的分开了。</p>
-
 <h1 id="5-f值">5. F值</h1>
-
 <p>这是基于上述RI方法衍生出的一个方法：
 $$P=\frac{TP}{TP+FP}$$    $$R=\frac{TP}{TP+FN}$$  $$F_\beta = \frac{(\beta^2+1)PR}{\beta^2P+R}$$
 其中P为聚类的准确率，R为聚类的召回率。</p>
-
 <p>RI方法有个特点就是把准确率和召回率看得同等重要，事实上有时候我们可能需要某一特性更多一点，这时候就适合F值方法</p>
 
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">文章作者</span>
+    <span class="item-title">Author</span>
     <span class="item-content">xymeow</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2015-12-17</span>
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2015-12-17
+        
+    </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/data-mining/">data mining</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/">
+        <a class="prev" href="/post/%E5%88%A9%E7%94%A8wireshark%E8%A7%82%E5%AF%9F%E7%BD%91%E7%BB%9C%E6%8A%A5%E6%96%87/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">利用Wireshark观察网络报文</span>
-            <span class="prev-text nav-mobile">上一篇</span>
+            <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/csapp-lab4/">
+        <a class="next" href="/post/csapp-lab4/">
             <span class="next-text nav-default">CSAPP LAB4：perflab-优化两个奇怪的函数</span>
-            <span class="prev-text nav-mobile">下一篇</span>
+            <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
       </nav>
@@ -266,42 +218,41 @@ $$P=\frac{TP}{TP+FP}$$    $$R=\frac{TP}{TP+FN}$$  $$F_\beta = \frac{(\beta^2+1)P
   </article>
         </div>
         
+
   
 
   
-      </div>  
+
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
       <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
       <a href="https://www.instagram.com/xymeow" class="iconfont icon-instagram" title="instagram"></a>
-  
+  <a href="http://xymeow.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
     &copy; 
-    
-      2017 - 
-    2022
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">xymeow</span>
+    2017 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>xymeow</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -309,26 +260,29 @@ $$P=\frac{TP}{TP+FP}$$    $$R=\frac{TP}{TP+FN}$$  $$F_\beta = \frac{(\beta^2+1)P
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-126125933-1', 'auto');
-ga('send', 'pageview');
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-126125933-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
 
 
 

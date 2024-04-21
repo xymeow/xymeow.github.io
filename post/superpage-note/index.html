@@ -16,76 +16,42 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
 
 
-<meta name="author" content="xymeow" />
-  <meta name="description" content="Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.
-
-" />
-
-  <meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
+<meta name="author" content="xymeow" /><meta name="description" content="Some notes taking from reading the paper &amp;lsquo;Practical, transparent operating system support for superpages&amp;rsquo;.
+" /><meta name="keywords" content="Hugo, theme, even, usc, CS, ustc" />
 
 
 
 
 
 
-<meta name="generator" content="Hugo 0.30" />
+<meta name="generator" content="Hugo 0.109.0 with theme even" />
 
 
 <link rel="canonical" href="http://xymeow.github.io/post/superpage-note/" />
-
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="icon" href="/favicon.ico" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
 <link rel="manifest" href="/manifest.json">
 <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
 
 
 
+<link href="/sass/main.min.287aac339cfd87db34a29fafc6d734344f1e4874c5a1815f63160563dca05a90.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
 
-<link href="/dist/even.min.css?v=2.6.4" rel="stylesheet">
-<link href="/lib/fancybox/jquery.fancybox-3.1.20.min.css" rel="stylesheet">
 
 <meta property="og:title" content="Superpages - my notes" />
-<meta property="og:description" content="Some notes taking from reading the paper &lsquo;Practical, transparent operating system support for superpages&rsquo;.
-
-" />
+<meta property="og:description" content="Some notes taking from reading the paper &lsquo;Practical, transparent operating system support for superpages&rsquo;." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://xymeow.github.io/post/superpage-note/" />
-
-
-
-<meta property="article:published_time" content="2018-10-10T00:00:00&#43;00:00"/>
-
-<meta property="article:modified_time" content="2018-12-12T00:00:00&#43;00:00"/>
-
-
-
-
-
-
-
-
-
-
-
+<meta property="og:url" content="http://xymeow.github.io/post/superpage-note/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-10-10T00:00:00+00:00" />
+<meta property="article:modified_time" content="2018-12-12T00:00:00+00:00" />
 <meta itemprop="name" content="Superpages - my notes">
-<meta itemprop="description" content="Some notes taking from reading the paper &lsquo;Practical, transparent operating system support for superpages&rsquo;.
-
-">
-
-
-<meta itemprop="datePublished" content="2018-10-10T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2018-10-10T00:00:00&#43;00:00" />
+<meta itemprop="description" content="Some notes taking from reading the paper &lsquo;Practical, transparent operating system support for superpages&rsquo;."><meta itemprop="datePublished" content="2018-10-10T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2018-12-12T00:00:00+00:00" />
 <meta itemprop="wordCount" content="693">
-
-
-
-<meta itemprop="keywords" content="os,csci555,usc," />
-<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Superpages - my notes"/>
-<meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;Practical, transparent operating system support for superpages&rsquo;.
-
-"/>
+<meta itemprop="keywords" content="os,csci555,usc," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Superpages - my notes"/>
+<meta name="twitter:description" content="Some notes taking from reading the paper &lsquo;Practical, transparent operating system support for superpages&rsquo;."/>
 
 <!--[if lte IE 9]>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
@@ -122,12 +88,21 @@
         <li class="mobile-menu-item">About</li>
       </a>
   </ul>
+
+  
+
+
 </nav>
+
   <div class="container" id="mobile-panel">
     <header id="header" class="header">
         <div class="logo-wrapper">
   <a href="/" class="logo">中鸽院专家楼</a>
 </div>
+
+
+
+
 
 <nav class="site-navbar">
   <ul id="menu" class="menu">
@@ -144,6 +119,7 @@
       </li>
   </ul>
 </nav>
+
     </header>
 
     <main id="main" class="main">
@@ -157,85 +133,71 @@
       <div class="post-meta">
         <span class="post-time"> 2018-10-10 </span>
         <div class="post-category">
-            <a href="/categories/%E7%AC%94%E8%AE%B0/">笔记</a>
-          </div>
+            <a href="/categories/%E7%AC%94%E8%AE%B0/"> 笔记 </a>
+            </div>
         
       </div>
     </header>
 
-    
-    
-<div class="post-toc" id="post-toc">
-  <h2 class="post-toc-title">文章目录</h2>
-  <div class="post-toc-content">
-      <nav id="TableOfContents">
-<ul>
-<li><a href="#background">Background</a>
-<ul>
-<li><a href="#the-memory-management-system-in-mordern-os">the memory management system in mordern OS</a></li>
-<li><a href="#capabilities-provided-by-memory-management">capabilities provided by memory management</a></li>
-<li><a href="#why-increasing-page-size-may-not-work">why increasing page size may not work?</a></li>
-</ul></li>
-<li><a href="#motivation-of-superpages">Motivation of superpages</a></li>
-<li><a href="#design">Design</a>
-<ul>
-<li><a href="#a-general-superpage-management-system">a general superpage management system</a></li>
-<li><a href="#hardware-constrains">hardware constrains</a></li>
-<li><a href="#design-space-allocation">design space - allocation</a></li>
-<li><a href="#preferred-superpage-size-policy">preferred superpage size policy</a></li>
-<li><a href="#promotion-to-superpages">promotion to superpages</a></li>
-<li><a href="#fragmentation-control">fragmentation control</a></li>
-<li><a href="#demotion">demotion</a></li>
-<li><a href="#population-map">population map</a></li>
-<li><a href="#multi-list-reservation">multi-list reservation</a></li>
-</ul></li>
-<li><a href="#implementation">Implementation</a>
-<ul>
-<li><a href="#benefits">benefits</a></li>
-</ul></li>
-</ul>
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content always-active">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#background">Background</a>
+      <ul>
+        <li><a href="#the-memory-management-system-in-mordern-os">the memory management system in mordern OS</a></li>
+        <li><a href="#capabilities-provided-by-memory-management">capabilities provided by memory management</a></li>
+        <li><a href="#why-increasing-page-size-may-not-work">why increasing page size may not work?</a></li>
+      </ul>
+    </li>
+    <li><a href="#motivation-of-superpages">Motivation of superpages</a></li>
+    <li><a href="#design">Design</a>
+      <ul>
+        <li><a href="#a-general-superpage-management-system">a general superpage management system</a></li>
+        <li><a href="#hardware-constrains">hardware constrains</a></li>
+        <li><a href="#design-space---allocation">design space - allocation</a></li>
+        <li><a href="#preferred-superpage-size-policy">preferred superpage size policy</a></li>
+        <li><a href="#promotion-to-superpages">promotion to superpages</a></li>
+        <li><a href="#fragmentation-control">fragmentation control</a></li>
+        <li><a href="#demotion">demotion</a></li>
+        <li><a href="#population-map">population map</a></li>
+        <li><a href="#multi-list-reservation">multi-list reservation</a></li>
+      </ul>
+    </li>
+    <li><a href="#implementation">Implementation</a>
+      <ul>
+        <li><a href="#benefits">benefits</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
   </div>
 </div>
-
-    
     <div class="post-content">
       <p>Some notes taking from reading the paper &lsquo;Practical, transparent operating system support for superpages&rsquo;.</p>
-
-<p></p>
-
 <h1 id="background">Background</h1>
-
 <ul>
 <li>superpage : pages &gt; 4K (like 4M)</li>
 </ul>
-
 <h2 id="the-memory-management-system-in-mordern-os">the memory management system in mordern OS</h2>
-
 <ul>
 <li>kernel functionality</li>
 <li>hardware support</li>
 </ul>
-
 <h2 id="capabilities-provided-by-memory-management">capabilities provided by memory management</h2>
-
 <ul>
 <li>demand paging</li>
 <li>lazy allocation</li>
 <li>shared memory</li>
 <li>zero copy IPC &hellip;</li>
 </ul>
-
 <h2 id="why-increasing-page-size-may-not-work">why increasing page size may not work?</h2>
-
 <ul>
 <li>internal fragmetaion</li>
-<li>enlarged application footprints -&gt; increased physical mem require and higher page traffic (I/O)
-<br /></li>
+<li>enlarged application footprints -&gt; increased physical mem require and higher page traffic (I/O)</li>
 </ul>
-
 <h1 id="motivation-of-superpages">Motivation of superpages</h1>
-
 <ul>
 <li>building big TLB is expensive</li>
 <li>physically address caches are big enough to hold working sets</li>
@@ -244,43 +206,35 @@
 <li>memory size have increased -&gt; TLB coverage rate down -&gt; increase program size -&gt; TLB misses increase</li>
 <li>trend: on-board physically addressed caches larger than TLB coverage -&gt; TLB misses have to access to memory banks to find a translation for a cached data</li>
 </ul>
-
 <h1 id="design">Design</h1>
-
 <h2 id="a-general-superpage-management-system">a general superpage management system</h2>
-
 <ul>
 <li>when a process allocates memory:
-
 <ol>
 <li>reserves a larger contiguous region of physical memory</li>
 <li>increasing sizes as the process touches pages in this region</li>
 <li>preempt portions of unused contiguous regions</li>
 <li>restores contiguity by biasing the page replacement scheme to evict contiguous inactive pages</li>
-</ol></li>
+</ol>
+</li>
 <li>contributions:
-
 <ul>
 <li>extends a previously proposed reservation-based approach to work with multiple superpage sizes</li>
 <li>the first to investigate the effect of fragmentation on superpages</li>
 <li>propose a novel contiguity-aware page replacement algorithm to control fragmentation</li>
 <li>tackles issues like superpage demotion and eviction of dirty superpages</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="hardware-constrains">hardware constrains</h2>
-
 <ul>
 <li>fixed set of page sizes of superpages</li>
 <li>aligned and contiguious in physical and virtual address</li>
 <li>TLB entry only provides reference bit, permission bit set, dirty bit</li>
 </ul>
-
-<h2 id="design-space-allocation">design space - allocation</h2>
-
+<h2 id="design-space---allocation">design space - allocation</h2>
 <ul>
 <li>relocation:
-
 <ul>
 <li>entirly and transparently implement in hardware-dependent layer of OS</li>
 <li>create contiguity, but copy -&gt; high cost</li>
@@ -288,160 +242,135 @@
 <li>more TLB misses than reservation</li>
 <li>TLB misses more expensive</li>
 <li>but more robust to fragmantation</li>
-</ul></li>
+</ul>
+</li>
 <li>reservation: preserve contiguity, reserved at page fault time
-
 <ul>
 <li>allocate 4K, reserve 64K</li>
 <li>superpage size? (see policy)</li>
 <li>find contigous physical memory of that size</li>
 <li>alloc 4k from that physical memory</li>
 <li>issue: trade off performance gains of using a large superpage against the potion of retaining the contiguous region for later use</li>
-</ul></li>
-<li>hardware-based: reduce contiguity requirement for superpage
-<br /></li>
 </ul>
-
+</li>
+<li>hardware-based: reduce contiguity requirement for superpage</li>
+</ul>
 <h2 id="preferred-superpage-size-policy">preferred superpage size policy</h2>
-
 <ul>
 <li>resevation policy
-
 <ul>
-<li>fixed size object:</li>
+<li>fixed size object:
+<ul>
 <li>largest aligned superpage that contains the faulting page</li>
 <li>don&rsquo;t extend super page beyound object</li>
 <li>no overlap with others</li>
-<li>dynamically sized object</li>
+</ul>
+</li>
+<li>dynamically sized object
+<ul>
 <li>size of superpage is limited to current size of the object</li>
-</ul></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>preempt policy
-
 <ul>
 <li>when possible, preempts existing resvs rather than refusing allocation</li>
 <li>when more than one resvs, preempt most recent page allocation occurred least recently</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="promotion-to-superpages">promotion to superpages</h2>
-
 <ul>
 <li>update page table entry for each of the pages</li>
 <li>when to promote? trade-off of early promotion: reduce TLB miss vs. increased mem consumption</li>
 <li>eager promotion: not transparent</li>
 </ul>
-
 <h2 id="fragmentation-control">fragmentation control</h2>
-
 <ul>
 <li>preemption</li>
 <li>contiguily as resourse</li>
 </ul>
-
 <h2 id="demotion">demotion</h2>
-
 <ul>
 <li>speculative demotion: when mem pressure and superpage is referenced</li>
 <li>permission change: hardware provide only a single set of protection bits</li>
 <li>write: demote clean sp, then repromote later if all base page are dirty</li>
 </ul>
-
 <h2 id="population-map">population map</h2>
-
 <ul>
 <li>(somepop, fullpop) radix tree</li>
 <li>purpose:
-
 <ul>
 <li>enable OS to map va to page frame may already reserved</li>
 <li>detect and avoid overlapping regions</li>
 <li>assist in making page promotion decisions</li>
 <li>help identify unallocated regions</li>
-</ul></li>
 </ul>
-
+</li>
+</ul>
 <h2 id="multi-list-reservation">multi-list reservation</h2>
-
 <ul>
 <li>one reservation list for each page size, except for largest sp size</li>
 <li>kept sorted by the time of their most recent page frame allocation</li>
 </ul>
-
 <h1 id="implementation">Implementation</h1>
-
 <ul>
 <li>page daemon
-
 <ul>
 <li>keep 3 list of pages in A-LRU order: active, inactive, cache</li>
 <li>cache page available for resv</li>
 <li>activated on mem pressure and when available contiguity falls low (fail to allocate a contiguous region of the preferred size)</li>
 <li>more inactive pages -&gt; higher chance of restore contiguity</li>
-<li>more aggressively recover contiguity -&gt; greater possible of overhead induced by modify page daemon
-<br /></li>
-</ul></li>
+<li>more aggressively recover contiguity -&gt; greater possible of overhead induced by modify page daemon</li>
 </ul>
-
+</li>
+</ul>
 <h2 id="benefits">benefits</h2>
-
 <ul>
 <li>best-case due to superpage:
-
 <ul>
 <li>when free mem is plentiful and non-fragmented</li>
 <li>most cases, TLB misses are virtually eliminated</li>
 <li>Matrix: access pattern produces one TLB miss for every two mem access</li>
 <li>mesa: downgrade, allocator not differentiate zero-out pages from other free pages</li>
-</ul></li>
+</ul>
+</li>
 <li>multiple page sizes: mcf</li>
 <li>long term benefits: fragmentation</li>
 </ul>
     </div>
 
-    
-    
-<div class="post-copyright">
+    <div class="post-copyright">
   <p class="copyright-item">
-    <span class="item-title">文章作者</span>
+    <span class="item-title">Author</span>
     <span class="item-content">xymeow</span>
   </p>
   <p class="copyright-item">
-    <span class="item-title">上次更新</span>
-    <span class="item-content">2018-12-12</span>
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        2018-12-12
+        
+    </span>
   </p>
   
-  <p class="copyright-item">
-    <span class="item-title">许可协议</span>
-    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
-  </p>
+  
 </div>
-
-    
-    
-
-    <footer class="post-footer">
+<footer class="post-footer">
       <div class="post-tags">
-          
           <a href="/tags/os/">os</a>
-          
           <a href="/tags/csci555/">csci555</a>
-          
           <a href="/tags/usc/">usc</a>
-          
-        </div>
-
-      
+          </div>
       <nav class="post-nav">
-        
-          <a class="prev" href="/post/lottery-scheduling/">
+        <a class="prev" href="/post/lottery-scheduling/">
             <i class="iconfont icon-left"></i>
             <span class="prev-text nav-default">Lottery Scheduling - my notes</span>
-            <span class="prev-text nav-mobile">上一篇</span>
+            <span class="prev-text nav-mobile">Prev</span>
           </a>
-        
-          <a class="next" href="/post/vmware-esx/">
+        <a class="next" href="/post/vmware-esx/">
             <span class="next-text nav-default">VMware ESX - my notes</span>
-            <span class="prev-text nav-mobile">下一篇</span>
+            <span class="next-text nav-mobile">Next</span>
             <i class="iconfont icon-right"></i>
           </a>
       </nav>
@@ -449,42 +378,41 @@
   </article>
         </div>
         
+
   
 
   
-      </div>  
+
+      </div>
     </main>
 
     <footer id="footer" class="footer">
       <div class="social-links">
-      <a href="https://www.facebook.com/profile.php?id=100010677377869" class="iconfont icon-facebook" title="facebook"></a>
       <a href="https://www.linkedin.com/in/xiaoyihe1311/" class="iconfont icon-linkedin" title="linkedin"></a>
       <a href="http://github.com/xymeow" class="iconfont icon-github" title="github"></a>
       <a href="https://www.instagram.com/xymeow" class="iconfont icon-instagram" title="instagram"></a>
-  
+  <a href="http://xymeow.github.io/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
 </div>
 
 <div class="copyright">
   <span class="power-by">
-    由 <a class="hexo-link" href="https://gohugo.io">Hugo</a> 强力驱动
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
   </span>
   <span class="division">|</span>
   <span class="theme-info">
-    主题 - 
+    Theme - 
     <a class="theme-link" href="https://github.com/olOwOlo/hugo-theme-even">Even</a>
   </span>
 
+  
+
   <span class="copyright-year">
     &copy; 
-    
-      2017 - 
-    2022
-    <span class="heart">
-      <i class="iconfont icon-heart"></i>
-    </span>
-    <span class="author">xymeow</span>
+    2017 - 
+    2024<span class="heart"><i class="iconfont icon-heart"></i></span><span>xymeow</span>
   </span>
 </div>
+
     </footer>
 
     <div class="back-to-top" id="back-to-top">
@@ -492,26 +420,29 @@
     </div>
   </div>
   
-<script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
-<script type="text/javascript" src="/lib/jquery/jquery-3.2.1.min.js"></script>
-  <script type="text/javascript" src="/lib/slideout/slideout-1.0.1.min.js"></script>
-  <script type="text/javascript" src="/lib/fancybox/jquery.fancybox-3.1.20.min.js"></script>
-<script type="text/javascript" src="/dist/even.min.js?v=2.6.4"></script>
-  <script type="text/javascript">
-    window.MathJax = {
-      showProcessingMessages: false,
-      messageStyle: 'none'
-    };
-  </script>
-  <script async src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
 
 
-<script>
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-126125933-1', 'auto');
-ga('send', 'pageview');
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+
+
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-126125933-1', 'auto');
+	ga('set', 'anonymizeIp', true);
+	ga('send', 'pageview');
+}
 </script>
-<script async src='//www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+
+
+
 
 
 
